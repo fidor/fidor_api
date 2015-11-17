@@ -25,7 +25,18 @@ Or install it yourself as:
 
 ## Usage
 
-Examples:
+### 0. Configure
+
+```ruby
+FidorApi.configure do |config|
+  config.oauth_url     = ENV.fetch("FIDOR_OAUTH_URL")
+  config.api_url       = ENV.fetch("FIDOR_API_URL")
+  config.callback_url  = ENV.fetch("FIDOR_API_CALLBACK")
+  config.client_id     = ENV.fetch("FIDOR_API_CLIENT_ID")
+  config.client_secret = ENV.fetch("FIDOR_API_CLIENT_SECRET")
+  config.logging       = true
+end
+```
 
 ### 1. oAuth (Rails)
 
