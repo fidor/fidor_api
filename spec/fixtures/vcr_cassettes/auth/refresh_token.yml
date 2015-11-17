@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://aps.fidor.de/oauth/token
+    body:
+      encoding: US-ASCII
+      string: grant_type=refresh_token&refresh_token=R9402955f445c146eaa89db8207ae2138
+    headers:
+      User-Agent:
+      - Faraday v0.8.10
+      Authorization:
+      - Basic Y2xpZW50LWlkOmNsaWVudC1zZWNyZXQ=
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message:
+    headers:
+      date:
+      - Tue, 29 Sep 2015 20:38:52 GMT
+      status:
+      - 200 OK
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      x-content-type-options:
+      - nosniff
+      cache-control:
+      - no-store
+      pragma:
+      - no-cache
+      content-type:
+      - application/json; charset=utf-8
+      etag:
+      - '"c524bac7a643643cf9a8e01a81d1b7d2"'
+      x-request-id:
+      - d6f8d186-7778-48ef-8395-3d078413c97a
+      x-runtime:
+      - '0.183189'
+      via:
+      - 1.1 aps.fidor.de
+      connection:
+      - close
+      transfer-encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"access_token":"053e49b190b005e0ca9afcb4991dffcb","expires_in":3599,"token_type":"bearer","refresh_token":"Rbf9d9e76cd9f61e0ac6cb63f39ea3831"}'
+    http_version:
+  recorded_at: Tue, 29 Sep 2015 20:38:52 GMT
+recorded_with: VCR 2.9.3

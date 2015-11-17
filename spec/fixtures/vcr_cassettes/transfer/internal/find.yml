@@ -1,0 +1,53 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://aps.fidor.de/internal_transfers/2366
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer a1e8f8d70e5490611c4ef051f3a36e09
+      Accept:
+      - application/vnd.fidor.de; version=1,text/json
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      date:
+      - Sat, 12 Sep 2015 01:16:10 GMT
+      status:
+      - 200 OK
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      x-content-type-options:
+      - nosniff
+      content-type:
+      - application/json; charset=utf-8
+      etag:
+      - '"658d38e3c128d74c8fa39c82db160bee"'
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - daa285de-1a94-463c-9c45-17bddee54c7a
+      x-runtime:
+      - '0.022991'
+      via:
+      - 1.1 aps.fidor.de
+      connection:
+      - close
+      transfer-encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"id":"2366","external_uid":"4279762F5","account_id":"875","user_id":"875","transaction_id":"28836","receiver":"kycfull@fidor.de","amount":1000,"currency":null,"subject":"Money
+        for you","state":"success","created_at":"2015-09-12T00:10:57Z","updated_at":"2015-09-12T00:11:06Z"}'
+    http_version: 
+  recorded_at: Sat, 12 Sep 2015 01:16:11 GMT
+recorded_with: VCR 2.9.3

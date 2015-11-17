@@ -1,0 +1,53 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://aps.fidor.de/sepa_credit_transfers/10548
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer a1e8f8d70e5490611c4ef051f3a36e09
+      Accept:
+      - application/vnd.fidor.de; version=1,text/json
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      date:
+      - Sat, 12 Sep 2015 01:32:04 GMT
+      status:
+      - 200 OK
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      x-content-type-options:
+      - nosniff
+      content-type:
+      - application/json; charset=utf-8
+      etag:
+      - '"86b39e4895c0edbe0a70d2b87db8b9e8"'
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - e2023fe1-74ae-4b13-b2e5-467ad2c43fc0
+      x-runtime:
+      - '0.019605'
+      via:
+      - 1.1 aps.fidor.de
+      connection:
+      - close
+      transfer-encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"id":"10548","external_uid":"4279762F6","account_id":"875","user_id":"875","transaction_id":"28837","subject":"Money
+        for you","amount":1000,"currency":null,"remote_name":"John Doe","remote_iban":"AT131490022010010999","remote_bic":"SPADATW1XXX","state":"success","created_at":"2015-09-12T01:03:48Z","updated_at":"2015-09-12T01:03:55Z"}'
+    http_version: 
+  recorded_at: Sat, 12 Sep 2015 01:32:04 GMT
+recorded_with: VCR 2.9.3

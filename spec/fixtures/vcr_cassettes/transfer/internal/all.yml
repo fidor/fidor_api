@@ -1,0 +1,68 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://aps.fidor.de/internal_transfers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer a1e8f8d70e5490611c4ef051f3a36e09
+      Accept:
+      - application/vnd.fidor.de; version=1,text/json
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      date:
+      - Sat, 12 Sep 2015 01:14:05 GMT
+      status:
+      - 200 OK
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      x-content-type-options:
+      - nosniff
+      x-limit:
+      - '50'
+      x-offset:
+      - '0'
+      x-total:
+      - '10'
+      content-type:
+      - application/json; charset=utf-8
+      etag:
+      - '"1d71616de56fb38ab99fe9aa57e59fd5"'
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 26d0293c-b1bb-4561-8b88-d93c2dcac982
+      x-runtime:
+      - '0.035200'
+      via:
+      - 1.1 aps.fidor.de
+      connection:
+      - close
+      transfer-encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '[{"id":"2366","external_uid":"4279762F5","account_id":"875","user_id":"875","transaction_id":"28836","receiver":"kycfull@fidor.de","amount":1000,"currency":null,"subject":"Money
+        for you","state":"success","created_at":"2015-09-12T00:10:57Z","updated_at":"2015-09-12T00:11:06Z"},{"id":"2365","external_uid":"4279762F3","account_id":"875","user_id":"875","transaction_id":"28835","receiver":"kycfull@fidor.de","amount":1000,"currency":null,"subject":"First
+        Test","state":"success","created_at":"2015-09-11T23:53:37Z","updated_at":"2015-09-11T23:53:46Z"},{"id":"2364","external_uid":"4279762F2","account_id":"875","user_id":"875","transaction_id":"28834","receiver":"kycfull@fidor.de","amount":1000,"currency":null,"subject":"First
+        Test","state":"success","created_at":"2015-09-11T23:07:46Z","updated_at":"2015-09-11T23:07:54Z"},{"id":"2363","external_uid":"4279762F1","account_id":"875","user_id":"875","transaction_id":"28833","receiver":"kycfull@fidor.de","amount":1000,"currency":null,"subject":"First
+        Test","state":"success","created_at":"2015-09-11T23:07:23Z","updated_at":"2015-09-11T23:07:54Z"},{"id":"2362","external_uid":"4279762F","account_id":"875","user_id":"875","transaction_id":"28832","receiver":"kycfull@fidor.de","amount":1000,"currency":null,"subject":"First
+        Test","state":"success","created_at":"2015-09-10T16:49:27Z","updated_at":"2015-09-10T16:49:39Z"},{"id":"2361","external_uid":"5498ae3c96ef0266ee2a","account_id":"875","user_id":"875","transaction_id":"28831","receiver":"99994284","amount":8559,"currency":"EUR","subject":"Mitgliedsbeitrag
+        7/2014","state":"success","created_at":"2015-09-10T16:41:01Z","updated_at":"2015-09-10T16:41:01Z"},{"id":"2360","external_uid":"146c572f3c9f1b5c4435","account_id":"875","user_id":"875","transaction_id":"28830","receiver":"99990039","amount":14523,"currency":"EUR","subject":"KFZ
+        Versicherung 2007","state":"success","created_at":"2015-09-10T16:41:01Z","updated_at":"2015-09-10T16:41:01Z"},{"id":"2359","external_uid":"3fd852023f17104dceca","account_id":"875","user_id":"875","transaction_id":"28829","receiver":"99997844","amount":152402,"currency":"EUR","subject":"Spende
+        WWF Regenwald","state":"success","created_at":"2015-09-10T16:41:01Z","updated_at":"2015-09-10T16:41:01Z"},{"id":"2358","external_uid":"d90c09b6d5f368ccc83e","account_id":"875","user_id":"875","transaction_id":"28828","receiver":"99990430","amount":53179,"currency":"EUR","subject":"Steuernachzahlung
+        2013","state":"success","created_at":"2015-09-10T16:41:01Z","updated_at":"2015-09-10T16:41:01Z"},{"id":"2357","external_uid":"5b2911dd66d9f898e4db","account_id":"875","user_id":"875","transaction_id":"28827","receiver":"99995532","amount":7191,"currency":"EUR","subject":"Strom
+        1/2014","state":"success","created_at":"2015-09-10T16:41:01Z","updated_at":"2015-09-10T16:41:01Z"}]'
+    http_version: 
+  recorded_at: Sat, 12 Sep 2015 01:14:05 GMT
+recorded_with: VCR 2.9.3

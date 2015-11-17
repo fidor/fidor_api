@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://aps.fidor.de/transactions/28170
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer f859032a6ca0a4abb2be0583b8347937
+      Accept:
+      - application/vnd.fidor.de; version=1,text/json
+  response:
+    status:
+      code: 200
+      message:
+    headers:
+      date:
+      - Thu, 10 Sep 2015 16:04:52 GMT
+      status:
+      - 200 OK
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      x-content-type-options:
+      - nosniff
+      content-type:
+      - application/json; charset=utf-8
+      etag:
+      - '"05417ea596981b50198dc66bb6bec870"'
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 5fe640a2-3feb-49c8-bc6d-c6430e53a089
+      x-runtime:
+      - '0.021928'
+      via:
+      - 1.1 aps.fidor.de
+      connection:
+      - close
+      transfer-encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"id":"28170","account_id":"857","transaction_type":"sepa_payin","transaction_type_details":{"sepa_credit_transfer_id":null,"remote_name":"Fischer
+        Alexander","remote_iban":"DE90048273272084390548","remote_bic":"DAKVDEFFNL1"},"subject":"Gutschrift
+        9/2007","amount":4793,"currency":null,"booking_date":"2015-07-12","value_date":"2015-07-13","booking_code":null,"return_transaction_id":null,"created_at":"2015-08-26T15:43:30Z","updated_at":"2015-08-26T15:43:30Z"}'
+    http_version:
+  recorded_at: Thu, 10 Sep 2015 16:04:52 GMT
+recorded_with: VCR 2.9.3

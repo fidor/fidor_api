@@ -1,0 +1,39 @@
+module FidorApi
+
+  class Preauth < Resource
+    extend ModelAttribute
+
+    attribute :id,                   :integer
+    attribute :account_id,           :string
+    attribute :preauth_type,         :string
+    attribute :preauth_type_details, :json
+    attribute :amount,               :integer
+    attribute :expires_at,           :time
+    attribute :created_at,           :time
+    attribute :updated_at,           :time
+    attribute :currency,             :string
+
+    def self.all(access_token, options = {})
+      Collection.build(self, request(:get, access_token, "/preauths", options))
+    end
+
+    def self.find(access_token, id)
+      new(request(:get, access_token, "/preauths/#{id}"))
+    end
+
+    def preauth_type_details
+      @_preauth_type_details ||= PreauthDetails.build(@preauth_type, @preauth_type_details)
+    end
+
+    module ClientSupport
+      def preauths(options = {})
+        Preauth.all(token.access_token, options)
+      end
+
+      def preauth(id)
+        Preauth.find(token.access_token, id)
+      end
+    end
+  end
+
+end

@@ -1,0 +1,71 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://aps.fidor.de/customers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer f859032a6ca0a4abb2be0583b8347937
+      Accept:
+      - application/vnd.fidor.de; version=1,text/json
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      date:
+      - Sun, 30 Aug 2015 19:15:38 GMT
+      status:
+      - 200 OK
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      x-content-type-options:
+      - nosniff
+      x-limit:
+      - '50'
+      x-offset:
+      - '0'
+      x-total:
+      - '1'
+      content-type:
+      - application/json; charset=utf-8
+      etag:
+      - '"54cab76a4ee925e848ed0d770f888408"'
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 5c5c2dd0-376a-4eb3-ab02-d00efe017d62
+      x-runtime:
+      - '0.013951'
+      via:
+      - 1.1 aps.fidor.de
+      connection:
+      - close
+      transfer-encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        W3siaWQiOiI4NTciLCJlbWFpbCI6InBoaWxpcF83MjYxQGZpZG9ydGVjcy5k
+        ZSIsImZpcnN0X25hbWUiOiJQaGlsaXAiLCJsYXN0X25hbWUiOiJNw7xsbGVy
+        IiwiZ2VuZGVyIjoibSIsInRpdGxlIjoiSGVyciIsIm5pY2siOm51bGwsIm1h
+        aWRlbl9uYW1lIjpudWxsLCJhZHJfc3RyZWV0IjoiQW0iLCJhZHJfc3RyZWV0
+        X251bWJlciI6IjM1IiwiYWRyX3Bvc3RfY29kZSI6IjI3MjA0IiwiYWRyX2Np
+        dHkiOiJIYW5ub3ZlciIsImFkcl9jb3VudHJ5IjoiREUiLCJhZHJfcGhvbmUi
+        OiIwNjktMzE0NzE3IiwiYWRyX21vYmlsZSI6IjAxNTEtMTM2MzQ1MyIsImFk
+        cl9mYXgiOiIwMzAtMTQ2NDMxMyIsImFkcl9idXNpbmVzc3Bob25lIjoiMDE3
+        Mi0xMzg4NTQ0IiwiYmlydGhkYXkiOiIxOTk1LTAyLTE5IiwiaXNfdmVyaWZp
+        ZWQiOnRydWUsIm5hdGlvbmFsaXR5IjoiREUiLCJtYXJpdGFsX3N0YXR1cyI6
+        NiwicmVsaWdpb24iOjE4LCJpZF9jYXJkX3JlZ2lzdHJhdGlvbl9jaXR5Ijoi
+        RnJhbmtmdXJ0IiwiaWRfY2FyZF9udW1iZXIiOiI3MDAwMDAwNDQ2IiwiaWRf
+        Y2FyZF92YWxpZF91bnRpbCI6IjIwMTYtMDktMDIiLCJjcmVhdGVkX2F0Ijoi
+        MjAxNS0wOC0yNlQxNTo0MzozMFoiLCJ1cGRhdGVkX2F0IjoiMjAxNS0wOC0y
+        NlQxNTo0MzozMFoifV0=
+    http_version: 
+  recorded_at: Sun, 30 Aug 2015 19:15:38 GMT
+recorded_with: VCR 2.9.3

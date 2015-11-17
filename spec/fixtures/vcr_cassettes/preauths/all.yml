@@ -1,0 +1,42 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://aps.fidor.de/preauths
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer f859032a6ca0a4abb2be0583b8347937
+      Accept:
+      - application/vnd.fidor.de; version=1,text/json
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message:
+    headers:
+      date:
+      - Fri, 25 Sep 2015 20:16:19 GMT
+      status:
+      - 200 OK
+      content-type:
+      - application/json; charset=utf-8
+      content-length:
+      - 'changeme'
+      x-request-id:
+      - 002c5efc-42a1-447c-bca8-6de484050a8d
+      x-runtime:
+      - '0.003710'
+      via:
+      - 1.1 aps.fidor.de
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"data": [{"id": "387888","account_id": "62073200","amount": 7480,"currency": "EUR","expires_at": "2015-10-25T00:00:00+00:00","preauth_type": "creditcard_preauth","preauth_type_details": {"cc_merchant_name": "NTC Europe S A","cc_merchant_category": "5499","cc_type": "00","cc_category": "T","cc_sequence": "6882471","pos_code": "812","financial_network_code": "MCS"},"created_at": "2015-09-25T18:29:45Z","updated_at": "2015-09-25T18:29:45Z"}],"collection": {"current_page": 1,"per_page": 10,"total_entries": 1,"total_pages": 1}}'
+    http_version:
+  recorded_at: Fri, 25 Sep 2015 20:16:20 GMT
+recorded_with: VCR 2.9.3

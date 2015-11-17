@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://aps.fidor.de/users/current
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer f859032a6ca0a4abb2be0583b8347937
+      Accept:
+      - application/vnd.fidor.de; version=1,text/json
+  response:
+    status:
+      code: 401
+      message:
+    headers:
+      date:
+      - Sun, 30 Aug 2015 20:16:05 GMT
+      status:
+      - 401 Unauthorized
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      x-content-type-options:
+      - nosniff
+      content-type:
+      - application/json; charset=utf-8
+      cache-control:
+      - no-cache
+      x-request-id:
+      - 7e9de718-87cc-49a1-8b84-18f076543400
+      x-runtime:
+      - '0.006337'
+      via:
+      - 1.1 aps.fidor.de
+      connection:
+      - close
+      transfer-encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"message":"Any other error","code":401,"errors":[]}'
+    http_version:
+  recorded_at: Sun, 30 Aug 2015 20:16:05 GMT
+recorded_with: VCR 2.9.3

@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://aps.fidor.de/sepa_credit_transfers
+    body:
+      encoding: UTF-8
+      string: '{"account_id":999,"external_uid":"4279762F6","remote_iban":"AT131490022010010999","remote_bic":"SPADATW1XXX","remote_name":"John
+        Doe","amount":"1000","subject":"Money for you"}'
+    headers:
+      Authorization:
+      - Bearer a1e8f8d70e5490611c4ef051f3a36e09
+      Accept:
+      - application/vnd.fidor.de; version=1,text/json
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 500
+      message: 
+    headers:
+      date:
+      - Sat, 12 Sep 2015 01:03:48 GMT
+      status:
+      - 500 Internal Server Error
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      x-content-type-options:
+      - nosniff
+      content-type:
+      - application/json; charset=utf-8
+      cache-control:
+      - no-cache
+      x-request-id:
+      - ed34190b-de9d-41a4-9af6-2b68ac1d8261
+      x-runtime:
+      - '0.089204'
+      via:
+      - 1.1 aps.fidor.de
+      connection:
+      - close
+      transfer-encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"error":{"message":"internal server error","code":500,"errors":[]}}'
+    http_version: 
+  recorded_at: Sat, 12 Sep 2015 01:03:48 GMT
+recorded_with: VCR 2.9.3
