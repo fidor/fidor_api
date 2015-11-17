@@ -27,13 +27,33 @@ Or install it yourself as:
 
 Examples:
 
-1. oAuth
+### 1. oAuth (Rails)
+
+Redirect the user to the authorize URL:
 
 ```ruby
-todo
+redirect_to FidorApi::Auth.authorize_url
 ```
 
-2. Fetching data
+Use code passed to the callback URL and fetch the access token:
+
+```ruby
+session[:api_token] = FidorApi::Auth.fetch_token(params[:code]).to_hash
+```
+
+Renew token after it has expired:
+
+```ruby
+def api_token
+  FidorApi::Token.new session[:api_token] if session[:api_token]
+end
+
+if api_token && !api_token.valid?
+  session[:api_token] = FidorApi::Auth.refresh_token(api_token).to_hash
+end
+```
+
+### 2. Fetching data
 
 ```ruby
 token = FidorApi::Token.new(access_token: "f859032a6ca0a4abb2be0583b8347937")
@@ -49,7 +69,7 @@ transaction = transactions.first
 # => FidorApi::Transaction
 ```
 
-3. Creating transfers
+### 3. Creating transfers
 
 ```ruby
 token = FidorApi::Token.new(access_token: "f859032a6ca0a4abb2be0583b8347937")
