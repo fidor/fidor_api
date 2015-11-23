@@ -77,4 +77,37 @@ describe FidorApi::Collection do
 
   end
 
+  describe "kaminari interface" do
+
+    let(:collection) { FidorApi::Collection.new(current_page: current_page, total_pages: total_pages) }
+
+    describe "#last_page?" do
+      subject { collection.last_page? }
+
+      context "on the last page" do
+        let(:current_page) { 10 }
+        let(:total_pages)  { 10 }
+
+        it { is_expected.to be true }
+      end
+
+      context "on any other page" do
+        let(:current_page) { 1 }
+        let(:total_pages)  { 5 }
+
+        it { is_expected.to be false }
+      end
+    end
+
+    describe "#next_page" do
+      let(:current_page) { 1 }
+      let(:total_pages)  { 2 }
+
+      it "returns an increment of current_page" do
+        expect(collection.next_page).to eq collection.current_page + 1
+      end
+    end
+
+  end
+
 end

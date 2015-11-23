@@ -44,7 +44,7 @@ module FidorApi
       attribute :remote_subject, :string
 
       def description
-        remote_nick || remote_name || super
+        remote_name || remote_nick || super
       end
     end
 
