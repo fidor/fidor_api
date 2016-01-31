@@ -42,16 +42,20 @@ module FidorApi
         [ :account_id, :receiver, :external_uid, :amount, :subject ]
       end
 
+      def self.writeable_attributes
+        required_attributes
+      end
+
       validates *required_attributes, presence: true
+
+      def as_json
+        attributes.slice *self.class.writeable_attributes
+      end
 
       private
 
       def self.resource
         "internal_transfers"
-      end
-
-      def as_json
-        attributes.slice *self.class.required_attributes
       end
 
       module ClientSupport
@@ -92,16 +96,20 @@ module FidorApi
         [ :account_id, :external_uid, :remote_iban, :remote_name, :amount, :subject ]
       end
 
+      def self.writeable_attributes
+        required_attributes + [:remote_bic]
+      end
+
       validates *required_attributes, presence: true
+
+      def as_json
+        attributes.slice *self.class.writeable_attributes
+      end
 
       private
 
       def self.resource
         "sepa_credit_transfers"
-      end
-
-      def as_json
-        attributes.slice *self.class.required_attributes
       end
 
       module ClientSupport

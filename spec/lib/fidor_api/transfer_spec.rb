@@ -56,6 +56,18 @@ describe FidorApi::Transfer do
       end
     end
 
+    describe "#as_json" do
+      it "returns all writeable fields" do
+        expect(subject.as_json).to eq(
+          account_id:   "875",
+          amount:       1000,
+          external_uid: "4279762F5",
+          receiver:     "kycfull@fidor.de",
+          subject:      "Money for you"
+        )
+      end
+    end
+
     def expect_correct_transfer(transfer)
       expect(transfer).to be_instance_of FidorApi::Transfer::Internal
       expect(transfer.id).to             eq 2366
@@ -145,6 +157,20 @@ describe FidorApi::Transfer do
             expect { subject.save }.to raise_error FidorApi::ClientError
           end
         end
+      end
+    end
+
+    describe "#as_json" do
+      it "returns all writeable fields" do
+        expect(subject.as_json).to eq(
+          account_id:   "875",
+          amount:       1000,
+          external_uid: "4279762F6",
+          remote_bic:   "SPADATW1XXX",
+          remote_iban:  "AT131490022010010999",
+          remote_name:  "John Doe",
+          subject:      "Money for you"
+        )
       end
     end
 
