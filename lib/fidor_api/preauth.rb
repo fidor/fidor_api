@@ -2,16 +2,17 @@ module FidorApi
 
   class Preauth < Resource
     extend ModelAttribute
+    extend AmountAttributes
 
     attribute :id,                   :integer
     attribute :account_id,           :string
     attribute :preauth_type,         :string
     attribute :preauth_type_details, :json
-    attribute :amount,               :integer
     attribute :expires_at,           :time
     attribute :created_at,           :time
     attribute :updated_at,           :time
     attribute :currency,             :string
+    amount_attribute :amount
 
     def self.all(access_token, options = {})
       Collection.build(self, request(:get, access_token, "/preauths", options))

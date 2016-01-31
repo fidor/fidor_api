@@ -10,7 +10,7 @@ describe FidorApi::Preauth do
     expect(preauth.id).to                     eq 387888
     expect(preauth.account_id).to             eq "62073200"
     expect(preauth.preauth_type).to           eq "creditcard_preauth"
-    expect(preauth.amount).to                 eq 7480
+    expect(preauth.amount).to                 eq BigDecimal.new("74.80")
     expect(preauth.expires_at).to             eq Time.utc(2015, 10, 25,  0,  0,  0)
     expect(preauth.created_at).to             eq Time.utc(2015,  9, 25, 18, 29, 45)
     expect(preauth.updated_at).to             eq Time.utc(2015,  9, 25, 18, 29, 45)

@@ -13,7 +13,7 @@ describe FidorApi::Transfer do
         receiver:     "kycfull@fidor.de",
         external_uid: "4279762F5",
         subject:      "Money for you",
-        amount:       1000
+        amount:       BigDecimal.new("10.00")
       )
     end
 
@@ -76,7 +76,7 @@ describe FidorApi::Transfer do
       expect(transfer.transaction_id).to eq "28836"
       expect(transfer.receiver).to       eq "kycfull@fidor.de"
       expect(transfer.external_uid).to   eq "4279762F5"
-      expect(transfer.amount).to         eq 1000
+      expect(transfer.amount).to         eq BigDecimal.new("10.00")
       expect(transfer.currency).to       be_nil
       expect(transfer.subject).to        eq "Money for you"
       expect(transfer.state).to          eq "success"
@@ -115,7 +115,7 @@ describe FidorApi::Transfer do
         remote_iban:  "AT131490022010010999",
         remote_bic:   "SPADATW1XXX",
         remote_name:  "John Doe",
-        amount:       1000,
+        amount:       BigDecimal.new("10.00"),
         subject:      "Money for you"
       )
     end
@@ -184,7 +184,7 @@ describe FidorApi::Transfer do
       expect(transfer.remote_bic).to     eq "SPADATW1XXX"
       expect(transfer.remote_name).to    eq "John Doe"
       expect(transfer.external_uid).to   eq "4279762F6"
-      expect(transfer.amount).to         eq 1000
+      expect(transfer.amount).to         eq BigDecimal.new("10.00")
       expect(transfer.currency).to       be_nil
       expect(transfer.subject).to        eq "Money for you"
       expect(transfer.state).to          eq "success"

@@ -24,6 +24,7 @@ module FidorApi
 
     class Internal < Base
       extend ModelAttribute
+      extend AmountAttributes
 
       attribute :id,             :integer
       attribute :account_id,     :string
@@ -31,12 +32,12 @@ module FidorApi
       attribute :transaction_id, :string
       attribute :receiver,       :string
       attribute :external_uid,   :string
-      attribute :amount,         :integer
       attribute :currency,       :string
       attribute :subject,        :string
       attribute :state,          :string
       attribute :created_at,     :time
       attribute :updated_at,     :time
+      amount_attribute :amount
 
       def self.required_attributes
         [ :account_id, :receiver, :external_uid, :amount, :subject ]
@@ -75,6 +76,7 @@ module FidorApi
 
     class SEPA < Base
       extend ModelAttribute
+      extend AmountAttributes
 
       attribute :id,             :integer
       attribute :account_id,     :string
@@ -83,7 +85,6 @@ module FidorApi
       attribute :remote_iban,    :string
       attribute :remote_bic,     :string
       attribute :remote_name,    :string
-      attribute :amount,         :integer
       attribute :external_uid,   :string
       attribute :subject,        :string
       attribute :currency,       :string
@@ -91,6 +92,7 @@ module FidorApi
       attribute :state,          :string
       attribute :created_at,     :time
       attribute :updated_at,     :time
+      amount_attribute :amount
 
       def self.required_attributes
         [ :account_id, :external_uid, :remote_iban, :remote_name, :amount, :subject ]

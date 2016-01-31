@@ -2,13 +2,13 @@ module FidorApi
 
   class Transaction < Resource
     extend ModelAttribute
+    extend AmountAttributes
 
     attribute :id,                       :integer
     attribute :account_id,               :string
     attribute :transaction_type,         :string
     attribute :transaction_type_details, :json
     attribute :subject,                  :string
-    attribute :amount,                   :integer
     attribute :currency,                 :string
     attribute :booking_date,             :time
     attribute :value_date,               :time
@@ -16,6 +16,7 @@ module FidorApi
     attribute :return_transaction_id,    :string
     attribute :created_at,               :time
     attribute :updated_at,               :time
+    amount_attribute :amount
 
     def self.all(access_token, options = {})
       Collection.build(self, request(:get, access_token, "/transactions", options))

@@ -11,7 +11,7 @@ describe FidorApi::Transaction do
     expect(transaction.account_id).to               eq "857"
     expect(transaction.transaction_type).to         eq "sepa_payin"
     expect(transaction.subject).to                  eq "Gutschrift 9/2007"
-    expect(transaction.amount).to                   eq 4793
+    expect(transaction.amount).to                   eq BigDecimal.new("47.93")
     expect(transaction.currency).to                 be_nil
     expect(transaction.booking_date).to             eq Time.new(2015, 7, 12)
     expect(transaction.value_date).to               eq Time.new(2015, 7, 13)

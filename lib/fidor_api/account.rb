@@ -2,15 +2,12 @@ module FidorApi
 
   class Account < Resource
     extend ModelAttribute
+    extend AmountAttributes
 
     attribute :id,                    :integer
     attribute :account_number,        :string
     attribute :iban,                  :string
     attribute :bic,                   :string
-    attribute :balance,               :integer
-    attribute :balance_available,     :integer
-    attribute :preauth_amount,        :integer
-    attribute :cash_flow_per_year,    :integer
     attribute :is_debit_note_enabled, :boolean
     attribute :is_trusted,            :boolean
     attribute :is_locked,             :boolean
@@ -19,6 +16,11 @@ module FidorApi
     attribute :created_at,            :time
     attribute :updated_at,            :time
     attribute :customers,             :string
+
+    amount_attribute :balance
+    amount_attribute :balance_available
+    amount_attribute :preauth_amount
+    amount_attribute :cash_flow_per_year
 
     def self.all(access_token, options = {})
       Collection.build(self, request(:get, access_token, "/accounts", options))

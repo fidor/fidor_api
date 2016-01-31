@@ -17,10 +17,10 @@ describe FidorApi::Account do
         expect(account.account_number).to        eq "5102606797"
         expect(account.iban).to                  eq "DE47700222005102606797"
         expect(account.bic).to                   be_nil
-        expect(account.balance).to               eq -119251
-        expect(account.balance_available).to     eq 6982
-        expect(account.preauth_amount).to        eq 804
-        expect(account.cash_flow_per_year).to    eq 5640
+        expect(account.balance).to               eq BigDecimal.new("-1192.51")
+        expect(account.balance_available).to     eq BigDecimal.new("69.82")
+        expect(account.preauth_amount).to        eq BigDecimal.new("8.04")
+        expect(account.cash_flow_per_year).to    eq BigDecimal.new("56.40")
         expect(account.is_debit_note_enabled).to be true
         expect(account.is_trusted).to            be false
         expect(account.is_locked).to             be false
