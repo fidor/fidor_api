@@ -112,7 +112,6 @@ describe FidorApi::Transfer do
       it { is_expected.to validate_presence_of :account_id   }
       it { is_expected.to validate_presence_of :external_uid }
       it { is_expected.to validate_presence_of :remote_iban  }
-      it { is_expected.to validate_presence_of :remote_bic   }
       it { is_expected.to validate_presence_of :remote_name  }
       it { is_expected.to validate_presence_of :amount       }
       it { is_expected.to validate_presence_of :subject      }

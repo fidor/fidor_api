@@ -89,7 +89,7 @@ module FidorApi
       attribute :updated_at,     :time
 
       def self.required_attributes
-        [ :account_id, :external_uid, :remote_iban, :remote_bic, :remote_name, :amount, :subject ]
+        [ :account_id, :external_uid, :remote_iban, :remote_name, :amount, :subject ]
       end
 
       validates *required_attributes, presence: true
