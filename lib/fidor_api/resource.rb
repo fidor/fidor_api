@@ -6,7 +6,6 @@ module FidorApi
     attr_accessor :client
 
     def initialize(attributes = {})
-      self.client = client
       set_attributes(attributes)
     end
 
