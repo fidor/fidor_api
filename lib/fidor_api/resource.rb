@@ -32,6 +32,10 @@ module FidorApi
       ActiveModel::Name.new(self, nil, self.name.sub("FidorApi::", ""))
     end
 
+    def persisted?
+      id.present?
+    end
+
     private
 
     def self.connection

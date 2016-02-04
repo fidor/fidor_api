@@ -5,7 +5,6 @@ describe FidorApi::Resource do
   let(:access_token) { FidorApi::Token.new(access_token: token) }
 
   describe ".request" do
-
     context "with a invalid access_token" do
       let(:token) { "invalid" }
 
@@ -29,17 +28,32 @@ describe FidorApi::Resource do
         end
       end
     end
+  end
 
+  class FidorApi::Dummy < FidorApi::Resource
+    extend ModelAttribute
+
+    attribute :id, :integer
   end
 
   describe ".model_name" do
-    class FidorApi::Dummy < FidorApi::Resource
-      extend ModelAttribute
-    end
-
     it "returns a ActiveModel::Name instance which does not include the FidorApi namespace" do
       resource = FidorApi::Dummy.new
       expect(resource.model_name.to_s).to eq "Dummy"
+    end
+  end
+
+  describe "#persisted?" do
+    subject { FidorApi::Dummy.new(id: id).persisted? }
+
+    context "when the id attribute is set" do
+      let(:id) { 42 }
+      it { is_expected.to be true }
+    end
+
+    context "when the id attribute is no set" do
+      let(:id) { nil }
+      it { is_expected.to be false }
     end
   end
 
