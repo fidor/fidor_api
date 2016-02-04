@@ -32,4 +32,15 @@ describe FidorApi::Resource do
 
   end
 
+  describe ".model_name" do
+    class FidorApi::Dummy < FidorApi::Resource
+      extend ModelAttribute
+    end
+
+    it "returns a ActiveModel::Name instance which does not include the FidorApi namespace" do
+      resource = FidorApi::Dummy.new
+      expect(resource.model_name.to_s).to eq "Dummy"
+    end
+  end
+
 end

@@ -28,6 +28,10 @@ module FidorApi
       end
     end
 
+    def self.model_name
+      ActiveModel::Name.new(self, nil, self.name.sub("FidorApi::", ""))
+    end
+
     private
 
     def self.connection
