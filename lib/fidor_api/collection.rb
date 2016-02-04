@@ -2,11 +2,10 @@ module FidorApi
 
   class Collection
     include ActiveModel::Model
+    include Enumerable
 
     attr_accessor :records
     attr_accessor :total_pages, :current_page, :limit_value
-
-    delegate :each, :first, to: :records
 
     def self.build(klass, response)
       new.tap do |object|
@@ -28,8 +27,8 @@ module FidorApi
       end
     end
 
-    def to_a
-      records
+    def each(&block)
+      records.each(&block)
     end
 
     # --- kaminari stuff -- maybe move somewhere else

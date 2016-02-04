@@ -63,20 +63,6 @@ describe FidorApi::Collection do
     end
   end
 
-  describe "#to_a" do
-
-    let(:data) do
-      [
-        { "a" => 1, "b" => 2, "c" => 3 }
-      ]
-    end
-
-    it "returns the array" do
-      expect(subject.to_a).to eq [Dummy.new(a: 1, b: 2, c: 3)]
-    end
-
-  end
-
   describe "kaminari interface" do
 
     let(:collection) { FidorApi::Collection.new(current_page: current_page, total_pages: total_pages) }
@@ -108,6 +94,13 @@ describe FidorApi::Collection do
       end
     end
 
+  end
+
+  describe "implements the enumerable mixin" do
+    subject { FidorApi::Collection.new }
+
+    it { is_expected.to be_a Enumerable }
+    it { is_expected.to respond_to :each }
   end
 
 end
