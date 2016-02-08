@@ -3,6 +3,29 @@ module FidorApi
   class Customer < Resource
     extend ModelAttribute
 
+    module Gender
+      extend self
+
+      class Base
+        include Singleton
+      end
+
+      class Male    < Base; end
+      class Female  < Base; end
+      class Unknonw < Base; end
+
+      def for_api_value(api_value)
+        case api_value
+        when "m"
+          Male
+        when "f"
+          Female
+        else
+          Unknonw
+        end
+      end
+    end
+
     attribute :id,                        :integer
     attribute :email,                     :string
     attribute :first_name,                :string
@@ -38,6 +61,10 @@ module FidorApi
 
     def self.first(access_token)
       all(access_token, page: 1, per_page: 1).first
+    end
+
+    def gender
+      Gender.for_api_value(@gender)
     end
 
     module ClientSupport

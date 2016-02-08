@@ -17,7 +17,7 @@ describe FidorApi::Customer do
         expect(customer.email).to                     eq "philip_7261@fidortecs.de"
         expect(customer.first_name).to                eq "Philip"
         expect(customer.last_name).to                 eq "Müller"
-        expect(customer.gender).to                    eq "m"
+        expect(customer.gender).to                    eq FidorApi::Customer::Gender::Male
         expect(customer.title).to                     eq "Herr"
         expect(customer.nick).to                      be_nil
         expect(customer.maiden_name).to               be_nil
