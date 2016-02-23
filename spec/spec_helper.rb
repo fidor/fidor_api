@@ -16,10 +16,12 @@ VCR.configure do |config|
 end
 
 FidorApi.configure do |config|
-  config.callback_url  = "http://localhost:3000/auth/callback"
-  config.oauth_url     = "https://aps.fidor.de"
-  config.api_url       = "https://aps.fidor.de"
-  config.client_id     = "client-id"
-  config.client_secret = "client-secret"
-  config.logging       = false
+  config.callback_url    = "http://localhost:3000/auth/callback"
+  config.oauth_url       = "https://aps.fidor.de"
+  config.api_url         = "https://aps.fidor.de"
+  config.client_id       = "client-id"
+  config.client_secret   = "client-secret"
+  config.htauth_user     = "htauth-user"
+  config.htauth_password = "htauth-password"
+  config.logging         = false
 end

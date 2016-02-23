@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://aps.fidor.de/msisdn/check
+    body:
+      encoding: UTF-8
+      string: '{"msisdn":"491666666666","os_type":"Android","affiliate_uid":"1398b666-6666-6666-6666-666666666666"}'
+    headers:
+      Accept:
+      - application/vnd.fidor.de; version=1,text/json
+      Content-Type:
+      - application/json
+      Authorization:
+      - Basic aHRhdXRoLXVzZXI6aHRhdXRoLXBhc3N3b3Jk
+  response:
+    status:
+      code: 200
+      message:
+    headers:
+      date:
+      - Tue, 23 Feb 2016 20:59:22 GMT
+      status:
+      - 200 OK
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      x-content-type-options:
+      - nosniff
+      content-type:
+      - text/plain; charset=utf-8
+      etag:
+      - '"25afc5741f7c857a6fa9c17a513f3c32"'
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 85242981-8525-4916-baf9-7a0ef5ef7a6e
+      x-runtime:
+      - '0.122149'
+      via:
+      - 1.1 apm.fidor.de
+      vary:
+      - Accept-Encoding
+      connection:
+      - close
+      transfer-encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: Tm7YvR1ttXvSwWAs0t9Kz1Z6dwY6XcrKzH21gBpgyBRisIzn4R2X8DOAlqEV5Z44aXsN8A
+    http_version:
+  recorded_at: Tue, 23 Feb 2016 20:59:22 GMT
+recorded_with: VCR 2.9.3
