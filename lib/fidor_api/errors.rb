@@ -4,5 +4,6 @@ module FidorApi
   ClientError            = Class.new(Error)
   UnauthorizedTokenError = Class.new(Error)
   InvalidRecordError     = Class.new(Error)
+  NoUpdatesAllowedError  = Class.new(Error)
 
 end

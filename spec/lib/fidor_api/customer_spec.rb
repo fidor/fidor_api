@@ -54,4 +54,62 @@ describe FidorApi::Customer do
     end
   end
 
+  describe "#save" do
+    subject { FidorApi::Customer.new(params) }
+
+    let(:params) do
+      {
+        affiliate_uid:         "1398b666-6666-6666-6666-666666666666",
+        email:                 "walther@heisenberg.com",
+        password:              "superDuperSecret",
+        adr_mobile:            "4917666666666",
+        title:                 1, # TODO: On get it's a string like "Herr". Maybe the schema and example are wrong or the API is inconsistent in this case.
+        first_name:            "Walther",
+        additional_first_name: "Heisenberg",
+        last_name:             "White",
+        occupation:            "1",
+        gender:                FidorApi::Customer::Gender::Male,
+        birthplace:            "Albuquerque",
+        birthday:              Date.new(1957, 9, 7),
+        nationality:           "US",
+        marital_status:        "1",
+        adr_street:            "Negra Arroyo Lane",
+        adr_street_number:     "308",
+        adr_post_code:         "87111",
+        adr_city:              "Albuquerque",
+        adr_country:           "US",
+        tos:                   true,
+        privacy_policy:        true,
+        own_interest:          true,
+        us_citizen:            true,
+        us_tax_payer:          true,
+        newsletter:            true,
+        verification_token:    "rrfjjEEwooyf1vYg-5rIu-VZVtIegy9DvsNWSq3pVfDIz9jVmUW3UsPnoARvbbhFFMuBHtg"
+      }
+    end
+
+    context "on a customer object which already has an id" do
+      let(:params) { { id: 42 } }
+
+      it "raises an error" do
+        expect { subject.save }.to raise_error FidorApi::NoUpdatesAllowedError
+      end
+    end
+
+    context "on a customer object which has no id" do
+      context "on success" do
+        xit "returns true and sets the id on the object" do
+          expect(subject.save).to be true
+          expect(subject.id).to eq 42
+        end
+      end
+
+      context "on failure" do
+        xit "raises an error" do
+          expect { subject.save }.to raise_error FidorApi::ClientError
+        end
+      end
+    end
+  end
+
 end

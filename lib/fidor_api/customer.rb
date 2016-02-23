@@ -54,6 +54,8 @@ module FidorApi
     attribute :created_at,                :time
     attribute :updated_at,                :time
     attribute :creditor_identifier,       :string
+    attribute :affiliate_uid,             :string
+    attribute :verification_token,        :string
 
     def self.all(access_token, options = {})
       Collection.build(self, request(:get, access_token, "/customers", options))
@@ -65,6 +67,15 @@ module FidorApi
 
     def gender
       Gender.for_api_value(@gender)
+    end
+
+    def save
+      raise InvalidRecordError unless valid?
+      raise NoUpdatesAllowedError if id.present?
+
+      set_attributes self.class.request(:post, nil, "customers", {}, as_json)
+
+      true
     end
 
     module ClientSupport

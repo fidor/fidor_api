@@ -5,7 +5,7 @@ http_interactions:
     uri: https://aps.fidor.de/msisdn/verify
     body:
       encoding: UTF-8
-      string: '{"msisdn":"491666666666","code":"Tm7YvR1ttXvSwWAs0t9Kz1Z6dwY6XcrKzH21gBpgyBRisIzn4R2X8DOAlqEV5Z44aXsN8A"}'
+      string: '{"msisdn":"491666666666","code":"RH6Fi_Qtf1bDuhaTzcXVpFbNwbt-5zJqVIJBdSsRwDt0dN1RHdOb90mmQyvGdAHyXWQJYA"}'
     headers:
       Accept:
       - application/vnd.fidor.de; version=1,text/json
@@ -15,13 +15,13 @@ http_interactions:
       - Basic aHRhdXRoLXVzZXI6aHRhdXRoLXBhc3N3b3Jk
   response:
     status:
-      code: 400
+      code: 200
       message:
     headers:
       date:
-      - Tue, 23 Feb 2016 20:59:22 GMT
+      - Wed, 24 Feb 2016 14:45:43 GMT
       status:
-      - 400 Bad Request
+      - 200 OK
       x-frame-options:
       - SAMEORIGIN
       x-xss-protection:
@@ -30,12 +30,14 @@ http_interactions:
       - nosniff
       content-type:
       - text/plain; charset=utf-8
+      etag:
+      - '"a7a3ce3ac3d9cbbf1862bceb1ee784d5"'
       cache-control:
-      - no-cache
+      - max-age=0, private, must-revalidate
       x-request-id:
-      - c11dd6c3-ac67-4de5-a553-74f7d61d515e
+      - 5d4dc61a-7020-4c9a-8a5b-02dc38bf9ba8
       x-runtime:
-      - '0.010782'
+      - '0.004305'
       via:
       - 1.1 apm.fidor.de
       vary:
@@ -45,8 +47,8 @@ http_interactions:
       transfer-encoding:
       - chunked
     body:
-      encoding: ASCII-8BIT
-      string: incorrect code
+      encoding: UTF-8
+      string: RH6Fi_Qtf1bDuhaTzcXVpFbNwbt-5zJqVIJBdSsRwDt0dN1RHdOb90mmQyvGdAHyXWQJYA
     http_version:
-  recorded_at: Tue, 23 Feb 2016 20:59:22 GMT
+  recorded_at: Wed, 24 Feb 2016 14:45:43 GMT
 recorded_with: VCR 2.9.3
