@@ -11,7 +11,7 @@ module FidorApi
   attr_accessor :configuration
 
   class Configuration
-    attr_accessor :callback_url, :oauth_url, :api_url, :client_id, :client_secret, :logging
+    attr_accessor :callback_url, :oauth_url, :api_url, :client_id, :client_secret, :htauth_user, :htauth_password, :logging
   end
 
   def configure
@@ -31,6 +31,7 @@ require "fidor_api/amount_attributes"
 require "fidor_api/user"
 require "fidor_api/account"
 require "fidor_api/customer"
+require "fidor_api/msisdn"
 require "fidor_api/transaction_details"
 require "fidor_api/transaction"
 require "fidor_api/preauth_details"
