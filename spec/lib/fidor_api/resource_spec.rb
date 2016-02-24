@@ -11,7 +11,7 @@ describe FidorApi::Resource do
       it "raises FidorApi::UnauthorizedTokenError" do
         VCR.use_cassette("resource/invalid_token", record: :once) do
           expect {
-            FidorApi::Resource.request(:get, access_token, "/users/current")
+            FidorApi::Resource.request(access_token: access_token, endpoint: "/users/current")
           }.to raise_error FidorApi::UnauthorizedTokenError
         end
       end
@@ -23,7 +23,7 @@ describe FidorApi::Resource do
       it "raises FidorApi::ClientError" do
         VCR.use_cassette("resource/other_error", record: :once) do
           expect {
-            FidorApi::Resource.request(:get, access_token, "/users/current")
+            FidorApi::Resource.request(access_token: access_token, endpoint: "/users/current")
           }.to raise_error FidorApi::ClientError
         end
       end

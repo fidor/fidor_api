@@ -14,15 +14,17 @@ module FidorApi
       class Female  < Base; end
       class Unknonw < Base; end
 
+      MAPPING = {
+        Male   => "m",
+        Female => "f"
+      }
+
       def for_api_value(api_value)
-        case api_value
-        when "m"
-          Male
-        when "f"
-          Female
-        else
-          Unknonw
-        end
+        MAPPING.key(api_value) || Unknonw
+      end
+
+      def object_to_string(object)
+        MAPPING[object]
       end
     end
 
@@ -56,9 +58,15 @@ module FidorApi
     attribute :creditor_identifier,       :string
     attribute :affiliate_uid,             :string
     attribute :verification_token,        :string
+    attribute :password,                  :string
+    attribute :tos,                       :boolean
+    attribute :privacy_policy,            :boolean
+    attribute :own_interest,              :boolean
+    attribute :us_citizen,                :boolean
+    attribute :us_tax_payer,              :boolean
 
     def self.all(access_token, options = {})
-      Collection.build(self, request(:get, access_token, "/customers", options))
+      Collection.build(self, request(access_token: access_token, endpoint: "/customers", query_params: options))
     end
 
     def self.first(access_token)
@@ -69,11 +77,23 @@ module FidorApi
       Gender.for_api_value(@gender)
     end
 
+    def gender=(value)
+      @gender = if value.class == Class && value.instance.is_a?(FidorApi::Customer::Gender::Base)
+        Gender.object_to_string(value)
+      else
+        value
+      end
+    end
+
+    def as_json(options = nil)
+      attributes.tap { |a| a[:birthday] = a[:birthday].try(:to_date) }
+    end
+
     def save
       raise InvalidRecordError unless valid?
       raise NoUpdatesAllowedError if id.present?
 
-      set_attributes self.class.request(:post, nil, "customers", {}, as_json)
+      set_attributes self.class.request(method: :post, endpoint: "customers", body: as_json, htauth: true)
 
       true
     end

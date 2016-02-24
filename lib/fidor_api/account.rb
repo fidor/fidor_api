@@ -23,7 +23,7 @@ module FidorApi
     amount_attribute :overdraft
 
     def self.all(access_token, options = {})
-      Collection.build(self, request(:get, access_token, "/accounts", options))
+      Collection.build(self, request(access_token: access_token, endpoint: "/accounts", query_params: options))
     end
 
     def self.first(access_token)

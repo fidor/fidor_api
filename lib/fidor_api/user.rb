@@ -10,7 +10,7 @@ module FidorApi
     attribute :updated_at,      :time
 
     def self.current(access_token)
-      new(request(:get, access_token, "/users/current"))
+      new(request(access_token: access_token, endpoint: "/users/current"))
     end
 
     module ClientSupport

@@ -15,11 +15,11 @@ module FidorApi
     amount_attribute :amount
 
     def self.all(access_token, options = {})
-      Collection.build(self, request(:get, access_token, "/preauths", options))
+      Collection.build(self, request(access_token: access_token, endpoint: "/preauths", query_params: options))
     end
 
     def self.find(access_token, id)
-      new(request(:get, access_token, "/preauths/#{id}"))
+      new(request(access_token: access_token, endpoint: "/preauths/#{id}"))
     end
 
     def preauth_type_details

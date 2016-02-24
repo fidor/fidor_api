@@ -9,14 +9,13 @@ module FidorApi
       set_attributes(attributes)
     end
 
-    def self.request(method, access_token, endpoint, query_params = {}, body = {})
-      response = connection.public_send(method, endpoint) do |request|
+    def self.request(method: :get, access_token: nil, endpoint: nil, query_params: {}, body: {}, htauth: false)
+      response = connection(htauth: htauth).public_send(method, endpoint) do |request|
         request.params = query_params
-        request.headers = {
-          "Authorization" => "Bearer #{access_token}",
-          "Accept"        => "application/vnd.fidor.de; version=1,text/json",
-          "Content-Type"  => "application/json"
-        }
+        request.headers = {}
+        request.headers["Authorization"] = "Bearer #{access_token}" if access_token
+        request.headers["Accept"]        = "application/vnd.fidor.de; version=1,text/json"
+        request.headers["Content-Type"]  = "application/json"
         request.body = body.to_json unless body.empty?
       end
       JSON.parse response.body
@@ -38,11 +37,11 @@ module FidorApi
 
     private
 
-    def self.connection
+    def self.connection(htauth: false)
       Faraday.new(url: FidorApi.configuration.api_url) do |config|
-        config.use      Faraday::Request::BasicAuthentication, FidorApi.configuration.client_id, FidorApi.configuration.client_secret
+        config.use      Faraday::Request::BasicAuthentication, FidorApi.configuration.htauth_user, FidorApi.configuration.htauth_password if htauth
         config.request  :url_encoded
-        config.response :logger      if FidorApi.configuration.logging
+        config.response :logger if FidorApi.configuration.logging
         config.response :raise_error
         config.adapter  Faraday.default_adapter
       end

@@ -31,7 +31,7 @@ module FidorApi
       Faraday.new(url: FidorApi.configuration.oauth_url) do |config|
         config.use      Faraday::Request::BasicAuthentication, FidorApi.configuration.client_id, FidorApi.configuration.client_secret
         config.request  :url_encoded
-        config.response :logger       if FidorApi.configuration.logging
+        config.response :logger if FidorApi.configuration.logging
         config.response :raise_error
         config.adapter  Faraday.default_adapter
       end

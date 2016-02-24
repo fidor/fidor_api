@@ -84,7 +84,7 @@ describe FidorApi::Customer do
         us_citizen:            true,
         us_tax_payer:          true,
         newsletter:            true,
-        verification_token:    "rrfjjEEwooyf1vYg-5rIu-VZVtIegy9DvsNWSq3pVfDIz9jVmUW3UsPnoARvbbhFFMuBHtg"
+        verification_token:    "tE5MpiQ4AazIGFgV5cS3HFbNy6IL8Ey2IpgtUnxgzm59zDTQny4ViVjl8wpz1clRCYDQ2w"
       }
     end
 
@@ -98,9 +98,11 @@ describe FidorApi::Customer do
 
     context "on a customer object which has no id" do
       context "on success" do
-        xit "returns true and sets the id on the object" do
-          expect(subject.save).to be true
-          expect(subject.id).to eq 42
+        it "returns true and sets the id on the object" do
+          VCR.use_cassette("customer/create", record: :once, match_requests_on: [:method, :uri, :headers, :body]) do
+            expect(subject.save).to be true
+            expect(subject.id).to eq 42
+          end
         end
       end
 

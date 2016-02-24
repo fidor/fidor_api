@@ -19,11 +19,11 @@ module FidorApi
     amount_attribute :amount
 
     def self.all(access_token, options = {})
-      Collection.build(self, request(:get, access_token, "/transactions", options))
+      Collection.build(self, request(access_token: access_token, endpoint: "/transactions", query_params: options))
     end
 
     def self.find(access_token, id)
-      new(request(:get, access_token, "/transactions/#{id}"))
+      new(request(access_token: access_token, endpoint: "/transactions/#{id}"))
     end
 
     def transaction_type_details

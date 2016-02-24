@@ -7,17 +7,17 @@ module FidorApi
       def save
         raise InvalidRecordError unless valid?
 
-        set_attributes self.class.request(:post, client.token.access_token, self.class.resource, {}, as_json)
+        set_attributes self.class.request(method: :post, access_token: client.token.access_token, endpoint: self.class.resource, body: as_json)
 
         true
       end
 
       def self.all(access_token, options = {})
-        Collection.build(self, request(:get, access_token, resource, options))
+        Collection.build(self, request(access_token: access_token, endpoint: resource, query_params: options))
       end
 
       def self.find(access_token, id)
-        new(request(:get, access_token, "/#{resource}/#{id}"))
+        new(request(access_token: access_token, endpoint: "/#{resource}/#{id}"))
       end
 
     end
