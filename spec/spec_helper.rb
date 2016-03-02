@@ -23,5 +23,6 @@ FidorApi.configure do |config|
   config.client_secret   = "client-secret"
   config.htauth_user     = "htauth-user"
   config.htauth_password = "htauth-password"
+  config.affiliate_uid   = "1398b666-6666-6666-6666-666666666666"
   config.logging         = false
 end

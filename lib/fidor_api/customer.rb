@@ -73,6 +73,11 @@ module FidorApi
       all(access_token, page: 1, per_page: 1).first
     end
 
+    def initialize(*args)
+      super
+      self.affiliate_uid = FidorApi.configuration.affiliate_uid
+    end
+
     def gender
       Gender.for_api_value(@gender)
     end

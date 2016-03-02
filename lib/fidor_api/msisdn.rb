@@ -3,15 +3,15 @@ module FidorApi
   module Msisdn
     extend self
 
-    def check(msisdn:, os_type:, affiliate_uid:)
+    def check(msisdn)
       post "/msisdn/check", {
         msisdn:        msisdn,
-        os_type:       os_type,
-        affiliate_uid: affiliate_uid
+        os_type:       FidorApi.configuration.os_type,
+        affiliate_uid: FidorApi.configuration.affiliate_uid
       }
     end
 
-    def verify(msisdn:, code:)
+    def verify(msisdn, code)
       post "/msisdn/verify", {
         msisdn: msisdn,
         code:   code

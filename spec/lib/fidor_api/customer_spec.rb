@@ -59,7 +59,6 @@ describe FidorApi::Customer do
 
     let(:params) do
       {
-        affiliate_uid:         "1398b666-6666-6666-6666-666666666666",
         email:                 "walther@heisenberg.com",
         password:              "superDuperSecret",
         adr_mobile:            "4917666666666",

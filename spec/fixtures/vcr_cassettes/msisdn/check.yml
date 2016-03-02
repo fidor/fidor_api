@@ -5,7 +5,7 @@ http_interactions:
     uri: https://aps.fidor.de/msisdn/check
     body:
       encoding: UTF-8
-      string: '{"msisdn":"491666666666","os_type":"Android","affiliate_uid":"1398b666-6666-6666-6666-666666666666"}'
+      string: '{"msisdn":"491666666666","os_type":"iOS","affiliate_uid":"1398b666-6666-6666-6666-666666666666"}'
     headers:
       Accept:
       - application/vnd.fidor.de; version=1,text/json

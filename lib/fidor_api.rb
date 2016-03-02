@@ -11,12 +11,14 @@ module FidorApi
   attr_accessor :configuration
 
   class Configuration
-    attr_accessor :callback_url, :oauth_url, :api_url, :client_id, :client_secret, :htauth_user, :htauth_password, :logging
+    attr_accessor :callback_url, :oauth_url, :api_url, :client_id, :client_secret, :htauth_user, :htauth_password, :affiliate_uid, :os_type, :logging
   end
 
   def configure
-    self.configuration = Configuration.new
-    self.configuration.logging = true
+    self.configuration = Configuration.new.tap do |config|
+      config.logging = true
+      config.os_type = "iOS" # NOTE: As long as there is only iOS or Android we have to tell a fib ;)
+    end
     yield configuration
   end
 end
