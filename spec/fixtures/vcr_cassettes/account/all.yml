@@ -14,7 +14,7 @@ http_interactions:
   response:
     status:
       code: 200
-      message: 
+      message:
     headers:
       date:
       - Sun, 30 Aug 2015 19:37:43 GMT
@@ -49,31 +49,8 @@ http_interactions:
       transfer-encoding:
       - chunked
     body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        W3siaWQiOiI4NTciLCJhY2NvdW50X251bWJlciI6IjUxMDI2MDY3OTciLCJp
-        YmFuIjoiREU0NzcwMDIyMjAwNTEwMjYwNjc5NyIsImJhbGFuY2UiOi0xMTky
-        NTEsImJhbGFuY2VfYXZhaWxhYmxlIjo2OTgyLCJvdmVyZHJhZnQiOjAsInBy
-        ZWF1dGhfYW1vdW50Ijo4MDQsImNhc2hfZmxvd19wZXJfeWVhciI6NTY0MCwi
-        aXNfZGViaXRfbm90ZV9lbmFibGVkIjp0cnVlLCJpc190cnVzdGVkIjpmYWxz
-        ZSwiaXNfbG9ja2VkIjpmYWxzZSwiY3VycmVuY3kiOiJFVVIiLCJjdXN0b21l
-        cnMiOlt7ImlkIjoiODU3IiwiZW1haWwiOiJwaGlsaXBfNzI2MUBmaWRvcnRl
-        Y3MuZGUiLCJmaXJzdF9uYW1lIjoiUGhpbGlwIiwibGFzdF9uYW1lIjoiTcO8
-        bGxlciIsImdlbmRlciI6Im0iLCJ0aXRsZSI6IkhlcnIiLCJuaWNrIjpudWxs
-        LCJtYWlkZW5fbmFtZSI6bnVsbCwiYWRyX3N0cmVldCI6IkFtIiwiYWRyX3N0
-        cmVldF9udW1iZXIiOiIzNSIsImFkcl9wb3N0X2NvZGUiOiIyNzIwNCIsImFk
-        cl9jaXR5IjoiSGFubm92ZXIiLCJhZHJfY291bnRyeSI6IkRFIiwiYWRyX3Bo
-        b25lIjoiMDY5LTMxNDcxNyIsImFkcl9tb2JpbGUiOiIwMTUxLTEzNjM0NTMi
-        LCJhZHJfZmF4IjoiMDMwLTE0NjQzMTMiLCJhZHJfYnVzaW5lc3NwaG9uZSI6
-        IjAxNzItMTM4ODU0NCIsImJpcnRoZGF5IjoiMTk5NS0wMi0xOSIsImlzX3Zl
-        cmlmaWVkIjp0cnVlLCJuYXRpb25hbGl0eSI6IkRFIiwibWFyaXRhbF9zdGF0
-        dXMiOjYsInJlbGlnaW9uIjoxOCwiaWRfY2FyZF9yZWdpc3RyYXRpb25fY2l0
-        eSI6IkZyYW5rZnVydCIsImlkX2NhcmRfbnVtYmVyIjoiNzAwMDAwMDQ0NiIs
-        ImlkX2NhcmRfdmFsaWRfdW50aWwiOiIyMDE2LTA5LTAyIiwiY3JlYXRlZF9h
-        dCI6IjIwMTUtMDgtMjZUMTU6NDM6MzBaIiwidXBkYXRlZF9hdCI6IjIwMTUt
-        MDgtMjZUMTU6NDM6MzBaIn1dLCJjcmVhdGVkX2F0IjoiMjAxNS0wOC0yNlQx
-        NTo0MzozMFoiLCJ1cGRhdGVkX2F0IjoiMjAxNS0wOC0yNlQxNTo0Mzo0Mloi
-        fV0=
-    http_version: 
+      encoding: UTF-8
+      string: '[{"id":"857","account_number":"5102606797","iban":"DE47700222005102606797","balance":-119251,"balance_available":6982,"overdraft":25000,"preauth_amount":804,"cash_flow_per_year":5640,"is_debit_note_enabled":true,"is_trusted":false,"is_locked":false,"currency":"EUR","customers":[{"id":"857","email":"philip_7261@fidortecs.de","first_name":"Philip","last_name":"Müller","gender":"m","title":"Herr","nick":null,"maiden_name":null,"adr_street":"Am","adr_street_number":"35","adr_post_code":"27204","adr_city":"Hannover","adr_country":"DE","adr_phone":"069-314717","adr_mobile":"0151-1363453","adr_fax":"030-1464313","adr_businessphone":"0172-1388544","birthday":"1995-02-19","is_verified":true,"nationality":"DE","marital_status":6,"religion":18,"id_card_registration_city":"Frankfurt","id_card_number":"7000000446","id_card_valid_until":"2016-09-02","created_at":"2015-08-26T15:43:30Z","updated_at":"2015-08-26T15:43:30Z"}],"created_at":"2015-08-26T15:43:30Z","updated_at":"2015-08-26T15:43:42Z"}]'
+    http_version:
   recorded_at: Sun, 30 Aug 2015 19:37:43 GMT
 recorded_with: VCR 2.9.3

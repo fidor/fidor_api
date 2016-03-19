@@ -25,7 +25,7 @@ describe FidorApi::Account do
         expect(account.is_trusted).to            be false
         expect(account.is_locked).to             be false
         expect(account.currency).to              eq "EUR"
-        expect(account.overdraft).to             eq 0
+        expect(account.overdraft).to             eq BigDecimal.new("250.00")
         expect(account.created_at).to            eq Time.new(2015, 8, 26, 15, 43, 30, "+00:00")
         expect(account.updated_at).to            eq Time.new(2015, 8, 26, 15, 43, 42, "+00:00")
 

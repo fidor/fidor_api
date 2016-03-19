@@ -12,7 +12,6 @@ module FidorApi
     attribute :is_trusted,            :boolean
     attribute :is_locked,             :boolean
     attribute :currency,              :string
-    attribute :overdraft,             :integer
     attribute :created_at,            :time
     attribute :updated_at,            :time
     attribute :customers,             :string
@@ -21,6 +20,7 @@ module FidorApi
     amount_attribute :balance_available
     amount_attribute :preauth_amount
     amount_attribute :cash_flow_per_year
+    amount_attribute :overdraft
 
     def self.all(access_token, options = {})
       Collection.build(self, request(:get, access_token, "/accounts", options))
