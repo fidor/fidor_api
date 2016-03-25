@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://aps.fidor.de/cards
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer f859032a6ca0a4abb2be0583b8347937
+      Accept:
+      - application/vnd.fidor.de; version=1,text/json
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message:
+    headers:
+      date:
+      - Fri, 25 Mar 2016 10:01:16 GMT
+      status:
+      - 200 OK
+      content-type:
+      - application/json; charset=utf-8
+      x-ratelimit-limit:
+      - '10000'
+      x-ratelimit-remaining:
+      - '9996'
+      x-ratelimit-reset:
+      - '3525'
+      x-ua-compatible:
+      - IE=Edge
+      cache-control:
+      - no-store, must-revalidate, private, max-age=0
+      x-request-id:
+      - de9077b72614f0ff6972394020914bfd
+      x-runtime:
+      - '0.055069'
+      x-miniprofiler-ids:
+      - '["tp5yjojzhzo82tdo51mu","xplab53tesegv7fmzmcg","x76imk6h0sf1ha3x6l20","q73wdx548at6v7yp8ges","5vk7kgh2wvkquvc347g3","tnvb4z26upeodsn4oddw","l38rb1jkmzpdx27u50ci","s1baug81v7nyuebx8hfe","6x453df7bh8virtyhwk6","91ruvgpnguelbxh2i01w"]'
+      set-cookie:
+      - __profilin=p%3Dt; path=/, __profilin=p%3Dt; path=/, __profilin=p%3Dt; path=/
+      via:
+      - 1.1 aps.fidor.de
+      location:
+      - ''
+      x-fidor-api-machine:
+      - api-sandbox.fidor.intern
+      connection:
+      - close
+      transfer-encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"id":42,"account_id":"875","inscription":"Philipp Müller","type":"fidor_debit_master_card","design":"debit-card","currency":"EUR","physical":true,"valid_until":"2018-11-29T23:00:00Z","balance":0,"atm_limit":100000,"transaction_single_limit":200000,"transaction_volume_limit":300000,"email_notification":true,"sms_notification":false,"payed":true,"state":"card_registration_completed","lock_reason":null,"disabled":true,"created_at":"2015-11-03T11:07:25Z","updated_at":"2015-11-09T10:55:06Z"},{"id":118,"account_id":"875","inscription":"Klaus
+        Meyer","type":"fidor_smartcard","design":"smart-card","currency":"EUR","physical":true,"valid_until":"2018-11-29T23:00:00Z","balance":0,"atm_limit":100000,"transaction_single_limit":100000,"transaction_volume_limit":100000,"email_notification":true,"sms_notification":false,"payed":true,"state":"active","lock_reason":null,"disabled":false,"created_at":"2015-11-07T14:07:38Z","updated_at":"2015-11-07T14:08:29Z"}],"collection":{"current_page":1,"per_page":10,"total_entries":2,"total_pages":1}}'
+    http_version:
+  recorded_at: Fri, 25 Mar 2016 10:01:22 GMT
+recorded_with: VCR 2.9.3

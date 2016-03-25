@@ -6,6 +6,7 @@ module FidorApi
     attr_accessor :token
 
     include Account::ClientSupport
+    include Card::ClientSupport
     include Customer::ClientSupport
     include Preauth::ClientSupport
     include Transaction::ClientSupport
