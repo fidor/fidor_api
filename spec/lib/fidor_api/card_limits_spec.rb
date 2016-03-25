@@ -9,6 +9,7 @@ describe FidorApi::CardLimits do
     it "returns one card_limits record" do
       VCR.use_cassette("card_limits/find", record: :once) do
         limits = client.card_limits 42
+        expect(limits.id).to                         eq 42
         expect(limits.atm_limit).to                  eq BigDecimal.new("1000.0")
         expect(limits.transaction_single_limit).to   eq BigDecimal.new("1000.0")
         expect(limits.transaction_volume_limit).to   eq BigDecimal.new("1000.0")

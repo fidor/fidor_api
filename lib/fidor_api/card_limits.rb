@@ -4,16 +4,21 @@ module FidorApi
     extend ModelAttribute
     extend AmountAttributes
 
+    attribute :id, :integer
     amount_attribute :atm_limit
     amount_attribute :transaction_single_limit
     amount_attribute :transaction_volume_limit
 
     def self.find(access_token, id)
-      new(request(access_token: access_token, endpoint: "/cards/#{id}/limits"))
+      attributes = request(access_token: access_token, endpoint: "/cards/#{id}/limits")
+      attributes.merge!(id: id)
+      new(attributes)
     end
 
     def self.change(access_token, id, limits = {})
-      new(limits).tap do |record|
+      attributes = limits.merge(id: id)
+
+      new(attributes).tap do |record|
         record.set_attributes request(
           method:       :put,
           access_token: access_token,
