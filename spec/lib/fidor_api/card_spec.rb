@@ -3,7 +3,7 @@ require "spec_helper"
 describe FidorApi::Card do
 
   let(:client) { FidorApi::Client.new(token: token) }
-  let(:token)  { FidorApi::Token.new(access_token: "f859032a6ca0a4abb2be0583b8347937") }
+  let(:token)  { FidorApi::Token.new(access_token: "5b13b419bacc6a14af24510e461171ab") }
 
   def expect_correct_card(card)
     expect(card).to be_instance_of FidorApi::Card
@@ -43,6 +43,31 @@ describe FidorApi::Card do
       VCR.use_cassette("card/find", record: :once) do
         card = client.card 42
         expect_correct_card(card)
+      end
+    end
+  end
+
+  describe "#save" do
+    it "creates a card object and sets it's data" do
+      VCR.use_cassette("card/save_success", record: :once) do
+        card = client.build_card(
+          account_id: "875",
+          type:       "fidor_debit_master_card",
+          design:     "debit-card",
+          currency:   "EUR",
+          pin:        "4711"
+        )
+
+        expect(card.save).to be true
+
+        expect(card.id).to          eq 43
+        expect(card.account_id).to  eq "875"
+        expect(card.inscription).to eq "Philipp Müller"
+        expect(card.type).to        eq "fidor_debit_master_card"
+        expect(card.design).to      eq "debit-card"
+        expect(card.currency).to    eq "EUR"
+        expect(card.state).to       eq "card_registration_pending"
+        # ...
       end
     end
   end

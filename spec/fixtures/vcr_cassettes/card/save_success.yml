@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://aps.fidor.de/cards
+    body:
+      encoding: UTF-8
+      string: '{"account_id":"875","type":"fidor_debit_master_card","design":"debit-card","currency":"EUR","pin":"4711"}'
+    headers:
+      Authorization:
+      - Bearer 5b13b419bacc6a14af24510e461171ab
+      Accept:
+      - application/vnd.fidor.de; version=1,text/json
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message:
+    headers:
+      date:
+      - Fri, 25 Mar 2016 14:45:19 GMT
+      status:
+      - 201 Created
+      content-type:
+      - application/json; charset=utf-8
+      x-ratelimit-limit:
+      - '10000'
+      x-ratelimit-remaining:
+      - '9988'
+      x-ratelimit-reset:
+      - '882'
+      x-ua-compatible:
+      - IE=Edge
+      etag:
+      - '"c04671cdd58ab6e0b512e5b87896285e"'
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 756ec5f4b62b3e819c8af55f9b1359ae
+      x-runtime:
+      - '1.127248'
+      set-cookie:
+      - __profilin=p%3Dt; path=/, __profilin=p%3Dt; path=/
+      via:
+      - 1.1 aps.fidor.de
+      location:
+      - ''
+      x-fidor-api-machine:
+      - api-sandbox.fidor.intern
+      connection:
+      - close
+      transfer-encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"id":43,"account_id":"875","inscription":"Philipp Müller","type":"fidor_debit_master_card","design":"debit-card","currency":"EUR","physical":true,"valid_until":"2019-03-30T23:00:00Z","balance":0,"atm_limit":100000,"transaction_single_limit":100000,"transaction_volume_limit":100000,"email_notification":true,"sms_notification":false,"payed":true,"state":"card_registration_pending","lock_reason":null,"disabled":false,"created_at":"2016-03-25T14:45:18Z","updated_at":"2016-03-25T14:45:19Z"}'
+    http_version:
+  recorded_at: Fri, 25 Mar 2016 14:45:20 GMT
+recorded_with: VCR 2.9.3

@@ -7,6 +7,7 @@ module FidorApi
     attribute :id,                        :integer
     attribute :account_id,                :string
     attribute :inscription,               :string
+    attribute :pin,                       :string
     attribute :type,                      :string
     attribute :design,                    :string
     attribute :currency,                  :string
@@ -25,12 +26,30 @@ module FidorApi
     amount_attribute :transaction_single_limit
     amount_attribute :transaction_volume_limit
 
+    def self.required_attributes
+      [ :account_id, :type, :design, :currency, :pin ]
+    end
+
+    validates *required_attributes, presence: true
+
     def self.all(access_token, options = {})
       Collection.build(self, request(access_token: access_token, endpoint: "/cards", query_params: options))
     end
 
     def self.find(access_token, id)
       new(request(access_token: access_token, endpoint: "/cards/#{id}"))
+    end
+
+    def save
+      raise InvalidRecordError unless valid?
+
+      set_attributes self.class.request(method: :post, access_token: client.token.access_token, endpoint: "/cards", body: as_json)
+
+      true
+    end
+
+    def as_json
+      attributes.slice *self.class.required_attributes
     end
 
     module ClientSupport
@@ -40,6 +59,10 @@ module FidorApi
 
       def card(id)
         Card.find(token.access_token, id)
+      end
+
+      def build_card(attributes = {})
+        Card.new(attributes.merge(client: self))
       end
     end
   end
