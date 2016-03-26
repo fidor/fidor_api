@@ -40,6 +40,16 @@ module FidorApi
       new(request(access_token: access_token, endpoint: "/cards/#{id}"))
     end
 
+    def self.lock(access_token, id)
+      request(method: :put, access_token: access_token, endpoint: "/cards/#{id}/lock")
+      true
+    end
+
+    def self.unlock(access_token, id)
+      request(method: :put, access_token: access_token, endpoint: "/cards/#{id}/unlock")
+      true
+    end
+
     def save
       raise InvalidRecordError unless valid?
 
@@ -59,6 +69,14 @@ module FidorApi
 
       def card(id)
         Card.find(token.access_token, id)
+      end
+
+      def lock_card(id)
+        Card.lock(token.access_token, id)
+      end
+
+      def unlock_card(id)
+        Card.unlock(token.access_token, id)
       end
 
       def build_card(attributes = {})

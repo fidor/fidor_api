@@ -3,7 +3,7 @@ require "spec_helper"
 describe FidorApi::Card do
 
   let(:client) { FidorApi::Client.new(token: token) }
-  let(:token)  { FidorApi::Token.new(access_token: "5b13b419bacc6a14af24510e461171ab") }
+  let(:token)  { FidorApi::Token.new(access_token: "f859032a6ca0a4abb2be0583b8347937") }
 
   def expect_correct_card(card)
     expect(card).to be_instance_of FidorApi::Card
@@ -47,6 +47,34 @@ describe FidorApi::Card do
     end
   end
 
+  describe ".lock" do
+    it "locks the card" do
+      VCR.use_cassette("card/lock", record: :once) do
+        card = client.card 42
+        expect(card.disabled).to be false
+
+        expect(client.lock_card(42)).to be true
+
+        card = client.card 42
+        expect(card.disabled).to be true
+      end
+    end
+  end
+
+  describe ".unlock" do
+    it "unlocks the card" do
+      VCR.use_cassette("card/unlock", record: :once) do
+        card = client.card 42
+        expect(card.disabled).to be true
+
+        expect(client.unlock_card(42)).to be true
+
+        card = client.card 42
+        expect(card.disabled).to be false
+      end
+    end
+  end
+
   describe "#save" do
     it "creates a card object and sets it's data" do
       VCR.use_cassette("card/save_success", record: :once) do
@@ -67,7 +95,6 @@ describe FidorApi::Card do
         expect(card.design).to      eq "debit-card"
         expect(card.currency).to    eq "EUR"
         expect(card.state).to       eq "card_registration_pending"
-        # ...
       end
     end
   end

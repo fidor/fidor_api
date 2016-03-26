@@ -18,7 +18,7 @@ module FidorApi
         request.headers["Content-Type"]  = "application/json"
         request.body = body.to_json unless body.empty?
       end
-      JSON.parse response.body
+      response.body.blank? ? nil : JSON.parse(response.body)
     rescue Faraday::Error::ClientError => e
       if e.response[:status] == 401 && e.response[:body] =~ /token_not_found|Unauthorized token|expired/
         raise UnauthorizedTokenError

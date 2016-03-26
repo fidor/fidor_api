@@ -1,0 +1,168 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://aps.fidor.de/cards/42
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer f859032a6ca0a4abb2be0583b8347937
+      Accept:
+      - application/vnd.fidor.de; version=1,text/json
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message:
+    headers:
+      date:
+      - Sat, 26 Mar 2016 10:21:08 GMT
+      status:
+      - 200 OK
+      content-type:
+      - application/json; charset=utf-8
+      x-ratelimit-limit:
+      - '10000'
+      x-ratelimit-remaining:
+      - '9976'
+      x-ratelimit-reset:
+      - '2333'
+      x-ua-compatible:
+      - IE=Edge
+      cache-control:
+      - no-store, must-revalidate, private, max-age=0
+      x-request-id:
+      - f7ae12bfa0c7da9505be74b8823c6bf6
+      x-runtime:
+      - '0.050679'
+      x-miniprofiler-ids:
+      - '["ssqtjv1urky5qelp548f","dms5jvcsp0sp3lbm84fe","tkmcaktaxxmu8yj4kjhb","nc9wfqyi6fhwsic3qapa","vri2cn72z43ftuo16oa3","f0uzwfqk7ftx6bccoab8","eght7xskej6duzcz5qdz","vfu508rhpsa2gp3dpgh7","hdwz4bzu9g0mnsj5oott","lcyebkdk0j5ssu45dsae"]'
+      set-cookie:
+      - __profilin=p%3Dt; path=/, __profilin=p%3Dt; path=/, __profilin=p%3Dt; path=/
+      via:
+      - 1.1 aps.fidor.de
+      location:
+      - ''
+      x-fidor-api-machine:
+      - api-sandbox.fidor.intern
+      connection:
+      - close
+      transfer-encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"id":42,"account_id":"20487464","inscription":"Klaus Meyer","type":"fidor_debit_master_card","design":"debit-card","currency":"EUR","physical":true,"valid_until":"2019-03-30T23:00:00Z","balance":0,"atm_limit":100000,"transaction_single_limit":100000,"transaction_volume_limit":100000,"email_notification":true,"sms_notification":false,"payed":true,"state":"card_registration_completed","lock_reason":null,"disabled":true,"created_at":"2016-03-25T15:09:40Z","updated_at":"2016-03-26T10:19:41Z"}'
+    http_version:
+  recorded_at: Sat, 26 Mar 2016 10:21:08 GMT
+- request:
+    method: put
+    uri: https://aps.fidor.de/cards/42/unlock
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer f859032a6ca0a4abb2be0583b8347937
+      Accept:
+      - application/vnd.fidor.de; version=1,text/json
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 204
+      message:
+    headers:
+      date:
+      - Sat, 26 Mar 2016 10:21:08 GMT
+      status:
+      - 204 No Content
+      x-ratelimit-limit:
+      - '10000'
+      x-ratelimit-remaining:
+      - '9975'
+      x-ratelimit-reset:
+      - '2333'
+      x-ua-compatible:
+      - IE=Edge
+      cache-control:
+      - no-cache
+      x-request-id:
+      - be80788b5f5b5483851fb8ff6647eed4
+      x-runtime:
+      - '0.346726'
+      set-cookie:
+      - __profilin=p%3Dt; path=/, __profilin=p%3Dt; path=/
+      via:
+      - 1.1 aps.fidor.de
+      x-fidor-api-machine:
+      - api-sandbox.fidor.intern
+      content-length:
+      - '0'
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version:
+  recorded_at: Sat, 26 Mar 2016 10:21:09 GMT
+- request:
+    method: get
+    uri: https://aps.fidor.de/cards/42
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer f859032a6ca0a4abb2be0583b8347937
+      Accept:
+      - application/vnd.fidor.de; version=1,text/json
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message:
+    headers:
+      date:
+      - Sat, 26 Mar 2016 10:21:09 GMT
+      status:
+      - 200 OK
+      content-type:
+      - application/json; charset=utf-8
+      x-ratelimit-limit:
+      - '10000'
+      x-ratelimit-remaining:
+      - '9974'
+      x-ratelimit-reset:
+      - '2332'
+      x-ua-compatible:
+      - IE=Edge
+      cache-control:
+      - no-store, must-revalidate, private, max-age=0
+      x-request-id:
+      - 7c79a37a54c439acd2f9cd6521fd391e
+      x-runtime:
+      - '0.046887'
+      x-miniprofiler-ids:
+      - '["fhc6agtp3fy2pa4jtlhh","dms5jvcsp0sp3lbm84fe","tkmcaktaxxmu8yj4kjhb","nc9wfqyi6fhwsic3qapa","vri2cn72z43ftuo16oa3","f0uzwfqk7ftx6bccoab8","eght7xskej6duzcz5qdz","vfu508rhpsa2gp3dpgh7","hdwz4bzu9g0mnsj5oott","lcyebkdk0j5ssu45dsae"]'
+      set-cookie:
+      - __profilin=p%3Dt; path=/, __profilin=p%3Dt; path=/, __profilin=p%3Dt; path=/
+      via:
+      - 1.1 aps.fidor.de
+      location:
+      - ''
+      x-fidor-api-machine:
+      - api-sandbox.fidor.intern
+      connection:
+      - close
+      transfer-encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"id":42,"account_id":"20487464","inscription":"Klaus Meyer","type":"fidor_debit_master_card","design":"debit-card","currency":"EUR","physical":true,"valid_until":"2019-03-30T23:00:00Z","balance":49992876,"atm_limit":100000,"transaction_single_limit":100000,"transaction_volume_limit":100000,"email_notification":true,"sms_notification":false,"payed":true,"state":"card_registration_completed","lock_reason":null,"disabled":false,"created_at":"2016-03-25T15:09:40Z","updated_at":"2016-03-26T10:21:08Z"}'
+    http_version:
+  recorded_at: Sat, 26 Mar 2016 10:21:09 GMT
+recorded_with: VCR 2.9.3
