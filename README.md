@@ -29,12 +29,14 @@ Or install it yourself as:
 
 ```ruby
 FidorApi.configure do |config|
-  config.oauth_url     = ENV.fetch("FIDOR_OAUTH_URL")
-  config.api_url       = ENV.fetch("FIDOR_API_URL")
-  config.callback_url  = ENV.fetch("FIDOR_API_CALLBACK")
-  config.client_id     = ENV.fetch("FIDOR_API_CLIENT_ID")
-  config.client_secret = ENV.fetch("FIDOR_API_CLIENT_SECRET")
-  config.logging       = true
+  config.oauth_url       = ENV["FIDOR_OAUTH_URL"]
+  config.api_url         = ENV["FIDOR_API_URL"]
+  config.callback_url    = ENV["FIDOR_API_CALLBACK"]
+  config.client_id       = ENV["FIDOR_API_CLIENT_ID"]
+  config.client_secret   = ENV["FIDOR_API_CLIENT_SECRET"]
+  config.htauth_user     = ENV["FIDOR_API_HTAUTH_USER"]
+  config.htauth_password = ENV["FIDOR_API_HTAUTH_PASSWORD"]
+  config.affiliate_uid   = ENV["FIDOR_API_AFFILIATE_UID"]
 end
 ```
 
