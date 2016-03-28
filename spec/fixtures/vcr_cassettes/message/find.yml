@@ -1,0 +1,62 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://aps.fidor.de/messages/42
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer 635490b2e0946ea636b92ae839681380
+      Accept:
+      - application/vnd.fidor.de; version=1,text/json
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message:
+    headers:
+      date:
+      - Mon, 28 Mar 2016 13:57:20 GMT
+      strict_transport_security:
+      - max-age=31536000; includeSubDomains
+      status:
+      - 200 OK
+      strict-transport-security:
+      - max-age=31536000
+      content-type:
+      - application/json; charset=utf-8
+      x-ratelimit-limit:
+      - '10000'
+      x-ratelimit-remaining:
+      - '9994'
+      x-ratelimit-reset:
+      - '161'
+      x-ua-compatible:
+      - IE=Edge,chrome=1
+      etag:
+      - '"89929812cb19f3ce94b5a72d93824b97"'
+      cache-control:
+      - must-revalidate, private, max-age=0
+      x-request-id:
+      - 8f6fc06d76affff97d48c95b0d196d50
+      x-runtime:
+      - '0.090225'
+      x-rack-cache:
+      - miss
+      via:
+      - 1.1 aps.fidor.de
+      location:
+      - ''
+      connection:
+      - close
+      transfer-encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"id":42,"subject":"Hello World","type":"advantage_offer","opened_at":"2016-03-18T13:24:43Z","created_at":"2016-03-18T12:47:19Z","updated_at":"2016-03-18T13:24:43Z","category":"Angebote"}'
+    http_version:
+  recorded_at: Mon, 28 Mar 2016 13:57:20 GMT
+recorded_with: VCR 2.9.3
