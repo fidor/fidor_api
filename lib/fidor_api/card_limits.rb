@@ -10,7 +10,7 @@ module FidorApi
     amount_attribute :transaction_volume_limit
 
     def self.find(access_token, id)
-      attributes = request(access_token: access_token, endpoint: "/cards/#{id}/limits")
+      attributes = request(access_token: access_token, endpoint: "/cards/#{id}/limits").body
       attributes.merge!(id: id)
       new(attributes)
     end
@@ -24,7 +24,7 @@ module FidorApi
           access_token: access_token,
           endpoint:     "/cards/#{id}/limits",
           body:         record.as_json
-        )
+        ).body
       end
     end
 

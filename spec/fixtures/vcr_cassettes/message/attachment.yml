@@ -1,0 +1,62 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://aps.fidor.de/messages/42/attachment
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer 635490b2e0946ea636b92ae839681380
+      Accept:
+      - application/vnd.fidor.de; version=1,text/json
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message:
+    headers:
+      date:
+      - Mon, 28 Mar 2016 18:43:26 GMT
+      strict_transport_security:
+      - max-age=31536000; includeSubDomains
+      status:
+      - 200 OK
+      strict-transport-security:
+      - max-age=31536000
+      content-disposition:
+      - attachment; filename="filename.pdf"
+      content-transfer-encoding:
+      - binary
+      content-type:
+      - application/pdf
+      cache-control:
+      - private
+      x-ratelimit-limit:
+      - '10000'
+      x-ratelimit-remaining:
+      - '9982'
+      x-ratelimit-reset:
+      - '995'
+      x-ua-compatible:
+      - IE=Edge,chrome=1
+      x-request-id:
+      - 143bb654fb0f890ab64130a85f815ec4
+      x-runtime:
+      - '0.096850'
+      x-rack-cache:
+      - miss
+      via:
+      - 1.1 api.fidor.de
+      connection:
+      - close
+      transfer-encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: "file-content"
+    http_version:
+  recorded_at: Mon, 28 Mar 2016 18:43:26 GMT
+recorded_with: VCR 2.9.3

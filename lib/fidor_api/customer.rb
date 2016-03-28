@@ -66,7 +66,7 @@ module FidorApi
     attribute :us_tax_payer,              :boolean
 
     def self.all(access_token, options = {})
-      Collection.build(self, request(access_token: access_token, endpoint: "/customers", query_params: options))
+      Collection.build(self, request(access_token: access_token, endpoint: "/customers", query_params: options).body)
     end
 
     def self.first(access_token)
@@ -98,7 +98,7 @@ module FidorApi
       raise InvalidRecordError unless valid?
       raise NoUpdatesAllowedError if id.present?
 
-      set_attributes self.class.request(method: :post, endpoint: "customers", body: as_json, htauth: true)
+      set_attributes self.class.request(method: :post, endpoint: "customers", body: as_json, htauth: true).body
 
       true
     end

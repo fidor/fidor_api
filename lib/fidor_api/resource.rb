@@ -5,6 +5,20 @@ module FidorApi
 
     attr_accessor :client
 
+    class Response
+      include ActiveModel::Model
+
+      attr_accessor :headers, :body
+
+      def body
+        if headers["content-type"] =~ /json/
+          JSON.parse(@body)
+        else
+          @body
+        end
+      end
+    end
+
     def initialize(attributes = {})
       set_attributes(attributes)
     end
@@ -18,11 +32,7 @@ module FidorApi
         request.headers["Content-Type"]  = "application/json"
         request.body = body.to_json unless body.empty?
       end
-      if response.headers["content-type"] =~ /json/
-        JSON.parse(response.body)
-      else
-        response.body
-      end
+      Response.new(headers: response.headers, body: response.body)
     rescue Faraday::Error::ClientError => e
       if e.response[:status] == 401 && e.response[:body] =~ /token_not_found|Unauthorized token|expired/
         raise UnauthorizedTokenError

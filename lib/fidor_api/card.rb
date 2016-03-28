@@ -33,11 +33,11 @@ module FidorApi
     validates *required_attributes, presence: true
 
     def self.all(access_token, options = {})
-      Collection.build(self, request(access_token: access_token, endpoint: "/cards", query_params: options))
+      Collection.build(self, request(access_token: access_token, endpoint: "/cards", query_params: options).body)
     end
 
     def self.find(access_token, id)
-      new(request(access_token: access_token, endpoint: "/cards/#{id}"))
+      new(request(access_token: access_token, endpoint: "/cards/#{id}").body)
     end
 
     def self.lock(access_token, id)
@@ -53,7 +53,7 @@ module FidorApi
     def save
       raise InvalidRecordError unless valid?
 
-      set_attributes self.class.request(method: :post, access_token: client.token.access_token, endpoint: "/cards", body: as_json)
+      set_attributes self.class.request(method: :post, access_token: client.token.access_token, endpoint: "/cards", body: as_json).body
 
       true
     end

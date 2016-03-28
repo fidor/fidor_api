@@ -35,4 +35,16 @@ describe FidorApi::Message do
     end
   end
 
+  describe ".attachment" do
+    it "returns one message record" do
+      VCR.use_cassette("message/attachment", record: :once) do
+        attachment = client.message_attachment 42
+        expect(attachment).to be_a FidorApi::Message::Attachment
+        expect(attachment.type).to     eq "application/pdf"
+        expect(attachment.filename).to eq "filename.pdf"
+        expect(attachment.content).to  eq "file-content"
+      end
+    end
+  end
+
 end
