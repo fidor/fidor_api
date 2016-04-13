@@ -9,17 +9,10 @@ module FidorApi
 
     def self.build(klass, response)
       new.tap do |object|
-        # NOTE: We need this ugly hack since the sandbox is not wrapping records into data key.
-        # Will hopefully go away in future.
-        if response.is_a? Hash
-          data       = response["data"]
-          collection = response["collection"]
-        else
-          data       = response
-          collection = collection_from_array response
-        end
+        data       = response["data"]
+        collection = response["collection"]
 
-        object.records      = data.map { |record| klass.new(record) }
+        object.records = data.map { |record| klass.new(record) }
 
         object.total_pages  = collection["total_pages"]
         object.current_page = collection["current_page"]
@@ -38,16 +31,6 @@ module FidorApi
 
     def next_page
       current_page + 1
-    end
-
-    private
-
-    def self.collection_from_array(array)
-      {
-        "total_pages"  => 1,
-        "current_page" => 1,
-        "per_page"     => array.count
-      }
     end
   end
 

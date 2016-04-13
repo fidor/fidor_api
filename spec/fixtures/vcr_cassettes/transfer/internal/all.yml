@@ -16,7 +16,7 @@ http_interactions:
   response:
     status:
       code: 200
-      message: 
+      message:
     headers:
       date:
       - Sat, 12 Sep 2015 01:14:05 GMT
@@ -52,7 +52,7 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '[{"id":"2366","external_uid":"4279762F5","account_id":"875","user_id":"875","transaction_id":"28836","receiver":"kycfull@fidor.de","amount":1000,"currency":null,"subject":"Money
+      string: '{"data":[{"id":"2366","external_uid":"4279762F5","account_id":"875","user_id":"875","transaction_id":"28836","receiver":"kycfull@fidor.de","amount":1000,"currency":null,"subject":"Money
         for you","state":"success","created_at":"2015-09-12T00:10:57Z","updated_at":"2015-09-12T00:11:06Z"},{"id":"2365","external_uid":"4279762F3","account_id":"875","user_id":"875","transaction_id":"28835","receiver":"kycfull@fidor.de","amount":1000,"currency":null,"subject":"First
         Test","state":"success","created_at":"2015-09-11T23:53:37Z","updated_at":"2015-09-11T23:53:46Z"},{"id":"2364","external_uid":"4279762F2","account_id":"875","user_id":"875","transaction_id":"28834","receiver":"kycfull@fidor.de","amount":1000,"currency":null,"subject":"First
         Test","state":"success","created_at":"2015-09-11T23:07:46Z","updated_at":"2015-09-11T23:07:54Z"},{"id":"2363","external_uid":"4279762F1","account_id":"875","user_id":"875","transaction_id":"28833","receiver":"kycfull@fidor.de","amount":1000,"currency":null,"subject":"First
@@ -62,7 +62,7 @@ http_interactions:
         Versicherung 2007","state":"success","created_at":"2015-09-10T16:41:01Z","updated_at":"2015-09-10T16:41:01Z"},{"id":"2359","external_uid":"3fd852023f17104dceca","account_id":"875","user_id":"875","transaction_id":"28829","receiver":"99997844","amount":152402,"currency":"EUR","subject":"Spende
         WWF Regenwald","state":"success","created_at":"2015-09-10T16:41:01Z","updated_at":"2015-09-10T16:41:01Z"},{"id":"2358","external_uid":"d90c09b6d5f368ccc83e","account_id":"875","user_id":"875","transaction_id":"28828","receiver":"99990430","amount":53179,"currency":"EUR","subject":"Steuernachzahlung
         2013","state":"success","created_at":"2015-09-10T16:41:01Z","updated_at":"2015-09-10T16:41:01Z"},{"id":"2357","external_uid":"5b2911dd66d9f898e4db","account_id":"875","user_id":"875","transaction_id":"28827","receiver":"99995532","amount":7191,"currency":"EUR","subject":"Strom
-        1/2014","state":"success","created_at":"2015-09-10T16:41:01Z","updated_at":"2015-09-10T16:41:01Z"}]'
-    http_version: 
+        1/2014","state":"success","created_at":"2015-09-10T16:41:01Z","updated_at":"2015-09-10T16:41:01Z"}],"collection":{"total_pages":1,"per_page":1000,"current_page":1}}'
+    http_version:
   recorded_at: Sat, 12 Sep 2015 01:14:05 GMT
 recorded_with: VCR 2.9.3

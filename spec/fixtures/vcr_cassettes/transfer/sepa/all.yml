@@ -16,7 +16,7 @@ http_interactions:
   response:
     status:
       code: 200
-      message: 
+      message:
     headers:
       date:
       - Sat, 12 Sep 2015 01:31:38 GMT
@@ -51,98 +51,8 @@ http_interactions:
       transfer-encoding:
       - chunked
     body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        W3siaWQiOiIxMDU0OCIsImV4dGVybmFsX3VpZCI6IjQyNzk3NjJGNiIsImFj
-        Y291bnRfaWQiOiI4NzUiLCJ1c2VyX2lkIjoiODc1IiwidHJhbnNhY3Rpb25f
-        aWQiOiIyODgzNyIsInN1YmplY3QiOiJNb25leSBmb3IgeW91IiwiYW1vdW50
-        IjoxMDAwLCJjdXJyZW5jeSI6bnVsbCwicmVtb3RlX25hbWUiOiJKb2huIERv
-        ZSIsInJlbW90ZV9pYmFuIjoiQVQxMzE0OTAwMjIwMTAwMTA5OTkiLCJyZW1v
-        dGVfYmljIjoiU1BBREFUVzFYWFgiLCJzdGF0ZSI6InN1Y2Nlc3MiLCJjcmVh
-        dGVkX2F0IjoiMjAxNS0wOS0xMlQwMTowMzo0OFoiLCJ1cGRhdGVkX2F0Ijoi
-        MjAxNS0wOS0xMlQwMTowMzo1NVoifSx7ImlkIjoiMTA1NDciLCJleHRlcm5h
-        bF91aWQiOiIwMDQ5YTM4NmIxOGM1ZGE4ZGYxMCIsImFjY291bnRfaWQiOiI4
-        NzUiLCJ1c2VyX2lkIjoiODc1IiwidHJhbnNhY3Rpb25faWQiOiIyODgyMSIs
-        InN1YmplY3QiOiJSZW50ZW52ZXJzaWNoZXJ1bmcgMjAwNSIsImFtb3VudCI6
-        NzI5MDcsImN1cnJlbmN5IjoiRVVSIiwicmVtb3RlX25hbWUiOiJGZWxpeCBC
-        cmF1biIsInJlbW90ZV9pYmFuIjoiREUyNjg0NDg0MzU4NjExMjQxNzcwMSIs
-        InJlbW90ZV9iaWMiOiJIWVZFREVNTTM5MyIsInN0YXRlIjoic3VjY2VzcyIs
-        ImNyZWF0ZWRfYXQiOiIyMDE1LTA5LTEwVDE2OjQxOjAxWiIsInVwZGF0ZWRf
-        YXQiOiIyMDE1LTA5LTEwVDE2OjQxOjAxWiJ9LHsiaWQiOiIxMDU0NiIsImV4
-        dGVybmFsX3VpZCI6IjM5NDlkZWM3MDI3Mjc1ODQxNGZiIiwiYWNjb3VudF9p
-        ZCI6Ijg3NSIsInVzZXJfaWQiOiI4NzUiLCJ0cmFuc2FjdGlvbl9pZCI6IjI4
-        ODIwIiwic3ViamVjdCI6Iktvc3RlbiBkZXIgVHJhbnNha3Rpb24gJ0ZyZXVu
-        ZGVuIEdlbGQgbGVpaGVuJyB2b24gUGhpbGlwIFNjaHLDtmRlciIsImFtb3Vu
-        dCI6OTY0OTgsImN1cnJlbmN5IjoiRVVSIiwicmVtb3RlX25hbWUiOiJEYW5p
-        ZWwgWmltbWVybWFubiIsInJlbW90ZV9pYmFuIjoiREUxMTYzNDg4MDI1ODA1
-        MjkxMDUzOSIsInJlbW90ZV9iaWMiOiJDWENYREVERCIsInN0YXRlIjoic3Vj
-        Y2VzcyIsImNyZWF0ZWRfYXQiOiIyMDE1LTA5LTEwVDE2OjQxOjAxWiIsInVw
-        ZGF0ZWRfYXQiOiIyMDE1LTA5LTEwVDE2OjQxOjAxWiJ9LHsiaWQiOiIxMDU0
-        NSIsImV4dGVybmFsX3VpZCI6IjA3MWUxMjAxODQ5YjMxY2ZlYTIzIiwiYWNj
-        b3VudF9pZCI6Ijg3NSIsInVzZXJfaWQiOiI4NzUiLCJ0cmFuc2FjdGlvbl9p
-        ZCI6IjI4ODE5Iiwic3ViamVjdCI6IlJlbnRlbnZlcnNpY2hlcnVuZyAyMDE1
-        IiwiYW1vdW50IjoxNTk4ODYsImN1cnJlbmN5IjoiRVVSIiwicmVtb3RlX25h
-        bWUiOiJKYXNtaW4gS3LDvGdlciIsInJlbW90ZV9pYmFuIjoiREUyNjg0NDg0
-        MzU4NjExMjQxNzcwMSIsInJlbW90ZV9iaWMiOiJZVUlQREVGRiIsInN0YXRl
-        Ijoic3VjY2VzcyIsImNyZWF0ZWRfYXQiOiIyMDE1LTA5LTEwVDE2OjQxOjAx
-        WiIsInVwZGF0ZWRfYXQiOiIyMDE1LTA5LTEwVDE2OjQxOjAxWiJ9LHsiaWQi
-        OiIxMDU0NCIsImV4dGVybmFsX3VpZCI6IjY0NmRjYzRmMjgxZTNhNjMzMjE5
-        IiwiYWNjb3VudF9pZCI6Ijg3NSIsInVzZXJfaWQiOiI4NzUiLCJ0cmFuc2Fj
-        dGlvbl9pZCI6IjI4ODE4Iiwic3ViamVjdCI6Ik1pdGdsaWVkc2JlaXRyYWcg
-        MTIvMjAxMSIsImFtb3VudCI6MTMzODE0LCJjdXJyZW5jeSI6IkVVUiIsInJl
-        bW90ZV9uYW1lIjoiU2FyYSBLcsO8Z2VyIiwicmVtb3RlX2liYW4iOiJERTg1
-        MDEwMTgwODc2MzA0MzM0NDM4IiwicmVtb3RlX2JpYyI6IkhZVkVERU1NMzkz
-        Iiwic3RhdGUiOiJzdWNjZXNzIiwiY3JlYXRlZF9hdCI6IjIwMTUtMDktMTBU
-        MTY6NDE6MDFaIiwidXBkYXRlZF9hdCI6IjIwMTUtMDktMTBUMTY6NDE6MDFa
-        In0seyJpZCI6IjEwNTQzIiwiZXh0ZXJuYWxfdWlkIjoiZmE5ZTgzM2Q5NDNk
-        YjRjZjBjYzciLCJhY2NvdW50X2lkIjoiODc1IiwidXNlcl9pZCI6Ijg3NSIs
-        InRyYW5zYWN0aW9uX2lkIjoiMjg4MTciLCJzdWJqZWN0IjoiTWl0Z2xpZWRz
-        YmVpdHJhZyAxMS8yMDE0IiwiYW1vdW50Ijo2MjYyNSwiY3VycmVuY3kiOiJF
-        VVIiLCJyZW1vdGVfbmFtZSI6Ikx1Y2FzIEtvY2giLCJyZW1vdGVfaWJhbiI6
-        IkRFNzE4MzE5MDg1MzQ5MTkyMjkzMDUiLCJyZW1vdGVfYmljIjoiQ0lUSURF
-        NTVTRUMiLCJzdGF0ZSI6InN1Y2Nlc3MiLCJjcmVhdGVkX2F0IjoiMjAxNS0w
-        OS0xMFQxNjo0MTowMVoiLCJ1cGRhdGVkX2F0IjoiMjAxNS0wOS0xMFQxNjo0
-        MTowMVoifSx7ImlkIjoiMTA1NDIiLCJleHRlcm5hbF91aWQiOiJiNTYwOGVi
-        Y2Y0OGM3NGZjZjFlYSIsImFjY291bnRfaWQiOiI4NzUiLCJ1c2VyX2lkIjoi
-        ODc1IiwidHJhbnNhY3Rpb25faWQiOiIyODgxNiIsInN1YmplY3QiOiJTcGVu
-        ZGUgV1dGIFJlZ2Vud2FsZCIsImFtb3VudCI6ODQ3NjYsImN1cnJlbmN5Ijoi
-        RVVSIiwicmVtb3RlX25hbWUiOiJMZWEgU2Nob2x6IiwicmVtb3RlX2liYW4i
-        OiJERTEyNTIxNzU4MTU4OTExNjc1MDMwIiwicmVtb3RlX2JpYyI6IkNJVElE
-        RUZGS0VMIiwic3RhdGUiOiJzdWNjZXNzIiwiY3JlYXRlZF9hdCI6IjIwMTUt
-        MDktMTBUMTY6NDE6MDFaIiwidXBkYXRlZF9hdCI6IjIwMTUtMDktMTBUMTY6
-        NDE6MDFaIn0seyJpZCI6IjEwNTQxIiwiZXh0ZXJuYWxfdWlkIjoiYWY4MTUz
-        OWVlNDk5N2ExMzJlZDMiLCJhY2NvdW50X2lkIjoiODc1IiwidXNlcl9pZCI6
-        Ijg3NSIsInRyYW5zYWN0aW9uX2lkIjoiMjg4MTUiLCJzdWJqZWN0IjoiTWll
-        dGUgNi8yMDA1IiwiYW1vdW50IjozMzY5MiwiY3VycmVuY3kiOiJFVVIiLCJy
-        ZW1vdGVfbmFtZSI6Ikx1Y2FzIE5ldW1hbm4iLCJyZW1vdGVfaWJhbiI6IkRF
-        NzEwNjkyMTMxNDY4OTY2NTAwMDkiLCJyZW1vdGVfYmljIjoiQ0lUSURFRkZL
-        RUwiLCJzdGF0ZSI6InN1Y2Nlc3MiLCJjcmVhdGVkX2F0IjoiMjAxNS0wOS0x
-        MFQxNjo0MTowMVoiLCJ1cGRhdGVkX2F0IjoiMjAxNS0wOS0xMFQxNjo0MTow
-        MVoifSx7ImlkIjoiMTA1NDAiLCJleHRlcm5hbF91aWQiOiJmY2Q1NWQ5N2E4
-        N2ZkZjBiNDFjNiIsImFjY291bnRfaWQiOiI4NzUiLCJ1c2VyX2lkIjoiODc1
-        IiwidHJhbnNhY3Rpb25faWQiOiIyODgxNCIsInN1YmplY3QiOiJSZWNobnVu
-        ZyAxMS8yMDEwfSIsImFtb3VudCI6MTc3MzM2LCJjdXJyZW5jeSI6IkVVUiIs
-        InJlbW90ZV9uYW1lIjoiTHVjYXMgV2FnbmVyIiwicmVtb3RlX2liYW4iOiJE
-        RTIwNjY2Mzg3NzAyNDg0NDAzNDk0IiwicmVtb3RlX2JpYyI6IlBBUkJERUZG
-        SVNJIiwic3RhdGUiOiJzdWNjZXNzIiwiY3JlYXRlZF9hdCI6IjIwMTUtMDkt
-        MTBUMTY6NDE6MDFaIiwidXBkYXRlZF9hdCI6IjIwMTUtMDktMTBUMTY6NDE6
-        MDFaIn0seyJpZCI6IjEwNTM5IiwiZXh0ZXJuYWxfdWlkIjoiYTY1Y2YxZDMw
-        MTMwYWU0OTliNjgiLCJhY2NvdW50X2lkIjoiODc1IiwidXNlcl9pZCI6Ijg3
-        NSIsInRyYW5zYWN0aW9uX2lkIjoiMjg4MTMiLCJzdWJqZWN0IjoiS0ZaIFZl
-        cnNpY2hlcnVuZyAyMDA4IiwiYW1vdW50Ijo2MTU0OSwiY3VycmVuY3kiOiJF
-        VVIiLCJyZW1vdGVfbmFtZSI6Ik1heGltaWxpYW4gS2Fpc2VyIiwicmVtb3Rl
-        X2liYW4iOiJERTEwODM3OTMzMzY0Mzg4NTA3MjE0IiwicmVtb3RlX2JpYyI6
-        IlBBUkJERUZGQlJFIiwic3RhdGUiOiJzdWNjZXNzIiwiY3JlYXRlZF9hdCI6
-        IjIwMTUtMDktMTBUMTY6NDE6MDFaIiwidXBkYXRlZF9hdCI6IjIwMTUtMDkt
-        MTBUMTY6NDE6MDFaIn0seyJpZCI6IjEwNTM4IiwiZXh0ZXJuYWxfdWlkIjoi
-        MmRlNzg4Y2Q5NDhkZTg2ZWE3MTciLCJhY2NvdW50X2lkIjoiODc1IiwidXNl
-        cl9pZCI6Ijg3NSIsInRyYW5zYWN0aW9uX2lkIjoiMjg4MTIiLCJzdWJqZWN0
-        IjoiVmVzcGEgVHVuaW5nIC0gRXJzYXR6ZWlsZSIsImFtb3VudCI6MTM5Mzcz
-        LCJjdXJyZW5jeSI6IkVVUiIsInJlbW90ZV9uYW1lIjoiS2V2aW4gU2NobWlk
-        dCIsInJlbW90ZV9pYmFuIjoiREU3MTgzMTkwODUzNDkxOTIyOTMwNSIsInJl
-        bW90ZV9iaWMiOiJQQVJCREVGSCIsInN0YXRlIjoic3VjY2VzcyIsImNyZWF0
-        ZWRfYXQiOiIyMDE1LTA5LTEwVDE2OjQxOjAxWiIsInVwZGF0ZWRfYXQiOiIy
-        MDE1LTA5LTEwVDE2OjQxOjAxWiJ9XQ==
-    http_version: 
+      encoding: UTF-8
+      string: '{"data":[{"id":"10548","external_uid":"4279762F6","account_id":"875","user_id":"875","transaction_id":"28837","subject":"Money for you","amount":1000,"currency":null,"remote_name":"John Doe","remote_iban":"AT131490022010010999","remote_bic":"SPADATW1XXX","state":"success","created_at":"2015-09-12T01:03:48Z","updated_at":"2015-09-12T01:03:55Z"},{"id":"10547","external_uid":"0049a386b18c5da8df10","account_id":"875","user_id":"875","transaction_id":"28821","subject":"Rentenversicherung 2005","amount":72907,"currency":"EUR","remote_name":"Felix Braun","remote_iban":"DE26844843586112417701","remote_bic":"HYVEDEMM393","state":"success","created_at":"2015-09-10T16:41:01Z","updated_at":"2015-09-10T16:41:01Z"},{"id":"10546","external_uid":"3949dec70272758414fb","account_id":"875","user_id":"875","transaction_id":"28820","subject":"Kosten der Transaktion Freunden Geld leihen von Philip Schröder","amount":96498,"currency":"EUR","remote_name":"Daniel Zimmermann","remote_iban":"DE11634880258052910539","remote_bic":"CXCXDEDD","state":"success","created_at":"2015-09-10T16:41:01Z","updated_at":"2015-09-10T16:41:01Z"},{"id":"10545","external_uid":"071e1201849b31cfea23","account_id":"875","user_id":"875","transaction_id":"28819","subject":"Rentenversicherung 2015","amount":159886,"currency":"EUR","remote_name":"Jasmin Krüger","remote_iban":"DE26844843586112417701","remote_bic":"YUIPDEFF","state":"success","created_at":"2015-09-10T16:41:01Z","updated_at":"2015-09-10T16:41:01Z"},{"id":"10544","external_uid":"646dcc4f281e3a633219","account_id":"875","user_id":"875","transaction_id":"28818","subject":"Mitgliedsbeitrag 12/2011","amount":133814,"currency":"EUR","remote_name":"Sara Krüger","remote_iban":"DE85010180876304334438","remote_bic":"HYVEDEMM393","state":"success","created_at":"2015-09-10T16:41:01Z","updated_at":"2015-09-10T16:41:01Z"},{"id":"10543","external_uid":"fa9e833d943db4cf0cc7","account_id":"875","user_id":"875","transaction_id":"28817","subject":"Mitgliedsbeitrag 11/2014","amount":62625,"currency":"EUR","remote_name":"Lucas Koch","remote_iban":"DE71831908534919229305","remote_bic":"CITIDE55SEC","state":"success","created_at":"2015-09-10T16:41:01Z","updated_at":"2015-09-10T16:41:01Z"},{"id":"10542","external_uid":"b5608ebcf48c74fcf1ea","account_id":"875","user_id":"875","transaction_id":"28816","subject":"Spende WWF Regenwald","amount":84766,"currency":"EUR","remote_name":"Lea Scholz","remote_iban":"DE12521758158911675030","remote_bic":"CITIDEFFKEL","state":"success","created_at":"2015-09-10T16:41:01Z","updated_at":"2015-09-10T16:41:01Z"},{"id":"10541","external_uid":"af81539ee4997a132ed3","account_id":"875","user_id":"875","transaction_id":"28815","subject":"Miete 6/2005","amount":33692,"currency":"EUR","remote_name":"Lucas Neumann","remote_iban":"DE71069213146896650009","remote_bic":"CITIDEFFKEL","state":"success","created_at":"2015-09-10T16:41:01Z","updated_at":"2015-09-10T16:41:01Z"},{"id":"10540","external_uid":"fcd55d97a87fdf0b41c6","account_id":"875","user_id":"875","transaction_id":"28814","subject":"Rechnung 11/2010}","amount":177336,"currency":"EUR","remote_name":"Lucas Wagner","remote_iban":"DE20666387702484403494","remote_bic":"PARBDEFFISI","state":"success","created_at":"2015-09-10T16:41:01Z","updated_at":"2015-09-10T16:41:01Z"},{"id":"10539","external_uid":"a65cf1d30130ae499b68","account_id":"875","user_id":"875","transaction_id":"28813","subject":"KFZ Versicherung 2008","amount":61549,"currency":"EUR","remote_name":"Maximilian Kaiser","remote_iban":"DE10837933364388507214","remote_bic":"PARBDEFFBRE","state":"success","created_at":"2015-09-10T16:41:01Z","updated_at":"2015-09-10T16:41:01Z"},{"id":"10538","external_uid":"2de788cd948de86ea717","account_id":"875","user_id":"875","transaction_id":"28812","subject":"Vespa Tuning - Ersatzeile","amount":139373,"currency":"EUR","remote_name":"Kevin Schmidt","remote_iban":"DE71831908534919229305","remote_bic":"PARBDEFH","state":"success","created_at":"2015-09-10T16:41:01Z","updated_at":"2015-09-10T16:41:01Z"}],"collection":{"total_pages":1,"per_page":1000,"current_page":1}}'
+    http_version:
   recorded_at: Sat, 12 Sep 2015 01:31:38 GMT
 recorded_with: VCR 2.9.3
