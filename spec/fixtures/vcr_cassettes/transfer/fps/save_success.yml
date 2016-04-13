@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://aps.fidor.de/fps_transfers
+    body:
+      encoding: UTF-8
+      string: '{"account_id":"1","external_uid":"4279762F8","remote_account":"87654321","remote_sort_code":"654321","remote_name":"John
+        Doe","amount":1000,"subject":"Money for you"}'
+    headers:
+      Authorization:
+      - Bearer f859032a6ca0a4abb2be0583b8347937
+      Accept:
+      - application/vnd.fidor.de; version=1,text/json
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message:
+    headers:
+      date:
+      - Wed, 13 Apr 2016 20:02:34 GMT
+      status:
+      - 200 OK
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      x-content-type-options:
+      - nosniff
+      content-type:
+      - application/json; charset=utf-8
+      etag:
+      - '"a1361b55be6cddb08e9faa24be301467"'
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 9c81ae8a-b24c-4161-aa44-e8d0daa903c6
+      x-runtime:
+      - '0.043104'
+      connection:
+      - close
+      transfer-encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"id":"5","external_uid":"4279762F8","account_id":"1","user_id":"1","transaction_id":null,"subject":"Money
+        for you","amount":1000,"currency":null,"fee":null,"remote_name":"John Doe","remote_account":"87654321","remote_sort_code":"654321","state":"received","created_at":"2016-04-13T20:02:34Z","updated_at":"2016-04-13T20:02:34Z"}'
+    http_version:
+  recorded_at: Wed, 13 Apr 2016 20:02:34 GMT
+recorded_with: VCR 2.9.3

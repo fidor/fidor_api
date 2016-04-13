@@ -14,6 +14,7 @@ module FidorApi
     include Transaction::ClientSupport
     include Transfer::Internal::ClientSupport
     include Transfer::SEPA::ClientSupport
+    include Transfer::FPS::ClientSupport
     include User::ClientSupport
   end
 

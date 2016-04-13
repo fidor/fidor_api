@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://aps.fidor.de/fps_transfers
+    body:
+      encoding: UTF-8
+      string: '{"account_id":"999","external_uid":"4279762F8","remote_account":"87654321","remote_sort_code":"654321","remote_name":"John
+        Doe","amount":1000,"subject":"Money for you"}'
+    headers:
+      Authorization:
+      - Bearer f859032a6ca0a4abb2be0583b8347937
+      Accept:
+      - application/vnd.fidor.de; version=1,text/json
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 409
+      message:
+    headers:
+      date:
+      - Wed, 13 Apr 2016 20:02:34 GMT
+      status:
+      - 409 Conflict
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      x-content-type-options:
+      - nosniff
+      content-type:
+      - application/json; charset=utf-8
+      cache-control:
+      - no-cache
+      x-request-id:
+      - 6d37e513-99c0-4e73-b535-5fb47e688137
+      x-runtime:
+      - '0.029189'
+      connection:
+      - close
+      transfer-encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"error":{"message":"validation failed","code":409,"errors":[{"field":"external_uid","message":"has
+        already been taken"}]}}'
+    http_version:
+  recorded_at: Wed, 13 Apr 2016 20:02:34 GMT
+recorded_with: VCR 2.9.3
