@@ -12,6 +12,7 @@ module FidorApi
     include Message::ClientSupport
     include Preauth::ClientSupport
     include Transaction::ClientSupport
+    include Transfer::ACH::ClientSupport
     include Transfer::Internal::ClientSupport
     include Transfer::SEPA::ClientSupport
     include Transfer::FPS::ClientSupport

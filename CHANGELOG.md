@@ -3,6 +3,7 @@
 ## Next version (not yet released)
 
 * Also map errors returned on the `:base` field
+* Support for `/transfers` endpoint with `routing_type` "ACH" (*Note*: Not supported in fidor.de & fidorbank.uk APIs)
 
 ## v0.0.2
 

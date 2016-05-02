@@ -22,6 +22,98 @@ module FidorApi
 
     end
 
+    class ACH < Base
+      extend ModelAttribute
+      extend AmountAttributes
+
+      attribute :id,             :string
+      attribute :account_id,     :string
+      attribute :external_uid,   :string
+      attribute :contact_name,   :string
+      attribute :account_number, :string
+      attribute :routing_code,   :string
+      attribute :subject,        :string
+      attribute :currency,       :string
+      attribute :subject,        :string
+      attribute :state,          :string
+      attribute :created_at,     :time
+      attribute :updated_at,     :time
+      amount_attribute :amount
+
+      def self.required_attributes
+        [ :account_id, :external_uid, :contact_name, :account_number, :routing_code, :amount, :subject, :currency ]
+      end
+
+      validates *required_attributes, presence: true
+
+      def initialize(attrs = {})
+        self.contact_name   = attrs.fetch("beneficiary", {}).fetch("contact", {})["name"]
+        self.account_number = attrs.fetch("beneficiary", {}).fetch("routing_info", {})["account_number"]
+        self.routing_code   = attrs.fetch("beneficiary", {}).fetch("routing_info", {})["routing_code"]
+        super(attrs.except("beneficiary"))
+      end
+
+      def as_json
+        {
+          account_id: account_id,
+          external_uid: external_uid,
+          amount: (amount * 100).to_i,
+          currency: currency,
+          subject: subject,
+          beneficiary: {
+            contact: {
+              name: contact_name
+            },
+            routing_type: "ACH",
+            routing_info: {
+              account_number: account_number,
+              routing_code: routing_code
+            }
+          }
+        }
+      end
+
+      private
+
+      def contact
+        (beneficiary || {}).fetch("contact", {})
+      end
+
+      def routing_info
+        (beneficiary || {}).fetch("routing_info", {})
+      end
+
+      def self.resource
+        "transfers"
+      end
+
+      def map_errors(fields)
+        fields.each do |hash|
+          if respond_to? hash["field"].to_sym
+            errors.add(hash["field"].to_sym, hash["message"])
+          elsif hash["field"] == "beneficiary" && invalid_fields = hash["message"][/Invalid fields in routing_info: (.*)/, 1]
+            invalid_fields.split(",").each do |invalid_field|
+              errors.add(invalid_field, :invalid)
+            end
+          end
+        end
+      end
+
+      module ClientSupport
+        def ach_transfers(options = {})
+          Transfer::ACH.all(token.access_token, options)
+        end
+
+        def ach_transfer(id)
+          Transfer::ACH.find(token.access_token, id)
+        end
+
+        def build_ach_transfer(attributes = {})
+          Transfer::ACH.new(attributes.merge(client: self))
+        end
+      end
+    end
+
     class Internal < Base
       extend ModelAttribute
       extend AmountAttributes
