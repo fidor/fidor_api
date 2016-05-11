@@ -13,13 +13,13 @@ http_interactions:
       - application/vnd.fidor.de; version=1,text/json
   response:
     status:
-      code: 401
+      code: 500
       message:
     headers:
       date:
       - Sun, 30 Aug 2015 20:16:05 GMT
       status:
-      - 401 Unauthorized
+      - 500 Any other error
       x-frame-options:
       - SAMEORIGIN
       x-xss-protection:
@@ -42,7 +42,7 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"message":"Any other error","code":401,"errors":[]}'
+      string: '{"message":"Any other error","code":500,"errors":[]}'
     http_version:
   recorded_at: Sun, 30 Aug 2015 20:16:05 GMT
 recorded_with: VCR 2.9.3

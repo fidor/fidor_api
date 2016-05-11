@@ -45,12 +45,13 @@ describe FidorApi::Transfer do
         end
       end
 
-      context "on failure" do
-        it "raises an error" do
+      context "on failure response" do
+        it "returns false and provides errors" do
           subject.account_id = 999
 
           VCR.use_cassette("transfer/internal/save_failure", record: :once) do
-            expect { subject.save }.to raise_error FidorApi::ClientError
+            expect(subject.save).to be false
+            expect(subject.errors[:account_id]).to eq ["anything"]
           end
         end
       end
@@ -149,12 +150,13 @@ describe FidorApi::Transfer do
         end
       end
 
-      context "on failure" do
-        it "raises an error" do
+      context "on failure response" do
+        it "returns false and provides errors" do
           subject.account_id = 999
 
           VCR.use_cassette("transfer/sepa/save_failure", record: :once) do
-            expect { subject.save }.to raise_error FidorApi::ClientError
+            expect(subject.save).to be false
+            expect(subject.errors[:account_id]).to eq ["anything"]
           end
         end
       end
@@ -258,12 +260,13 @@ describe FidorApi::Transfer do
         end
       end
 
-      context "on failure" do
-        it "raises an error" do
+      context "on failure response" do
+        it "returns false and provides errors" do
           subject.account_id = 999
 
           VCR.use_cassette("transfer/fps/save_failure", record: :once) do
-            expect { subject.save }.to raise_error FidorApi::ClientError
+            expect(subject.save).to be false
+            expect(subject.errors[:account_id]).to eq ["anything"]
           end
         end
       end

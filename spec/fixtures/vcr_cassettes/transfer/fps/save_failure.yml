@@ -16,7 +16,7 @@ http_interactions:
       - application/json
   response:
     status:
-      code: 409
+      code: 422
       message:
     headers:
       date:
@@ -43,8 +43,7 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"error":{"message":"validation failed","code":409,"errors":[{"field":"external_uid","message":"has
-        already been taken"}]}}'
+      string: '{"code":422,"errors":[{"field":"account_id","message":"anything"}],"message":"Validation failed"}'
     http_version:
   recorded_at: Wed, 13 Apr 2016 20:02:34 GMT
 recorded_with: VCR 2.9.3

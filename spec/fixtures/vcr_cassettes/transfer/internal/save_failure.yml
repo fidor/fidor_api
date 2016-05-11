@@ -15,8 +15,8 @@ http_interactions:
       - application/json
   response:
     status:
-      code: 500
-      message: 
+      code: 422
+      message:
     headers:
       date:
       - Sat, 12 Sep 2015 00:34:52 GMT
@@ -44,7 +44,7 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"error":{"message":"internal server error","code":500,"errors":[]}}'
-    http_version: 
+      string: '{"code":422,"errors":[{"field":"account_id","message":"anything"}],"message":"Validation failed"}'
+    http_version:
   recorded_at: Sat, 12 Sep 2015 00:34:52 GMT
 recorded_with: VCR 2.9.3

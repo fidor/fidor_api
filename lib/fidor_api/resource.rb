@@ -34,8 +34,12 @@ module FidorApi
       end
       Response.new(headers: response.headers, body: response.body)
     rescue Faraday::Error::ClientError => e
-      if e.response[:status] == 401 && e.response[:body] =~ /token_not_found|Unauthorized token|expired/
+      case e.response[:status]
+      when 401
         raise UnauthorizedTokenError
+      when 422
+        body = JSON.parse(e.response[:body])
+        raise ValidationError.new(body["message"], body["errors"])
       else
         raise ClientError
       end
@@ -58,6 +62,12 @@ module FidorApi
         config.response :logger if FidorApi.configuration.logging
         config.response :raise_error
         config.adapter  Faraday.default_adapter
+      end
+    end
+
+    def map_errors(fields)
+      fields.each do |hash|
+        errors.add(hash["field"].to_sym, hash["message"]) if respond_to? hash["field"].to_sym
       end
     end
   end

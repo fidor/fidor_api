@@ -6,4 +6,13 @@ module FidorApi
   InvalidRecordError     = Class.new(Error)
   NoUpdatesAllowedError  = Class.new(Error)
 
+  class ValidationError < Error
+    attr_accessor :fields
+
+    def initialize(message, fields)
+      super(message)
+      self.fields = fields
+    end
+  end
+
 end
