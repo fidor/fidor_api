@@ -5,12 +5,11 @@ module FidorApi
     class Base < Resource
 
       def save
-        raise InvalidRecordError unless valid?
-        set_attributes self.class.request(method: :post, access_token: client.token.access_token, endpoint: self.class.resource, body: as_json).body
-        true
-      rescue ValidationError => e
-        map_errors(e.fields)
-        false
+        if id.nil?
+          create
+        else
+          raise NoUpdatesAllowedError
+        end
       end
 
       def self.all(access_token, options = {})

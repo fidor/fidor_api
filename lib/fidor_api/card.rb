@@ -51,15 +51,21 @@ module FidorApi
     end
 
     def save
-      raise InvalidRecordError unless valid?
-
-      set_attributes self.class.request(method: :post, access_token: client.token.access_token, endpoint: "/cards", body: as_json).body
-
-      true
+      if id.nil?
+        create
+      else
+        raise NoUpdatesAllowedError
+      end
     end
 
     def as_json
       attributes.slice *self.class.required_attributes
+    end
+
+    private
+
+    def self.resource
+      "cards"
     end
 
     module ClientSupport

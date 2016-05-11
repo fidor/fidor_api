@@ -95,12 +95,17 @@ module FidorApi
     end
 
     def save
-      raise InvalidRecordError unless valid?
-      raise NoUpdatesAllowedError if id.present?
+      if id.nil?
+        create(htauth: true, access_token: nil)
+      else
+        raise NoUpdatesAllowedError
+      end
+    end
 
-      set_attributes self.class.request(method: :post, endpoint: "customers", body: as_json, htauth: true).body
+    private
 
-      true
+    def self.resource
+      "customers"
     end
 
     module ClientSupport

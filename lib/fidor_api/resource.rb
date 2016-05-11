@@ -65,6 +65,15 @@ module FidorApi
       end
     end
 
+    def create(options = {})
+      raise InvalidRecordError unless valid?
+      set_attributes self.class.request({ method: :post, access_token: client.try { |c| c.token.access_token }, endpoint: self.class.resource, body: as_json }.merge(options)).body
+      true
+    rescue ValidationError => e
+      map_errors(e.fields)
+      false
+    end
+
     def map_errors(fields)
       fields.each do |hash|
         errors.add(hash["field"].to_sym, hash["message"]) if respond_to? hash["field"].to_sym
