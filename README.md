@@ -114,7 +114,14 @@ To install this gem onto your local machine, run `bundle exec rake install`.
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/klausmeyer/fidor_api.
 
+## Changelog
+
+Note that for now I won't do semantic versioning.
+
+This means things might and will change even in patch-level bumps of the version number (like they did between `v0.0.1` and `v0.0.2` already). My current plan is to switch to semantic version with a release of `v0.1.0`.
+
+Have a look at the [CHANGELOG](CHANGELOG.md) for details.
+
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
