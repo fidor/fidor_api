@@ -99,7 +99,9 @@ transfer = client.build_internal_transfer(
 # => FidorApi::Transfer::Internal
 
 transfer.save
-# => true / or raise error
+# => true
+# or
+# => false and `transfer.errors` containing details
 ```
 
 ## Development
