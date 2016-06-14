@@ -51,7 +51,8 @@ describe FidorApi::Transfer do
 
           VCR.use_cassette("transfer/internal/save_failure", record: :once) do
             expect(subject.save).to be false
-            expect(subject.errors[:account_id]).to eq ["anything"]
+            expect(subject.errors[:base]      ).to eq ["something global"]
+            expect(subject.errors[:account_id]).to eq ["something specific"]
           end
         end
       end

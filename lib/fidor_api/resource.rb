@@ -76,7 +76,8 @@ module FidorApi
 
     def map_errors(fields)
       fields.each do |hash|
-        errors.add(hash["field"].to_sym, hash["message"]) if respond_to? hash["field"].to_sym
+        key = hash["field"].to_sym
+        errors.add(hash["field"].to_sym, hash["message"]) if key == :base || respond_to?(key)
       end
     end
   end
