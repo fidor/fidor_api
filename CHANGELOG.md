@@ -2,7 +2,7 @@
 
 ## Next version (not yet released)
 
-* Nothing at the moment :)
+* Also map errors returned on the `:base` field
 
 ## v0.0.2
 
