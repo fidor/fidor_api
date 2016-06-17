@@ -4,6 +4,9 @@
 
 * Also map errors returned on the `:base` field
 * Support for `/transfers` endpoint with `routing_type` "ACH" (*Note*: Not supported in fidor.de & fidorbank.uk APIs)
+* Improve logger setup
+  * Add new `logger` config option to pass existing logger
+  * Add support for `faraday-detailed_logger` gem without adding additional dependency
 
 ## v0.0.2
 

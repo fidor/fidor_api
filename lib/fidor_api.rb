@@ -11,15 +11,22 @@ module FidorApi
   attr_accessor :configuration
 
   class Configuration
-    attr_accessor :callback_url, :oauth_url, :api_url, :client_id, :client_secret, :htauth_user, :htauth_password, :affiliate_uid, :os_type, :logging
+    attr_accessor :callback_url, :oauth_url, :api_url, :client_id, :client_secret, :htauth_user, :htauth_password, :affiliate_uid, :os_type, :logging, :logger
   end
 
   def configure
     self.configuration = Configuration.new.tap do |config|
       config.logging = true
+      config.logger  = Logger.new(STDOUT)
       config.os_type = "iOS" # NOTE: As long as there is only iOS or Android we have to tell a fib ;)
     end
     yield configuration
+
+    begin
+      require "faraday/detailed_logger"
+    rescue LoadError => e
+      configuration.logger.debug "NOTE: Install `faraday-detailed_logger` gem to get detailed log-output for debugging."
+    end
   end
 end
 

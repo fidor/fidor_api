@@ -59,9 +59,17 @@ module FidorApi
       Faraday.new(url: FidorApi.configuration.api_url) do |config|
         config.use      Faraday::Request::BasicAuthentication, FidorApi.configuration.htauth_user, FidorApi.configuration.htauth_password if htauth
         config.request  :url_encoded
-        config.response :logger if FidorApi.configuration.logging
+        config.response logger_type, FidorApi.configuration.logger if FidorApi.configuration.logging
         config.response :raise_error
         config.adapter  Faraday.default_adapter
+      end
+    end
+
+    def self.logger_type
+      if defined?(Faraday::DetailedLogger)
+        :detailed_logger
+      else
+        :logger
       end
     end
 
