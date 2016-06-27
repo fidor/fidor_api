@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://aps.fidor.de/transfers
+    body:
+      encoding: UTF-8
+      string: '{"account_id":"65753938","external_uid":"4279762F8","amount":1000,"currency":"USD","subject":"Money
+        for you","beneficiary":{"contact":{"name":"John Doe"},"routing_type":"ACH","routing_info":{"account_number":"1234567890","routing_code":"123456789"}}}'
+    headers:
+      Authorization:
+      - Bearer f859032a6ca0a4abb2be0583b8347937
+      Accept:
+      - application/vnd.fidor.de; version=1,text/json
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message:
+    headers:
+      server:
+      - nginx/1.11.1
+      date:
+      - Mon, 27 Jun 2016 14:20:55 GMT
+      content-type:
+      - application/json; charset=utf-8
+      content-length:
+      - '332'
+      connection:
+      - close
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      x-content-type-options:
+      - nosniff
+      location:
+      - https://aps.fidor.de/fidor_api/transfers
+      x-ratelimit-limit:
+      - '10000'
+      x-ratelimit-remaining:
+      - '9991'
+      x-ratelimit-reset:
+      - '2346'
+      etag:
+      - W/"be6d70f0de0177832a7d4c23a42c12d4"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 8827e41d-f236-4773-a6aa-48612501e362
+      x-runtime:
+      - '1.276965'
+    body:
+      encoding: UTF-8
+      string: '{"id":"ba8930f5-f361-4cc6-acbb-0b5affb4148c","account_id":"65753938","external_uid":"4279762F8","amount":1000,"currency":"USD","subject":"Money
+        for you","state":"pending_backoffice_transfer","beneficiary":{"contact":{"name":"John
+        Doe"},"routing_type":"ACH","routing_info":{"account_number":"1234567890","routing_code":"123456789"}}}'
+    http_version:
+  recorded_at: Mon, 27 Jun 2016 14:20:55 GMT
+recorded_with: VCR 2.9.3
