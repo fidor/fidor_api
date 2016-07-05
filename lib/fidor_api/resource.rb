@@ -60,7 +60,7 @@ module FidorApi
     private
 
     def self.connection(htauth: false)
-      Faraday.new(url: FidorApi.configuration.api_url) do |config|
+      Faraday.new(url: FidorApi.configuration.api_url, ssl: { verify: FidorApi.configuration.verify_ssl }) do |config|
         config.use      Faraday::Request::BasicAuthentication, FidorApi.configuration.htauth_user, FidorApi.configuration.htauth_password if htauth
         config.request  :url_encoded
         config.response logger_type, FidorApi.configuration.logger if FidorApi.configuration.logging

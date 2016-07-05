@@ -28,7 +28,7 @@ module FidorApi
     private
 
     def connection
-      Faraday.new(url: FidorApi.configuration.oauth_url) do |config|
+      Faraday.new(url: FidorApi.configuration.oauth_url, ssl: { verify: FidorApi.configuration.verify_ssl }) do |config|
         config.use      Faraday::Request::BasicAuthentication, FidorApi.configuration.client_id, FidorApi.configuration.client_secret
         config.request  :url_encoded
         config.response :logger if FidorApi.configuration.logging
