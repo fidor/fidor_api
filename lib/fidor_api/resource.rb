@@ -34,6 +34,10 @@ module FidorApi
       end
       Response.new(status: response.status, headers: response.headers, body: response.body)
     rescue Faraday::Error::ClientError => e
+      FidorApi.configuration.logger.info "Error (#{e.class.name}): #{e.inspect}"
+      FidorApi.configuration.logger.info "Status: #{e.response[:status]}"
+      FidorApi.configuration.logger.debug "Header: #{e.response[:header]}"
+      FidorApi.configuration.logger.debug "Body: #{e.response[:body]}"
       case e.response[:status]
       when 401
         raise UnauthorizedTokenError
