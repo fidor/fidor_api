@@ -7,16 +7,25 @@ module FidorApi
 
         base.validates *required_attributes, presence: true
 
-        base.attribute :id,             :string
-        base.attribute :account_id,     :string
-        base.attribute :external_uid,   :string
-        base.attribute :contact_name,   :string
-        base.attribute :subject,        :string
-        base.attribute :currency,       :string
-        base.attribute :subject,        :string
-        base.attribute :state,          :string
-        base.attribute :created_at,     :time
-        base.attribute :updated_at,     :time
+        base.attribute :id,                     :string
+        base.attribute :account_id,             :string
+        base.attribute :external_uid,           :string
+        base.attribute :contact_name,           :string
+        base.attribute :contact_address_line_1, :string
+        base.attribute :contact_address_line_2, :string
+        base.attribute :contact_city,           :string
+        base.attribute :contact_country,        :string
+        base.attribute :bank_name,              :string
+        base.attribute :bank_address_line_1,    :string
+        base.attribute :bank_address_line_2,    :string
+        base.attribute :bank_city,              :string
+        base.attribute :bank_country,           :string
+        base.attribute :subject,                :string
+        base.attribute :currency,               :string
+        base.attribute :subject,                :string
+        base.attribute :state,                  :string
+        base.attribute :created_at,             :time
+        base.attribute :updated_at,             :time
         base.amount_attribute :amount
 
         base.singleton_class.instance_eval do
@@ -39,8 +48,19 @@ module FidorApi
           subject: subject,
           beneficiary: {
             contact: {
-              name: contact_name
-            },
+              name:           contact_name,
+              address_line_1: contact_address_line_1,
+              address_line_2: contact_address_line_2,
+              city:           contact_city,
+              country:        contact_country
+            }.compact,
+            bank: {
+              name:           bank_name,
+              address_line_1: bank_address_line_1,
+              address_line_2: bank_address_line_2,
+              city:           bank_city,
+              country:        bank_country
+            }.compact,
             routing_type: as_json_routing_type,
             routing_info: as_json_routing_info
           }
@@ -48,6 +68,20 @@ module FidorApi
       end
 
       private
+
+      def set_beneficiary_attributes(attrs)
+        self.contact_name           = attrs.fetch("beneficiary", {}).fetch("contact", {})["name"]
+        self.contact_address_line_1 = attrs.fetch("beneficiary", {}).fetch("contact", {})["address_line_1"]
+        self.contact_address_line_2 = attrs.fetch("beneficiary", {}).fetch("contact", {})["address_line_2"]
+        self.contact_city           = attrs.fetch("beneficiary", {}).fetch("contact", {})["city"]
+        self.contact_country        = attrs.fetch("beneficiary", {}).fetch("contact", {})["country"]
+
+        self.bank_name              = attrs.fetch("beneficiary", {}).fetch("bank",    {})["name"]
+        self.bank_address_line_1    = attrs.fetch("beneficiary", {}).fetch("bank",    {})["address_line_1"]
+        self.bank_address_line_2    = attrs.fetch("beneficiary", {}).fetch("bank",    {})["address_line_2"]
+        self.bank_city              = attrs.fetch("beneficiary", {}).fetch("bank",    {})["city"]
+        self.bank_country           = attrs.fetch("beneficiary", {}).fetch("bank",    {})["country"]
+      end
 
       def contact
         (beneficiary || {}).fetch("contact", {})

@@ -7,7 +7,7 @@ module FidorApi
       attribute :routing_code,   :string
 
       def initialize(attrs = {})
-        self.contact_name   = attrs.fetch("beneficiary", {}).fetch("contact", {})["name"]
+        set_beneficiary_attributes(attrs)
         self.account_number = attrs.fetch("beneficiary", {}).fetch("routing_info", {})["account_number"]
         self.routing_code   = attrs.fetch("beneficiary", {}).fetch("routing_info", {})["routing_code"]
         super(attrs.except("beneficiary"))

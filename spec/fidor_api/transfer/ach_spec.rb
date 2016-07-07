@@ -7,14 +7,17 @@ describe FidorApi::Transfer::ACH do
 
   subject do
     client.build_ach_transfer(
-      account_id:       "65753938",
-      external_uid:     "4279762F8",
-      contact_name:     "John Doe",
-      account_number:   "1234567890",
-      routing_code:     "123456789",
-      amount:           BigDecimal.new("10.00"),
-      currency:         "USD",
-      subject:          "Money for you"
+      account_id:             "65753938",
+      external_uid:           "4279762F8",
+      contact_name:           "John Doe",
+      contact_address_line_1: "Street 123",
+      bank_name:              "Bank Name",
+      bank_address_line_1:    "Street 456",
+      account_number:         "1234567890",
+      routing_code:           "123456789",
+      amount:                 BigDecimal.new("10.00"),
+      currency:               "USD",
+      subject:                "Money for you"
     )
   end
 
@@ -67,7 +70,13 @@ describe FidorApi::Transfer::ACH do
         amount: 1000,
         beneficiary: {
           contact: {
-            name: "John Doe"
+            name:           "John Doe",
+            address_line_1: "Street 123"
+          },
+          bank: {
+            name:           "Bank Name",
+            address_line_1: "Street 456"
+
           },
           routing_type: "ACH",
           routing_info: {
