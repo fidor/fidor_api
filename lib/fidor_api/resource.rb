@@ -34,8 +34,8 @@ module FidorApi
       end
       Response.new(status: response.status, headers: response.headers, body: response.body)
     rescue Faraday::Error::ClientError => e
-      FidorApi.configuration.logger.info  "Error (#{e.class.name}): #{e.to_s}\nStatus: #{e.response[:status]}"
-      FidorApi.configuration.logger.debug "Header: #{e.response[:header]}\nBody: #{e.response[:body]}"
+      log :info,  "Error (#{e.class.name}): #{e.to_s}\nStatus: #{e.response[:status]}"
+      log :debug, "Header: #{e.response[:header]}\nBody: #{e.response[:body]}"
       case e.response[:status]
       when 401
         raise UnauthorizedTokenError
@@ -49,6 +49,11 @@ module FidorApi
 
     def self.model_name
       ActiveModel::Name.new(self, nil, self.name.sub("FidorApi::", ""))
+    end
+
+    def self.log(level, message)
+      return unless FidorApi.configuration.logging
+      FidorApi.configuration.logger.public_send(level, message)
     end
 
     def persisted?
