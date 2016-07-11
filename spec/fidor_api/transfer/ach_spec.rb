@@ -58,6 +58,7 @@ describe FidorApi::Transfer::ACH do
         VCR.use_cassette("transfer/ach/save_failure", record: :once) do
           expect(subject.save).to be false
           expect(subject.errors[:account_id]).to eq ["should be the token user's account id"]
+          expect(subject.errors[:account_number]).to eq ["invalid"]
         end
       end
     end

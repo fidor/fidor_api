@@ -1,6 +1,8 @@
 module FidorApi
   module Transfer
     module Generic
+      ROUTING_INFO_ERROR_PREFIX = "beneficiary.routing_info.".freeze
+
       def self.included(base)
         base.extend ModelAttribute
         base.extend AmountAttributes
@@ -95,10 +97,9 @@ module FidorApi
         fields.each do |hash|
           if respond_to? hash["field"].to_sym
             errors.add(hash["field"].to_sym, hash["message"])
-          elsif hash["field"] == "beneficiary" && invalid_fields = hash["message"][/Invalid fields in routing_info: (.*)/, 1]
-            invalid_fields.split(",").each do |invalid_field|
-              errors.add(invalid_field, :invalid)
-            end
+          elsif hash["field"].start_with?(ROUTING_INFO_ERROR_PREFIX)
+            invalid_field = hash["field"][ROUTING_INFO_ERROR_PREFIX.size..-1]
+            errors.add(invalid_field, hash["key"], message: hash["message"])
           end
         end
       end

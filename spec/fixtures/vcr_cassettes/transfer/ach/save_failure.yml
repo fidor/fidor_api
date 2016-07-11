@@ -50,7 +50,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"code":422,"errors":[{"field":"account_id","message":"should be the
-        token user''s account id"}],"message":"Invalid transfer","key":["validation_failed"]}'
+        token user''s account id"}, {"field":"beneficiary.routing_info.account_number", "message": "is_invalid", "key": "invalid"}],"message":"Invalid transfer","key":["validation_failed"]}'
     http_version:
   recorded_at: Mon, 27 Jun 2016 14:22:03 GMT
 recorded_with: VCR 2.9.3
