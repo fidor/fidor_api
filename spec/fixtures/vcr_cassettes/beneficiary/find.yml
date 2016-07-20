@@ -1,0 +1,62 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://aps.fidor.de/beneficiaries/6422ec33-4935-41cc-af26-6af40c4c1349
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer f859032a6ca0a4abb2be0583b8347937
+      Accept:
+      - application/vnd.fidor.de; version=1,text/json
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message:
+    headers:
+      server:
+      - nginx/1.11.1
+      date:
+      - Wed, 20 Jul 2016 13:17:42 GMT
+      content-type:
+      - application/json; charset=utf-8
+      content-length:
+      - '566'
+      connection:
+      - close
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      x-content-type-options:
+      - nosniff
+      location:
+      - https://aps.fidor.de/fidor_api/beneficiaries/6422ec33-4935-41cc-af26-6af40c4c1349
+      x-ratelimit-limit:
+      - '9999'
+      x-ratelimit-remaining:
+      - '9978'
+      x-ratelimit-reset:
+      - '2422'
+      etag:
+      - W/"ae61f9fabff402fb284017a96e65d37b"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 88ba47d2-3cf0-43f5-b508-63d98d846607
+      x-runtime:
+      - '0.028485'
+    body:
+      encoding: UTF-8
+      string: '{"id":"6422ec33-4935-41cc-af26-6af40c4c1349","account_id":"56827782","contact":{"name":"John
+        Doe","address_line_1":"Contact Address 1","address_line_2":"Contact Address
+        2","city":"Contact City","country":"Contact Country"},"bank":{"name":"Bank
+        Name","address_line_1":"Bank Address 1","address_line_2":"Bank Address 2","city":"Bank
+        City","country":"Bank Country"},"routing_type":"ACH","routing_info":{"account_number":"John Doe","routing_code":"123456"},"verified":true,"created_at":"2016-07-20T00:00:00Z","updated_at":"2016-07-20T00:00:00Z"}'
+    http_version:
+  recorded_at: Wed, 20 Jul 2016 13:17:42 GMT
+recorded_with: VCR 2.9.3
