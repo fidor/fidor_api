@@ -2,7 +2,7 @@ module FidorApi
   class ConfirmableAction < Resource
     extend ModelAttribute
 
-    attribute :id,              :integer
+    attribute :id,              :string
     attribute :type,            :string
     attribute :message,         :string
     attribute :steps_left,      :json
