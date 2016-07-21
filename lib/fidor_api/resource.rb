@@ -90,7 +90,7 @@ module FidorApi
       if path = response.headers["X-Fidor-Confirmation-Path"]
         self.confirmable_action = ConfirmableAction.new(id: path.split("/").last.to_i)
       end
-      set_attributes(response.body)
+      initialize(response.body)
       true
     rescue ValidationError => e
       map_errors(e.fields)
