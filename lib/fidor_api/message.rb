@@ -35,6 +35,10 @@ module FidorApi
       )
     end
 
+    def self.content(access_token, id)
+      request(access_token: access_token, endpoint: "/messages/#{id}/content").body
+    end
+
     module ClientSupport
       def messages(options = {})
         Message.all(token.access_token, options)
@@ -46,6 +50,10 @@ module FidorApi
 
       def message_attachment(id)
         Message.attachment(token.access_token, id)
+      end
+
+      def message_content(id)
+        Message.content(token.access_token, id)
       end
     end
   end
