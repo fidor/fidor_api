@@ -5,7 +5,7 @@ module FidorApi
     include Enumerable
 
     attr_accessor :records
-    attr_accessor :total_pages, :current_page, :limit_value
+    attr_accessor :total_pages, :current_page, :limit_value, :total_entries
 
     def self.build(klass, response)
       new.tap do |object|
@@ -14,9 +14,10 @@ module FidorApi
 
         object.records = data.map { |record| klass.new(record) }
 
-        object.total_pages  = collection["total_pages"]
-        object.current_page = collection["current_page"]
-        object.limit_value  = collection["per_page"]
+        object.total_pages   = collection["total_pages"]
+        object.current_page  = collection["current_page"]
+        object.limit_value   = collection["per_page"]
+        object.total_entries = collection["total_entries"]
       end
     end
 

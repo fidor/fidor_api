@@ -23,9 +23,10 @@ describe FidorApi::Collection do
           { "a" => 1, "b" => 2, "c" => 3 }
         ],
         "collection" => {
-          "total_pages"  => 2,
-          "current_page" => 1,
-          "per_page"     => 10
+          "total_pages"   => 2,
+          "current_page"  => 1,
+          "per_page"      => 10,
+          "total_entries" => 20
         }
       }
     end
@@ -39,6 +40,7 @@ describe FidorApi::Collection do
       expect(subject.total_pages).to  eq 2
       expect(subject.current_page).to eq 1
       expect(subject.limit_value).to  eq 10
+      expect(subject.total_entries).to  eq 20
     end
   end
 
