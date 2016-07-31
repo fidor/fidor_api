@@ -64,6 +64,8 @@ module FidorApi
     attribute :own_interest,              :boolean
     attribute :us_citizen,                :boolean
     attribute :us_tax_payer,              :boolean
+    attribute :preferred_language,        :string
+    attribute :community_user_picture,    :string
 
     def self.all(access_token, options = {})
       Collection.build(self, request(access_token: access_token, endpoint: "/customers", query_params: options).body)
