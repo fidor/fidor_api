@@ -75,6 +75,10 @@ module FidorApi
       all(access_token, page: 1, per_page: 1).first
     end
 
+    def self.update(access_token, id, attributes)
+      new(request({ method: :put, access_token: access_token, endpoint: "/customers/#{id}", body: attributes}).body)
+    end
+
     def initialize(*args)
       super
       self.affiliate_uid = FidorApi.configuration.affiliate_uid
@@ -117,6 +121,10 @@ module FidorApi
 
       def first_customer
         Customer.first(token.access_token)
+      end
+
+      def update_customer(id, attributes)
+        Customer.update(token.access_token, id, attributes)
       end
     end
   end
