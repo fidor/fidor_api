@@ -7,6 +7,16 @@
 * Improve logger setup
   * Add new `logger` config option to pass existing logger
   * Add support for `faraday-detailed_logger` gem without adding additional dependency
+* Support for `/confirmable/actions` endpoint
+* New option `verify_ssl` (needed when testing against e.g. mock-services or fidor-internal test installations)
+* Logging for `FidorApi::ClientError` cases
+* New fields for contact- & bank-details in `/transfers` endpoint
+* Support for `/session_tokens` endpoint
+* Support for `/beneficiaries` endpoint
+* Provide `total_entries` attribute in collections
+* Support for `/messages/:id/content` endpoint
+* Support for updating customer records
+* New fields for customer endpoint
 
 ## v0.0.2
 
