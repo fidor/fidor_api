@@ -66,6 +66,8 @@ module FidorApi
     attribute :us_tax_payer,              :boolean
     attribute :preferred_language,        :string
     attribute :community_user_picture,    :string
+    attribute :country_of_birth,          :string
+    attribute :additional_first_name,     :string
 
     def self.all(access_token, options = {})
       Collection.build(self, request(access_token: access_token, endpoint: "/customers", query_params: options).body)
