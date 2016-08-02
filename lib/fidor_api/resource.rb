@@ -3,12 +3,12 @@ module FidorApi
   class Resource
     include ActiveModel::Model
 
-    attr_accessor :client
+    attr_accessor :client, :confirmable_action
 
     class Response
       include ActiveModel::Model
 
-      attr_accessor :headers, :body
+      attr_accessor :status, :headers, :body
 
       def body
         if headers["content-type"] =~ /json/
@@ -32,7 +32,7 @@ module FidorApi
         request.headers["Content-Type"]  = "application/json"
         request.body = body.to_json unless body.empty?
       end
-      Response.new(headers: response.headers, body: response.body)
+      Response.new(status: response.status, headers: response.headers, body: response.body)
     rescue Faraday::Error::ClientError => e
       case e.response[:status]
       when 401
@@ -51,6 +51,10 @@ module FidorApi
 
     def persisted?
       id.present?
+    end
+
+    def needs_confirmation?
+      self.confirmable_action.present?
     end
 
     private
@@ -75,7 +79,11 @@ module FidorApi
 
     def create(options = {})
       raise InvalidRecordError unless valid?
-      set_attributes self.class.request({ method: :post, access_token: client.try { |c| c.token.access_token }, endpoint: self.class.resource, body: as_json }.merge(options)).body
+      response = self.class.request({ method: :post, access_token: client.try { |c| c.token.access_token }, endpoint: self.class.resource, body: as_json }.merge(options))
+      if path = response.headers["X-Fidor-Confirmation-Path"]
+        self.confirmable_action = ConfirmableAction.new(id: path.split("/").last.to_i)
+      end
+      set_attributes(response.body)
       true
     rescue ValidationError => e
       map_errors(e.fields)

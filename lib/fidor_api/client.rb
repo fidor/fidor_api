@@ -8,6 +8,7 @@ module FidorApi
     include Account::ClientSupport
     include Card::ClientSupport
     include CardLimits::ClientSupport
+    include ConfirmableAction::ClientSupport
     include Customer::ClientSupport
     include Message::ClientSupport
     include Preauth::ClientSupport
