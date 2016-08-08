@@ -11,7 +11,7 @@ module FidorApi
   attr_accessor :configuration
 
   class Configuration
-    attr_accessor :callback_url, :oauth_url, :api_url, :client_id, :client_secret, :htauth_user, :htauth_password, :affiliate_uid, :os_type, :logging, :logger, :verify_ssl
+    attr_accessor :callback_url, :oauth_url, :api_url, :api_path, :client_id, :client_secret, :htauth_user, :htauth_password, :affiliate_uid, :os_type, :logging, :logger, :verify_ssl
   end
 
   def configure

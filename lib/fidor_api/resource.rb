@@ -24,7 +24,7 @@ module FidorApi
     end
 
     def self.request(method: :get, access_token: nil, endpoint: nil, query_params: {}, body: {}, htauth: false)
-      response = connection(htauth: htauth).public_send(method, endpoint) do |request|
+      response = connection(htauth: htauth).public_send(method, [FidorApi.configuration.api_path, endpoint].compact.join) do |request|
         request.params = query_params
         request.headers = {}
         request.headers["Authorization"] = "Bearer #{access_token}" if access_token
