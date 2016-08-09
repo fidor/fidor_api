@@ -21,7 +21,7 @@ module FidorApi
     attribute :verified,               :boolean
 
     def self.all(access_token, options = {})
-      Collection.build(self, request(access_token: access_token, endpoint: resource, query_params: options).body)
+      Collection.build(self, request(access_token: access_token, endpoint: "/#{resource}", query_params: options).body)
     end
 
     def self.find(access_token, id)
