@@ -6,6 +6,7 @@ module FidorApi
 
     attribute :id,                     :string
     attribute :account_id,             :string
+    attribute :unique_name,            :string
     attribute :contact_name,           :string
     attribute :contact_address_line_1, :string
     attribute :contact_address_line_2, :string

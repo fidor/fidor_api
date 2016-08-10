@@ -9,32 +9,34 @@ module FidorApi
 
         base.validates *required_attributes, presence: true
         base.validates *required_beneficiary_attributes, presence: true, unless: :beneficiary_reference_passed?
+        base.validates :beneficiary_unique_name, presence: true, if: :create_beneficiary
 
-        base.attribute :id,                     :string
-        base.attribute :account_id,             :string
-        base.attribute :external_uid,           :string
-        base.attribute :subject,                :string
-        base.attribute :currency,               :string
-        base.attribute :subject,                :string
-        base.attribute :state,                  :string
+        base.attribute :id,                      :string
+        base.attribute :account_id,              :string
+        base.attribute :external_uid,            :string
+        base.attribute :subject,                 :string
+        base.attribute :currency,                :string
+        base.attribute :subject,                 :string
+        base.attribute :state,                   :string
         base.amount_attribute :amount
 
-        base.attribute :contact_name,           :string
-        base.attribute :contact_address_line_1, :string
-        base.attribute :contact_address_line_2, :string
-        base.attribute :contact_city,           :string
-        base.attribute :contact_country,        :string
-        base.attribute :bank_name,              :string
-        base.attribute :bank_address_line_1,    :string
-        base.attribute :bank_address_line_2,    :string
-        base.attribute :bank_city,              :string
-        base.attribute :bank_country,           :string
-        base.attribute :create_beneficiary,     :boolean
+        base.attribute :beneficiary_unique_name, :string
+        base.attribute :contact_name,            :string
+        base.attribute :contact_address_line_1,  :string
+        base.attribute :contact_address_line_2,  :string
+        base.attribute :contact_city,            :string
+        base.attribute :contact_country,         :string
+        base.attribute :bank_name,               :string
+        base.attribute :bank_address_line_1,     :string
+        base.attribute :bank_address_line_2,     :string
+        base.attribute :bank_city,               :string
+        base.attribute :bank_country,            :string
+        base.attribute :create_beneficiary,      :boolean
 
-        base.attribute :beneficiary_id,         :string
+        base.attribute :beneficiary_id,          :string
 
-        base.attribute :created_at,             :time
-        base.attribute :updated_at,             :time
+        base.attribute :created_at,              :time
+        base.attribute :updated_at,              :time
 
         base.singleton_class.instance_eval do
           define_method :resource do
@@ -79,6 +81,7 @@ module FidorApi
         else
           {
             beneficiary: {
+              unique_name: beneficiary_unique_name.presence,
               contact: {
                 name:           contact_name,
                 address_line_1: contact_address_line_1,
@@ -102,6 +105,8 @@ module FidorApi
       end
 
       def set_beneficiary_attributes(attrs)
+        self.beneficiary_unique_name   = attrs.fetch("beneficiary", {})["unique_name"]
+
         self.contact_name           = attrs.fetch("beneficiary", {}).fetch("contact", {})["name"]
         self.contact_address_line_1 = attrs.fetch("beneficiary", {}).fetch("contact", {})["address_line_1"]
         self.contact_address_line_2 = attrs.fetch("beneficiary", {}).fetch("contact", {})["address_line_2"]
@@ -127,6 +132,8 @@ module FidorApi
         fields.each do |hash|
           if respond_to? hash["field"].to_sym
             errors.add(hash["field"].to_sym, hash["message"])
+          elsif hash["field"] == "beneficiary.unique_name"
+            errors.add(:beneficiary_unique_name, hash["message"])
           elsif hash["field"].start_with?(ROUTING_INFO_ERROR_PREFIX)
             invalid_field = hash["field"][ROUTING_INFO_ERROR_PREFIX.size..-1]
             errors.add(invalid_field, hash["key"], message: hash["message"])
