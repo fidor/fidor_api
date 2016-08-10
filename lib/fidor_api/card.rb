@@ -18,6 +18,7 @@ module FidorApi
     attribute :state,                     :string
     attribute :lock_reason,               :string
     attribute :disabled,                  :boolean
+    attribute :address,                   :json
     attribute :created_at,                :time
     attribute :updated_at,                :time
 
@@ -27,10 +28,14 @@ module FidorApi
     amount_attribute :transaction_volume_limit
 
     def self.required_attributes
-      [ :account_id, :type, :design, :currency, :pin ]
+      %i(account_id type)
     end
 
-    validates *required_attributes, presence: true
+    def self.writeable_attributes
+      required_attributes + %i(pin address)
+    end
+
+    validates(*required_attributes, presence: true)
 
     def self.all(access_token, options = {})
       Collection.build(self, request(access_token: access_token, endpoint: "/cards", query_params: options).body)
@@ -59,7 +64,7 @@ module FidorApi
     end
 
     def as_json
-      attributes.slice *self.class.required_attributes
+      attributes.slice(*self.class.writeable_attributes)
     end
 
     private

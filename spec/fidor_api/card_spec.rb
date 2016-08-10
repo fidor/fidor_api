@@ -81,8 +81,6 @@ describe FidorApi::Card do
         card = client.build_card(
           account_id: "875",
           type:       "fidor_debit_master_card",
-          design:     "debit-card",
-          currency:   "EUR",
           pin:        "4711"
         )
 
@@ -92,8 +90,6 @@ describe FidorApi::Card do
         expect(card.account_id).to  eq "875"
         expect(card.inscription).to eq "Philipp Müller"
         expect(card.type).to        eq "fidor_debit_master_card"
-        expect(card.design).to      eq "debit-card"
-        expect(card.currency).to    eq "EUR"
         expect(card.state).to       eq "card_registration_pending"
       end
     end

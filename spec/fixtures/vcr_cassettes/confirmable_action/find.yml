@@ -53,7 +53,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"id":"8437c0c7-f704-4fc8-8ee0-3c18aedc8484","type":"confirmable/transfer/complete","message":"Action requires
-        confirmation","steps_left":["otp"],"steps_completed":[],"path":"/fidor_api/confirmable/actions/15","result":null,"resource":{"id":"39b268eb-e301-42c9-8333-d5e3065845b6","account_id":"29208706","external_uid":"4279762F8","amount":1000,"currency":"AED","subject":"Money
+        confirmation","steps_left":["otp"],"steps_completed":[],"path":"/fidor_api/confirmable/actions/15","result":null,"resource":{"id":"39b268eb-e301-42c9-8333-d5e3065845b6","account_id":"29208706","external_uid":"4279762F8","amount":1000,"currency":"USD","subject":"Money
         for you","state":"created","beneficiary":{"contact":{"name":"John Doe"},"routing_type":"ACH","routing_info":{"account_number":"1234567890","routing_code":"123456789"}},"created_at":"2016-06-28T12:32:05Z","updated_at":"2016-06-28T12:32:05Z"},"succeeded_at":null,"failed_at":null,"errored_at":null,"created_at":"2016-06-28T12:32:05Z","updated_at":"2016-06-28T12:32:05Z"}'
     http_version:
   recorded_at: Tue, 28 Jun 2016 15:15:08 GMT
