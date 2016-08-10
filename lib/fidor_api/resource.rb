@@ -1,5 +1,4 @@
 module FidorApi
-
   class Resource
     include ActiveModel::Model
 
@@ -31,6 +30,10 @@ module FidorApi
         request.headers["Accept"]        = "application/vnd.fidor.de; version=1,text/json"
         request.headers["Content-Type"]  = "application/json"
         request.body = body.to_json unless body.empty?
+      end
+      if response.status == 303 && URI.parse(response.headers["Location"]).path =~ /^(\/fidor_api)?\/confirmable\//
+        confirmable_action = ConfirmableAction.new(id: URI.parse(response.headers["Location"]).path.split("/").last)
+        raise ApprovalRequired.new(confirmable_action)
       end
       Response.new(status: response.status, headers: response.headers, body: response.body)
     rescue Faraday::Error::ClientError => e
