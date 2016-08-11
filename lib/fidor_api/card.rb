@@ -1,5 +1,4 @@
 module FidorApi
-
   class Card < Resource
     extend ModelAttribute
     extend AmountAttributes
@@ -65,6 +64,12 @@ module FidorApi
 
     def as_json
       attributes.slice(*self.class.writeable_attributes)
+    end
+
+    # comfort shorthands for easier validations
+    %w(name line_1 line_2 city postal_code country).each do |field|
+      define_method("address_#{field}") { address.try :[], field }
+      define_method("address_#{field}=") { |val| self.address ||= {}; address[field] = val }
     end
 
     private

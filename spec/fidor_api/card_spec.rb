@@ -95,4 +95,11 @@ describe FidorApi::Card do
     end
   end
 
+  describe "address" do
+    it "supports shorthands" do
+      card = described_class.new(address_name: 'Hans')
+      expect(card.address_name).to eq('Hans')
+      expect(card.address['name']).to eq('Hans')
+    end
+  end
 end
