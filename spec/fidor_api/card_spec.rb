@@ -47,6 +47,17 @@ describe FidorApi::Card do
     end
   end
 
+  describe ".activate" do
+    it "asks for confirmation" do
+      VCR.use_cassette("card/activate", record: :once) do
+        card = client.card 8
+        expect(card.state).to eq 'card_registration_completed'
+
+        expect { client.activate_card(8) }.to raise_error(FidorApi::ApprovalRequired)
+      end
+    end
+  end
+
   describe ".lock" do
     it "locks the card" do
       VCR.use_cassette("card/lock", record: :once) do
@@ -71,6 +82,17 @@ describe FidorApi::Card do
 
         card = client.card 42
         expect(card.disabled).to be false
+      end
+    end
+  end
+
+  describe ".cancel" do
+    it "asks for confirmation" do
+      VCR.use_cassette("card/cancel", record: :once) do
+        card = client.card 8
+        expect(card.state).to eq 'active'
+
+        expect { client.cancel_card(8) }.to raise_error(FidorApi::ApprovalRequired)
       end
     end
   end

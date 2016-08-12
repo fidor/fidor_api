@@ -1,0 +1,121 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://aps.fidor.de/cards/8
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer f859032a6ca0a4abb2be0583b8347937
+      Accept:
+      - application/vnd.fidor.de; version=1,text/json
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message:
+    headers:
+      date:
+      - Fri, 12 Aug 2016 14:27:12 GMT
+      server:
+      - Apache/2.4.18 (Unix) Phusion_Passenger/5.0.28
+      cache-control:
+      - no-store, must-revalidate, private, max-age=0
+      x-ratelimit-limit:
+      - '9999'
+      x-ratelimit-reset:
+      - '168'
+      x-ratelimit-remaining:
+      - '9994'
+      x-miniprofiler-ids:
+      - '["hx1qhppc22konignvjox","3cd7z647kaxr46d988fc","erbnefr18nbdivj47093","5aiaedv7x1z6nonall8l","ve8u22lp6ca9s3kzi47o","f78gw4v6dflomm8twgiu","oie64vipfq1447p4zum0","wc4iqghlspcxbio7sxz6","aqdywpz9z3zijgt41yp7","cx4vfnguu4bbpwxhsqfk"]'
+      x-xss-protection:
+      - 1; mode=block
+      x-request-id:
+      - fc040964-156f-4c1a-b668-c3bc6cd4481e
+      x-runtime:
+      - '0.337016'
+      x-frame-options:
+      - SAMEORIGIN
+      x-content-type-options:
+      - nosniff
+      x-powered-by:
+      - Phusion Passenger 5.0.28
+      status:
+      - 200 OK
+      content-type:
+      - application/json; charset=utf-8
+      set-cookie:
+      - __profilin=p%3Dt; path=/, __profilin=p%3Dt; path=/, __profilin=p%3Dt; path=/
+      connection:
+      - close
+      transfer-encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"id":8,"account_id":"32505377","inscription":"SOME INSCRIPTION","type":"fidor_debit_master_card","design":"debit-card","currency":"EUR","physical":true,"valid_until":"2019-08-30T22:00:00Z","balance":0,"atm_limit":30000,"transaction_single_limit":40900,"transaction_volume_limit":50000,"email_notification":true,"sms_notification":false,"payed":true,"state":"active","lock_reason":"lost","disabled":false,"atm_details":{"free_period":{"range":"1month","beginning_at":"2016-07-31T22:00:00Z","ending_at":"2016-08-31T21:59:59Z","recurring":true,"free_occurrences":1,"occurrences":0},"fee_fixed":250},"created_at":"2016-08-11T12:58:22Z","updated_at":"2016-08-12T14:08:10Z"}'
+    http_version:
+  recorded_at: Fri, 12 Aug 2016 14:27:13 GMT
+- request:
+    method: put
+    uri: https://aps.fidor.de/cards/8/cancel
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer f859032a6ca0a4abb2be0583b8347937
+      Accept:
+      - application/vnd.fidor.de; version=1,text/json
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 303
+      message:
+    headers:
+      date:
+      - Fri, 12 Aug 2016 14:27:13 GMT
+      server:
+      - Apache/2.4.18 (Unix) Phusion_Passenger/5.0.28
+      cache-control:
+      - no-cache
+      x-ratelimit-limit:
+      - '9999'
+      x-ratelimit-reset:
+      - '168'
+      x-ratelimit-remaining:
+      - '9993'
+      x-xss-protection:
+      - 1; mode=block
+      x-request-id:
+      - 33e2ae92-bfd6-4fe1-9e3f-3c46713831a0
+      x-runtime:
+      - '0.314843'
+      x-frame-options:
+      - SAMEORIGIN
+      x-content-type-options:
+      - nosniff
+      x-powered-by:
+      - Phusion Passenger 5.0.28
+      location:
+      - https://aps.fidor.de/confirmable/actions/d87d3913-90cb-4965-80c5-e3ebf9ef6cb3
+      status:
+      - 303 See Other
+      content-type:
+      - text/html; charset=utf-8
+      set-cookie:
+      - __profilin=p%3Dt; path=/, __profilin=p%3Dt; path=/
+      connection:
+      - close
+      transfer-encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: <html><body>You are being <a href="https://aps.fidor.de/confirmable/actions/d87d3913-90cb-4965-80c5-e3ebf9ef6cb3">redirected</a>.</body></html>
+    http_version:
+  recorded_at: Fri, 12 Aug 2016 14:27:13 GMT
+recorded_with: VCR 2.9.3

@@ -44,6 +44,11 @@ module FidorApi
       new(request(access_token: access_token, endpoint: "/cards/#{id}").body)
     end
 
+    def self.activate(access_token, id)
+      request(method: :put, access_token: access_token, endpoint: "/cards/#{id}/activate")
+      true
+    end
+
     def self.lock(access_token, id)
       request(method: :put, access_token: access_token, endpoint: "/cards/#{id}/lock")
       true
@@ -51,6 +56,11 @@ module FidorApi
 
     def self.unlock(access_token, id)
       request(method: :put, access_token: access_token, endpoint: "/cards/#{id}/unlock")
+      true
+    end
+
+    def self.cancel(access_token, id)
+      request(method: :put, access_token: access_token, endpoint: "/cards/#{id}/cancel")
       true
     end
 
@@ -87,12 +97,20 @@ module FidorApi
         Card.find(token.access_token, id)
       end
 
+      def activate_card(id)
+        Card.activate(token.access_token, id)
+      end
+
       def lock_card(id)
         Card.lock(token.access_token, id)
       end
 
       def unlock_card(id)
         Card.unlock(token.access_token, id)
+      end
+
+      def cancel_card(id)
+        Card.cancel(token.access_token, id)
       end
 
       def build_card(attributes = {})
