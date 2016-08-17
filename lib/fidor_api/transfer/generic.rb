@@ -8,7 +8,6 @@ module FidorApi
         base.extend AmountAttributes
 
         base.validates *required_attributes, presence: true
-        base.validates *required_beneficiary_attributes, presence: true, unless: :beneficiary_reference_passed?
         base.validates :beneficiary_unique_name, presence: true, if: :create_beneficiary
 
         base.attribute :id,                      :string
@@ -47,10 +46,6 @@ module FidorApi
 
       def self.required_attributes
         [ :account_id, :external_uid, :amount, :subject, :currency ]
-      end
-
-      def self.required_beneficiary_attributes
-        [ :contact_name, :account_number, :routing_code ]
       end
 
       def as_json

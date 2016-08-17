@@ -6,6 +6,7 @@ module FidorApi
       attribute :account_number, :string
       attribute :routing_code,   :string
 
+      validates :contact_name,   presence: true, unless: :beneficiary_reference_passed?
       validates :account_number, presence: true, unless: :beneficiary_reference_passed?
       validates :routing_code,   presence: true, unless: :beneficiary_reference_passed?
 
