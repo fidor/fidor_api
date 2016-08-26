@@ -22,12 +22,12 @@ module FidorApi
       set_attributes(attributes)
     end
 
-    def self.request(method: :get, access_token: nil, endpoint: nil, query_params: {}, body: {}, htauth: false)
+    def self.request(method: :get, access_token: nil, version: '1', endpoint: nil, query_params: {}, body: {}, htauth: false)
       response = connection(htauth: htauth).public_send(method, [FidorApi.configuration.api_path, endpoint].compact.join) do |request|
         request.params = query_params
         request.headers = {}
         request.headers["Authorization"] = "Bearer #{access_token}" if access_token
-        request.headers["Accept"]        = "application/vnd.fidor.de; version=1,text/json"
+        request.headers["Accept"]        = "application/vnd.fidor.de; version=#{version},text/json"
         request.headers["Content-Type"]  = "application/json"
         request.body = body.to_json unless body.empty?
       end
