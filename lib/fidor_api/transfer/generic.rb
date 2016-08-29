@@ -8,7 +8,7 @@ module FidorApi
         base.extend AmountAttributes
 
         base.validates *required_attributes, presence: true
-        base.validates :beneficiary_unique_name, presence: true, if: :create_beneficiary
+        base.validates :beneficiary_unique_name, presence: true, if: -> { create_beneficiary && !beneficiary_reference_passed? }
 
         base.attribute :id,                      :string
         base.attribute :account_id,              :string
