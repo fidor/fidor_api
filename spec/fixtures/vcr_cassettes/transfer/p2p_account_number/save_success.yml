@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://aps.fidor.de/transfers
+    body:
+      encoding: UTF-8
+      string: '{"account_id":"29208706","external_uid":"4279762F8","amount":1000,"currency":"USD","subject":"Money
+        for you","beneficiary":{"unique_name":"Johnny Doe","contact":{},"bank":{},"routing_type":"FOS_P2P_ACCOUNT_NUMBER","routing_info":{"account_number":"1234567"}}}'
+    headers:
+      Authorization:
+      - Bearer 0816d2665999fbd76a69c6f0050a49fa
+      Accept:
+      - application/vnd.fidor.de; version=1,text/json
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message:
+    headers:
+      date:
+      - Mon, 22 Aug 2016 12:34:04 GMT
+      content-type:
+      - application/json; charset=utf-8
+      content-length:
+      - '1564'
+      x-request-id:
+      - 28d638ac-4296-4d1e-ae57-87ad8f92fc2f
+      x-fidor-confirmation-path:
+      - "/fidor_api/confirmable/actions/8437c0c7-f704-4fc8-8ee0-3c18aedc8484"
+      x-runtime:
+      - '0.005826'
+      via:
+      - 1.1 aps.fidor.de
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"account_id":"29208706","external_uid":"4279762F8","amount":1000,"currency":"USD","subject":"Money
+        for you","beneficiary":{"contact":{"name":"John Doe"},"routing_type":"FOS_P2P_ACCOUNT_NUMBER","routing_info":{"account_number":"1234567"}}}'
+    http_version:
+  recorded_at: Mon, 22 Aug 2016 12:34:03 GMT
+recorded_with: VCR 2.9.3
