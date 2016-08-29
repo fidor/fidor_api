@@ -131,7 +131,7 @@ module FidorApi
             errors.add(:beneficiary_unique_name, hash["message"])
           elsif hash["field"].start_with?(ROUTING_INFO_ERROR_PREFIX)
             invalid_field = hash["field"][ROUTING_INFO_ERROR_PREFIX.size..-1]
-            errors.add(invalid_field, hash["key"], message: hash["message"])
+            errors.add(invalid_field, hash["key"].to_sym, message: hash["message"])
           end
         end
       end
