@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: delete
+    uri: https://aps.fidor.de/beneficiaries/9e6155e9-9b6f-464f-a14f-4db44e2ea1e2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer 73570bdde25a22bc7219acd1d43a1cde
+      Accept:
+      - application/vnd.fidor.de; version=1,text/json
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 204
+      message:
+    headers:
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      x-content-type-options:
+      - nosniff
+      x-ratelimit-limit:
+      - '60'
+      x-ratelimit-remaining:
+      - '58'
+      x-ratelimit-reset:
+      - '72'
+      cache-control:
+      - no-store, must-revalidate, private, max-age=0
+      x-request-id:
+      - f4991cf7-653f-4285-ac8f-e1831d3dc618
+      x-runtime:
+      - '0.098926'
+      set-cookie:
+      - __profilin=p%3Dt; path=/, __profilin=p%3Dt; path=/, __profilin=p%3Dt; path=/
+      x-miniprofiler-ids:
+      - '["gc491csxxcg67326ulut","e0geagr997lhneqvy9jo","io7mgmtts1q8xexel0f1","hgs7uxullw051c6v3phk","by3rv24d7ooy4ogvoz6z","k6kopttd2oxkz6ckqylu","fengurtqi9pdwbzt2fr9","m4wodja7mafrlizeypmx","c4id4svfm3hjtnlog1v4","4e5er1y1zmalmtlo705a"]'
+      connection:
+      - close
+      server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version:
+  recorded_at: Thu, 08 Sep 2016 10:13:49 GMT
+recorded_with: VCR 2.9.3

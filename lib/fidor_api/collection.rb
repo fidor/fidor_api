@@ -12,7 +12,15 @@ module FidorApi
         data       = response["data"]
         collection = response["collection"]
 
-        object.records = data.map { |record| klass.new(record) }
+        object.records = data.map do |record|
+          class_to_instantiate = if block_given?
+            yield(record)
+          else
+            klass
+          end
+
+          class_to_instantiate.new(record)
+        end
 
         object.total_pages   = collection["total_pages"]
         object.current_page  = collection["current_page"]

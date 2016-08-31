@@ -1,12 +1,11 @@
 require "spec_helper"
 
 describe FidorApi::Beneficiary do
-
   let(:client) { FidorApi::Client.new(token: token) }
   let(:token)  { FidorApi::Token.new(access_token: "f859032a6ca0a4abb2be0583b8347937") }
 
   def expect_correct_beneficiary(beneficiary)
-    expect(beneficiary).to be_instance_of FidorApi::Beneficiary
+    expect(beneficiary).to be_instance_of         FidorApi::Beneficiary::ACH
     expect(beneficiary.id).to                     eq "6422ec33-4935-41cc-af26-6af40c4c1349"
     expect(beneficiary.account_id).to             eq "56827782"
     expect(beneficiary.contact_name).to           eq "John Doe"
@@ -41,9 +40,9 @@ describe FidorApi::Beneficiary do
     it "returns one record" do
       VCR.use_cassette("beneficiary/find", record: :once) do
         beneficiary = client.beneficiary "6422ec33-4935-41cc-af26-6af40c4c1349"
+        expect(beneficiary).to be_instance_of FidorApi::Beneficiary::ACH
         expect_correct_beneficiary beneficiary
       end
     end
   end
-
 end

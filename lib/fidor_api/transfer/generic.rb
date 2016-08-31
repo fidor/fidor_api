@@ -115,14 +115,6 @@ module FidorApi
         self.bank_country           = attrs.fetch("beneficiary", {}).fetch("bank",    {})["country"]
       end
 
-      def contact
-        (beneficiary || {}).fetch("contact", {})
-      end
-
-      def routing_info
-        (beneficiary || {}).fetch("routing_info", {})
-      end
-
       def map_errors(fields)
         fields.each do |hash|
           if respond_to? hash["field"].to_sym

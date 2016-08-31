@@ -31,6 +31,7 @@ module FidorApi
         request.headers["Content-Type"]  = "application/json"
         request.body = body.to_json unless body.empty?
       end
+
       if response.status == 303 && URI.parse(response.headers["Location"]).path =~ /^(\/fidor_api)?\/confirmable\//
         confirmable_action = ConfirmableAction.new(id: URI.parse(response.headers["Location"]).path.split("/").last)
         raise ApprovalRequired.new(confirmable_action)
