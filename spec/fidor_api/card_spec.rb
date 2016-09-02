@@ -16,8 +16,8 @@ describe FidorApi::Card do
     expect(card.physical).to                   be true
     expect(card.balance).to                    eq 0
     expect(card.atm_limit).to                  eq BigDecimal.new("1000.0")
-    expect(card.transaction_single_limit).to   eq BigDecimal.new("2000.0")
-    expect(card.transaction_volume_limit).to   eq BigDecimal.new("3000.0")
+    expect(card.single_limit).to               eq BigDecimal.new("2000.0")
+    expect(card.volume_limit).to               eq BigDecimal.new("3000.0")
     expect(card.email_notification).to         be true
     expect(card.sms_notification).to           eq false
     expect(card.payed).to                      be true
@@ -122,6 +122,13 @@ describe FidorApi::Card do
       card = described_class.new(address_name: 'Hans')
       expect(card.address_name).to eq('Hans')
       expect(card.address['name']).to eq('Hans')
+    end
+  end
+
+  describe "limit methods" do
+    it "creates them dynamically" do
+      card = described_class.new(limits: {'something' => 10000})
+      expect(card.something_limit).to eq(100)
     end
   end
 end
