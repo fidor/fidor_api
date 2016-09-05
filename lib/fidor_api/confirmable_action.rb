@@ -21,7 +21,11 @@ module FidorApi
     end
 
     def self.update(access_token, id, attributes)
-      new(request({ method: :put, access_token: access_token, endpoint: "/confirmable/actions/#{id}", body: attributes}).body)
+      new(request(method: :put, access_token: access_token, endpoint: "/confirmable/actions/#{id}", body: attributes).body)
+    end
+
+    def self.refresh(access_token, id)
+      request(method: :put, access_token: access_token, endpoint: "/confirmable/actions/#{id}/refresh")
     end
 
     module ClientSupport
@@ -35,6 +39,10 @@ module FidorApi
 
       def update_confirmable_action(id, attributes)
         ConfirmableAction.update(token.access_token, id, attributes)
+      end
+
+      def refresh_confirmable_action(id)
+        ConfirmableAction.refresh(token.access_token, id)
       end
     end
   end

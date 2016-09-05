@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://aps.fidor.de/confirmable/actions/1f4bd7eb-0e21-44bb-8a55-6a0385861ee3/refresh
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer e4e06da63df9449ddf4aa0cd4e07d079
+      Accept:
+      - application/vnd.fidor.de; version=1,text/json
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 204
+      message:
+    headers:
+      date:
+      - Mon, 05 Sep 2016 16:10:31 GMT
+      server:
+      - Apache/2.4.18 (Unix) Phusion_Passenger/5.0.28
+      cache-control:
+      - no-store, must-revalidate, private, max-age=0
+      x-ratelimit-limit:
+      - '9999'
+      x-ratelimit-reset:
+      - '269'
+      x-ratelimit-remaining:
+      - '9996'
+      x-miniprofiler-ids:
+      - '["gmkxe3ovzheha482rzc1","j081vmujnf5l0xg0ba55","o0dl7deivaibsialuypg","ma0nl6dmbcukndszcmby","bl66vjzuoe3y7lneyckx","x9jri1g9vokco81855tu","gjzyzbc7nhw8584u9ju7","l7sqhvr8vmfti2gtjpnp","1e108ulzxzlcpuni00wh","bvkggepoj360821zl091"]'
+      x-xss-protection:
+      - 1; mode=block
+      x-request-id:
+      - 7464cb05-6538-4c16-90ce-e850ea179cff
+      x-runtime:
+      - '0.364824'
+      x-frame-options:
+      - SAMEORIGIN
+      x-content-type-options:
+      - nosniff
+      x-powered-by:
+      - Phusion Passenger 5.0.28
+      status:
+      - 204 No Content
+      content-length:
+      - '0'
+      set-cookie:
+      - __profilin=p%3Dt; path=/, __profilin=p%3Dt; path=/, __profilin=p%3Dt; path=/
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version:
+  recorded_at: Mon, 05 Sep 2016 16:10:32 GMT
+recorded_with: VCR 2.9.3

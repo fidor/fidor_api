@@ -3,7 +3,7 @@ require "spec_helper"
 describe FidorApi::ConfirmableAction do
 
   let(:client) { FidorApi::Client.new(token: token) }
-  let(:token)  { FidorApi::Token.new(access_token: "0816d2665999fbd76a69c6f0050a49fA") }
+  let(:token)  { FidorApi::Token.new(access_token: "e4e06da63df9449ddf4aa0cd4e07d079") }
 
   def expect_correct_action(action)
     expect(action).to be_instance_of FidorApi::ConfirmableAction
@@ -21,5 +21,14 @@ describe FidorApi::ConfirmableAction do
     end
   end
 
-end
+  describe ".refresh" do
+    it "refreshes a confirmable action" do
+      VCR.use_cassette("confirmable_action/refresh", record: :once) do
+        expect {
+          client.refresh_confirmable_action "1f4bd7eb-0e21-44bb-8a55-6a0385861ee3"
+        }.to_not raise_error
+      end
+    end
+  end
 
+end
