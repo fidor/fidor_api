@@ -2,13 +2,13 @@
 http_interactions:
 - request:
     method: get
-    uri: https://aps.fidor.de/cards/42/limits
+    uri: https://aps.fidor.de/cards/7/limits
     body:
       encoding: US-ASCII
       string: ''
     headers:
       Authorization:
-      - Bearer f859032a6ca0a4abb2be0583b8347937
+      - Bearer 157a51be230c2d7f186d7bb249d41d75
       Accept:
       - application/vnd.fidor.de; version=1,text/json
       Content-Type:
@@ -19,42 +19,44 @@ http_interactions:
       message:
     headers:
       date:
-      - Fri, 25 Mar 2016 10:48:35 GMT
+      - Mon, 05 Sep 2016 14:08:36 GMT
+      server:
+      - Apache/2.4.18 (Unix) Phusion_Passenger/5.0.28
+      cache-control:
+      - no-store, must-revalidate, private, max-age=0
+      x-ratelimit-limit:
+      - '60'
+      x-ratelimit-reset:
+      - '384'
+      x-ratelimit-remaining:
+      - '59'
+      x-miniprofiler-ids:
+      - '["pyxhnx09x6s3k2yjjgex","j081vmujnf5l0xg0ba55","o0dl7deivaibsialuypg","ma0nl6dmbcukndszcmby","bl66vjzuoe3y7lneyckx","x9jri1g9vokco81855tu","gjzyzbc7nhw8584u9ju7","l7sqhvr8vmfti2gtjpnp","1e108ulzxzlcpuni00wh","bvkggepoj360821zl091"]'
+      x-xss-protection:
+      - 1; mode=block
+      x-request-id:
+      - f1216551-a649-442b-8006-e25b2c8ed94c
+      x-runtime:
+      - '0.582559'
+      x-frame-options:
+      - SAMEORIGIN
+      x-content-type-options:
+      - nosniff
+      x-powered-by:
+      - Phusion Passenger 5.0.28
       status:
       - 200 OK
       content-type:
       - application/json; charset=utf-8
-      x-ratelimit-limit:
-      - '10000'
-      x-ratelimit-remaining:
-      - '9973'
-      x-ratelimit-reset:
-      - '686'
-      x-ua-compatible:
-      - IE=Edge
-      cache-control:
-      - no-store, must-revalidate, private, max-age=0
-      x-request-id:
-      - 5d874eecc2816781a74ce6263b01a13f
-      x-runtime:
-      - '0.037135'
-      x-miniprofiler-ids:
-      - '["si6bs4uoqnheinncy8np","xplab53tesegv7fmzmcg","x76imk6h0sf1ha3x6l20","q73wdx548at6v7yp8ges","5vk7kgh2wvkquvc347g3","tnvb4z26upeodsn4oddw","l38rb1jkmzpdx27u50ci","s1baug81v7nyuebx8hfe","6x453df7bh8virtyhwk6","91ruvgpnguelbxh2i01w"]'
       set-cookie:
       - __profilin=p%3Dt; path=/, __profilin=p%3Dt; path=/, __profilin=p%3Dt; path=/
-      via:
-      - 1.1 aps.fidor.de
-      location:
-      - ''
-      x-fidor-api-machine:
-      - api-sandbox.fidor.intern
       connection:
       - close
       transfer-encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"atm_limit":100000,"transaction_single_limit":100000,"transaction_volume_limit":100000}'
+      string: '{"limits":{"atm":25000,"pos":65000,"single":100000,"volume":100000},"currency":"EUR"}'
     http_version:
-  recorded_at: Fri, 25 Mar 2016 10:48:35 GMT
+  recorded_at: Mon, 05 Sep 2016 14:08:37 GMT
 recorded_with: VCR 2.9.3

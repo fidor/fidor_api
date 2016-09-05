@@ -1,13 +1,9 @@
 module FidorApi
-
   class CardLimits < Resource
     extend ModelAttribute
-    extend AmountAttributes
+    include CardLimitAttribute
 
     attribute :id, :integer
-    amount_attribute :atm_limit
-    amount_attribute :transaction_single_limit
-    amount_attribute :transaction_volume_limit
 
     def self.find(access_token, id)
       attributes = request(access_token: access_token, endpoint: "/cards/#{id}/limits").body
@@ -26,6 +22,10 @@ module FidorApi
           body:         record.as_json
         ).body
       end
+    end
+
+    def as_json
+      attributes.slice(:limits)
     end
 
     module ClientSupport

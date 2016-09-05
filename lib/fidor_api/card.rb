@@ -2,6 +2,7 @@ module FidorApi
   class Card < Resource
     extend ModelAttribute
     extend AmountAttributes
+    include CardLimitAttribute
 
     attribute :id,                        :integer
     attribute :account_id,                :string
@@ -19,7 +20,6 @@ module FidorApi
     attribute :lock_reason,               :string
     attribute :disabled,                  :boolean
     attribute :address,                   :json
-    attribute :limits,                    :json
     attribute :created_at,                :time
     attribute :updated_at,                :time
 
@@ -79,20 +79,6 @@ module FidorApi
     %w(name line_1 line_2 city postal_code country).each do |field|
       define_method("address_#{field}") { address.try :[], field }
       define_method("address_#{field}=") { |val| self.address ||= {}; address[field] = val }
-    end
-
-    def method_missing(symbol, *args)
-      if m = symbol.to_s.match(/(.*)_limit$/)
-        limits[m[1]] && BigDecimal.new((limits[m[1]]/100).to_s)
-      elsif m = symbol.to_s.match(/(.*)_limit=$/)
-        limits[m[1]] = args[0].to_i * 100
-      else
-        super
-      end
-    end
-
-    def limits
-      attributes[:limits] ||= {}
     end
 
     private
