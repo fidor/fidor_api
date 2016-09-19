@@ -7,25 +7,25 @@ describe FidorApi::Card do
 
   def expect_correct_card(card)
     expect(card).to be_instance_of FidorApi::Card
-    expect(card.id).to                         eq 42
-    expect(card.account_id).to                 eq "875"
-    expect(card.inscription).to                eq "Philipp Müller"
-    expect(card.type).to                       eq "fidor_debit_master_card"
-    expect(card.design).to                     eq "debit-card"
-    expect(card.currency).to                   eq "EUR"
-    expect(card.physical).to                   be true
-    expect(card.balance).to                    eq 0
-    expect(card.atm_limit).to                  eq BigDecimal.new("1000.0")
-    expect(card.single_limit).to               eq BigDecimal.new("2000.0")
-    expect(card.volume_limit).to               eq BigDecimal.new("3000.0")
-    expect(card.email_notification).to         be true
-    expect(card.sms_notification).to           eq false
-    expect(card.payed).to                      be true
-    expect(card.state).to                      eq "card_registration_completed"
-    expect(card.lock_reason).to                be_nil
-    expect(card.disabled).to                   be true
-    expect(card.created_at).to                 eq DateTime.new(2015, 11, 3, 11,  7, 25)
-    expect(card.updated_at).to                 eq DateTime.new(2015, 11, 9, 10, 55,  6)
+    expect(card.id).to                 eq 42
+    expect(card.account_id).to         eq "875"
+    expect(card.inscription).to        eq "Philipp Müller"
+    expect(card.type).to               eq "fidor_debit_master_card"
+    expect(card.design).to             eq "debit-card"
+    expect(card.currency).to           eq "EUR"
+    expect(card.physical).to           be true
+    expect(card.balance).to            eq 0
+    expect(card.atm_limit).to          eq 100_000
+    expect(card.single_limit).to       eq 200_000
+    expect(card.volume_limit).to       eq 300_000
+    expect(card.email_notification).to be true
+    expect(card.sms_notification).to   eq false
+    expect(card.payed).to              be true
+    expect(card.state).to              eq "card_registration_completed"
+    expect(card.lock_reason).to        be_nil
+    expect(card.disabled).to           be true
+    expect(card.created_at).to         eq DateTime.new(2015, 11, 3, 11,  7, 25)
+    expect(card.updated_at).to         eq DateTime.new(2015, 11, 9, 10, 55,  6)
   end
 
   describe ".all" do
@@ -128,7 +128,7 @@ describe FidorApi::Card do
   describe "limit methods" do
     it "creates them dynamically" do
       card = described_class.new(limits: {'something' => 10000})
-      expect(card.something_limit).to eq(100)
+      expect(card.something_limit).to eq(10000)
     end
   end
 end
