@@ -10,6 +10,32 @@ module FidorApi
 
   attr_accessor :configuration
 
+  autoload :Account,            'fidor_api/account'
+  autoload :AmountAttributes,   'fidor_api/amount_attributes'
+  autoload :ApprovalRequired,   'fidor_api/approval_required'
+  autoload :Auth,               'fidor_api/auth'
+  autoload :Beneficiary,        'fidor_api/beneficiary'
+  autoload :Card,               'fidor_api/card'
+  autoload :CardLimitAttribute, 'fidor_api/card_limit_attribute'
+  autoload :CardLimits,         'fidor_api/card_limits'
+  autoload :Client,             'fidor_api/client'
+  autoload :Collection,         'fidor_api/collection'
+  autoload :ConfirmableAction,  'fidor_api/confirmable_action'
+  autoload :Connectivity,       'fidor_api/connectivity'
+  autoload :Customer,           'fidor_api/customer'
+  autoload :Message,            'fidor_api/message'
+  autoload :Msisdn,             'fidor_api/msisdn'
+  autoload :Password,           'fidor_api/password'
+  autoload :Preauth,            'fidor_api/preauth'
+  autoload :PreauthDetails,     'fidor_api/preauth_details'
+  autoload :SessionToken,       'fidor_api/session_token'
+  autoload :Token,              'fidor_api/token'
+  autoload :TransactionDetails, 'fidor_api/transaction_details'
+  autoload :Transaction,        'fidor_api/transaction'
+  autoload :Transfer,           'fidor_api/transfer'
+  autoload :User,               'fidor_api/user'
+  autoload :Version,            'fidor_api/version'
+
   class Configuration
     attr_accessor :callback_url, :oauth_url, :api_url, :api_path, :client_id, :client_secret, :htauth_user, :htauth_password, :affiliate_uid, :os_type, :logging, :logger, :verify_ssl
   end
@@ -25,51 +51,11 @@ module FidorApi
 
     begin
       require "faraday/detailed_logger"
-    rescue LoadError => e
+    rescue LoadError
       configuration.logger.debug "NOTE: Install `faraday-detailed_logger` gem to get detailed log-output for debugging."
     end
   end
 end
 
-require "fidor_api/version"
 require "fidor_api/errors"
-require "fidor_api/token"
-require "fidor_api/auth"
-require "fidor_api/resource"
-require "fidor_api/collection"
-require "fidor_api/amount_attributes"
-require "fidor_api/user"
-require "fidor_api/account"
-require "fidor_api/beneficiary"
-require "fidor_api/beneficiary/base"
-require "fidor_api/beneficiary/generic"
-require "fidor_api/beneficiary/ach"
-require "fidor_api/beneficiary/p2p_account_number"
-require "fidor_api/beneficiary/p2p_phone"
-require "fidor_api/beneficiary/p2p_username"
-require "fidor_api/beneficiary/unknown"
-require "fidor_api/card_limit_attribute"
-require "fidor_api/card"
-require "fidor_api/card_limits"
-require "fidor_api/confirmable_action"
-require "fidor_api/customer"
-require "fidor_api/message"
-require "fidor_api/msisdn"
-require "fidor_api/session_token"
-require "fidor_api/transaction_details"
-require "fidor_api/transaction"
-require "fidor_api/password"
-require "fidor_api/preauth_details"
-require "fidor_api/preauth"
-require "fidor_api/transfer"
-require "fidor_api/transfer/base"
-require "fidor_api/transfer/generic"
-require "fidor_api/transfer/ach"
-require "fidor_api/transfer/fps"
-require "fidor_api/transfer/internal"
-require "fidor_api/transfer/sepa"
-require "fidor_api/transfer/p2p_account_number"
-require "fidor_api/transfer/p2p_phone"
-require "fidor_api/transfer/p2p_username"
-require "fidor_api/client"
-require "fidor_api/approval_required"
+

@@ -1,9 +1,9 @@
 require "spec_helper"
 
 describe FidorApi::Card do
-
-  let(:client) { FidorApi::Client.new(token: token) }
-  let(:token)  { FidorApi::Token.new(access_token: "f859032a6ca0a4abb2be0583b8347937") }
+  before do
+    FidorApi::Connectivity.access_token = 'f859032a6ca0a4abb2be0583b8347937'
+  end
 
   def expect_correct_card(card)
     expect(card).to be_instance_of FidorApi::Card
@@ -31,7 +31,7 @@ describe FidorApi::Card do
   describe ".all" do
     it "returns all card records" do
       VCR.use_cassette("card/all", record: :once) do
-        cards = client.cards
+        cards = FidorApi::Card.all
         expect(cards).to be_instance_of FidorApi::Collection
         expect_correct_card(cards.first)
       end
@@ -41,46 +41,45 @@ describe FidorApi::Card do
   describe ".find" do
     it "returns one card record" do
       VCR.use_cassette("card/find", record: :once) do
-        card = client.card 42
+        card = FidorApi::Card.find 42
         expect_correct_card(card)
       end
     end
   end
 
-  describe ".activate" do
+  describe '#activate' do
     it "asks for confirmation" do
       VCR.use_cassette("card/activate", record: :once) do
-        card = client.card 8
+        card = FidorApi::Card.find 8
         expect(card.state).to eq 'card_registration_completed'
-
-        expect { client.activate_card(8) }.to raise_error(FidorApi::ApprovalRequired)
+        expect { card.activate }.to raise_error(FidorApi::ApprovalRequired)
       end
     end
   end
 
-  describe ".lock" do
+  describe "#lock" do
     it "locks the card" do
       VCR.use_cassette("card/lock", record: :once) do
-        card = client.card 42
+        card = FidorApi::Card.find 42
         expect(card.disabled).to be false
 
-        expect(client.lock_card(42)).to be true
+        expect(card.lock).to be true
 
-        card = client.card 42
+        card.reload
         expect(card.disabled).to be true
       end
     end
   end
 
-  describe ".unlock" do
+  describe "#unlock" do
     it "unlocks the card" do
       VCR.use_cassette("card/unlock", record: :once) do
-        card = client.card 42
+        card = FidorApi::Card.find 42
         expect(card.disabled).to be true
 
-        expect(client.unlock_card(42)).to be true
+        expect(card.unlock).to be true
 
-        card = client.card 42
+        card.reload
         expect(card.disabled).to be false
       end
     end
@@ -89,10 +88,10 @@ describe FidorApi::Card do
   describe ".cancel" do
     it "asks for confirmation" do
       VCR.use_cassette("card/cancel", record: :once) do
-        card = client.card 8
+        card = FidorApi::Card.find 8
         expect(card.state).to eq 'active'
 
-        expect { client.cancel_card(8) }.to raise_error(FidorApi::ApprovalRequired)
+        expect { card.cancel }.to raise_error(FidorApi::ApprovalRequired)
       end
     end
   end
@@ -100,7 +99,7 @@ describe FidorApi::Card do
   describe "#save" do
     it "creates a card object and sets it's data" do
       VCR.use_cassette("card/save_success", record: :once) do
-        card = client.build_card(
+        card = FidorApi::Card.new(
           account_id: "875",
           type:       "fidor_debit_master_card",
           pin:        "4711"

@@ -1,6 +1,8 @@
 module FidorApi
-  class ConfirmableAction < Resource
+  class ConfirmableAction < Connectivity::Resource
     extend ModelAttribute
+
+    self.endpoint = Connectivity::Endpoint.new('/confirmable/actions', :collection)
 
     attribute :id,              :string
     attribute :type,            :string
@@ -16,33 +18,26 @@ module FidorApi
 
     attribute :otp,             :string
 
-    def self.find(access_token, id)
-      new(request(access_token: access_token, endpoint: "/confirmable/actions/#{id}").body)
-    end
-
-    def self.update(access_token, id, attributes)
-      new(request(method: :put, access_token: access_token, endpoint: "/confirmable/actions/#{id}", body: attributes).body)
-    end
-
-    def self.refresh(access_token, id)
-      request(method: :put, access_token: access_token, endpoint: "/confirmable/actions/#{id}/refresh")
+    def refresh
+      endpoint.for(self).put(action: "refresh")
+      true
     end
 
     module ClientSupport
       def confirmable_actions(options = {})
-        ConfirmableAction.all(token.access_token, options)
+        ConfirmableAction.all
       end
 
       def confirmable_action(id)
-        ConfirmableAction.find(token.access_token, id)
+        ConfirmableAction.find(id)
       end
 
       def update_confirmable_action(id, attributes)
-        ConfirmableAction.update(token.access_token, id, attributes)
+        ConfirmableAction.new(attributes.merge(id: id)).tap(&:save)
       end
 
       def refresh_confirmable_action(id)
-        ConfirmableAction.refresh(token.access_token, id)
+        ConfirmableAction.new(id: id).refresh
       end
     end
   end

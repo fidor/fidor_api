@@ -4,6 +4,8 @@ module FidorApi
       extend ModelAttribute
       extend AmountAttributes
 
+      self.endpoint = Connectivity::Endpoint.new('/sepa_credit_transfers', :collection)
+
       attribute :id,             :integer
       attribute :account_id,     :string
       attribute :user_id,        :string
@@ -36,21 +38,17 @@ module FidorApi
 
       private
 
-      def self.resource
-        "sepa_credit_transfers"
-      end
-
       module ClientSupport
         def sepa_transfers(options = {})
-          Transfer::SEPA.all(token.access_token, options)
+          Transfer::SEPA.all(options)
         end
 
         def sepa_transfer(id)
-          Transfer::SEPA.find(token.access_token, id)
+          Transfer::SEPA.find(id)
         end
 
         def build_sepa_transfer(attributes = {})
-          Transfer::SEPA.new(attributes.merge(client: self))
+          Transfer::SEPA.new(attributes)
         end
       end
     end

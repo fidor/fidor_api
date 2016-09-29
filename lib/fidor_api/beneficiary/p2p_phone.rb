@@ -5,7 +5,7 @@ module FidorApi
 
       attribute :mobile_phone_number, :string
 
-      def initialize(attrs = {})
+      def set_attributes(attrs = {})
         self.mobile_phone_number = attrs.fetch("routing_info", {})["mobile_phone_number"]
         super(attrs.except("routing_type", "routing_info"))
       end

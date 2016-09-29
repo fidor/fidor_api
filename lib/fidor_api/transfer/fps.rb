@@ -4,6 +4,8 @@ module FidorApi
       extend ModelAttribute
       extend AmountAttributes
 
+      self.endpoint = Connectivity::Endpoint.new('/fps_transfers', :collection)
+
       attribute :id,               :integer
       attribute :account_id,       :string
       attribute :user_id,          :string
@@ -36,21 +38,17 @@ module FidorApi
 
       private
 
-      def self.resource
-        "fps_transfers"
-      end
-
       module ClientSupport
         def fps_transfers(options = {})
-          Transfer::FPS.all(token.access_token, options)
+          Transfer::FPS.all(options)
         end
 
         def fps_transfer(id)
-          Transfer::FPS.find(token.access_token, id)
+          Transfer::FPS.find(id)
         end
 
         def build_fps_transfer(attributes = {})
-          Transfer::FPS.new(attributes.merge(client: self))
+          Transfer::FPS.new(attributes)
         end
       end
     end

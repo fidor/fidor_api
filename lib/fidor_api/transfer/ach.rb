@@ -10,7 +10,7 @@ module FidorApi
       validates :account_number, presence: true, unless: :beneficiary_reference_passed?
       validates :routing_code,   presence: true, unless: :beneficiary_reference_passed?
 
-      def initialize(attrs = {})
+      def set_attributes(attrs = {})
         set_beneficiary_attributes(attrs)
         self.account_number = attrs.fetch("beneficiary", {}).fetch("routing_info", {})["account_number"]
         self.routing_code   = attrs.fetch("beneficiary", {}).fetch("routing_info", {})["routing_code"]
@@ -30,15 +30,15 @@ module FidorApi
 
       module ClientSupport
         def ach_transfers(options = {})
-          Transfer::ACH.all(token.access_token, options)
+          Transfer::ACH.all(options)
         end
 
         def ach_transfer(id)
-          Transfer::ACH.find(token.access_token, id)
+          Transfer::ACH.find(id)
         end
 
         def build_ach_transfer(attributes = {})
-          Transfer::ACH.new(attributes.merge(client: self))
+          Transfer::ACH.new(attributes)
         end
       end
     end

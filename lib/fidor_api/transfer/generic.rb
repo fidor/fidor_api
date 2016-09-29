@@ -36,12 +36,6 @@ module FidorApi
 
         base.attribute :created_at,              :time
         base.attribute :updated_at,              :time
-
-        base.singleton_class.instance_eval do
-          define_method :resource do
-            "transfers"
-          end
-        end
       end
 
       def self.required_attributes

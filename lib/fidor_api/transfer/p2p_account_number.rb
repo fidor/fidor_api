@@ -7,7 +7,7 @@ module FidorApi
 
       validates :account_number, presence: true, unless: :beneficiary_reference_passed?
 
-      def initialize(attrs = {})
+      def set_attributes(attrs = {})
         set_beneficiary_attributes(attrs)
         self.account_number = attrs.fetch("beneficiary", {}).fetch("routing_info", {})["account_number"]
         super(attrs.except("beneficiary"))
@@ -25,19 +25,19 @@ module FidorApi
 
       module ClientSupport
         def p2p_account_number_transfers(options = {})
-          Transfer::P2pAccountNumber.all(token.access_token, options)
+          Transfer::P2pAccountNumber.all(options)
         end
 
         def p2p_account_number_transfer(id)
-          Transfer::P2pAccountNumber.find(token.access_token, id)
+          Transfer::P2pAccountNumber.find(id)
         end
 
         def build_p2p_account_number_transfer(attributes = {})
-          Transfer::P2pAccountNumber.new(attributes.merge(client: self))
+          Transfer::P2pAccountNumber.new(attributes)
         end
 
         def update_p2p_account_number_transfer(id, attributes = {})
-          Transfer::P2pAccountNumber.new(attributes.merge(client: self, id: id))
+          Transfer::P2pAccountNumber.new(attributes.merge(id: id))
         end
       end
     end

@@ -116,4 +116,3 @@ describe FidorApi::Transfer do
   end
 
 end
-

@@ -1,20 +1,35 @@
 module FidorApi
   module Transfer
-    class Base < Resource
+    class Base < Connectivity::Resource
+      self.endpoint = Connectivity::Endpoint.new('/transfers', :collection)
+
+      attr_accessor :confirmable_action
+
       def save
-        if id.nil?
-          create
-        else
-          raise NoUpdatesAllowedError
+        fail InvalidRecordError unless valid?
+        super
+      end
+
+      def needs_confirmation?
+        self.confirmable_action.present?
+      end
+
+      private
+
+      def remote_create
+        response = super
+        if path = response.headers["X-Fidor-Confirmation-Path"]
+          self.confirmable_action = ConfirmableAction.new(id: path.split("/").last)
         end
+        response
       end
 
-      def self.all(access_token, options = {})
-        Collection.build(self, request(access_token: access_token, endpoint: "/#{resource}", query_params: options).body)
-      end
-
-      def self.find(access_token, id)
-        new(request(access_token: access_token, endpoint: "/#{resource}/#{id}").body)
+      def remote_update
+        response = super
+        if path = response.headers["X-Fidor-Confirmation-Path"]
+          self.confirmable_action = ConfirmableAction.new(id: path.split("/").last)
+        end
+        response
       end
     end
   end

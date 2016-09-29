@@ -5,7 +5,7 @@ module FidorApi
 
       attribute :username, :string
 
-      def initialize(attrs = {})
+      def set_attributes(attrs = {})
         self.username = attrs.fetch("routing_info", {})["username"]
         super(attrs.except("routing_type", "routing_info"))
       end

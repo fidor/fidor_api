@@ -1,7 +1,8 @@
 module FidorApi
-
-  class Customer < Resource
+  class Customer < Connectivity::Resource
     extend ModelAttribute
+
+    self.endpoint = Connectivity::Endpoint.new('/customers', :collection)
 
     module Gender
       extend self
@@ -69,16 +70,8 @@ module FidorApi
     attribute :country_of_birth,          :string
     attribute :additional_first_name,     :string
 
-    def self.all(access_token, options = {})
-      Collection.build(self, request(access_token: access_token, endpoint: "/customers", query_params: options).body)
-    end
-
-    def self.first(access_token)
-      all(access_token, page: 1, per_page: 1).first
-    end
-
-    def self.update(access_token, id, attributes)
-      new(request({ method: :put, access_token: access_token, endpoint: "/customers/#{id}", body: attributes}).body)
+    def self.first
+      all(page: 1, per_page: 1).first
     end
 
     def initialize(*args)
@@ -102,33 +95,24 @@ module FidorApi
       attributes.tap { |a| a[:birthday] = a[:birthday].try(:to_date) }
     end
 
-    def save
-      if id.nil?
-        create(htauth: true, access_token: nil)
-      else
-        raise NoUpdatesAllowedError
-      end
-    end
-
     private
 
-    def self.resource
-      "customers"
+    def remote_update
+      raise NoUpdatesAllowedError
     end
 
     module ClientSupport
       def customers(options = {})
-        Customer.all(token.access_token, options)
+        Customer.all(options)
       end
 
       def first_customer
-        Customer.first(token.access_token)
+        Customer.first
       end
 
       def update_customer(id, attributes)
-        Customer.update(token.access_token, id, attributes)
+        Customer.new(id: id).remote(:post, payload: attributes)
       end
     end
   end
-
 end

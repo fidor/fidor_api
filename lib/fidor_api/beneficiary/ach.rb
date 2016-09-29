@@ -10,14 +10,10 @@ module FidorApi
       validates :account_number, presence: true
       validates :routing_code,   presence: true
 
-      def initialize(attrs = {})
+      def set_attributes(attrs = {})
         self.account_number = attrs.fetch("routing_info", {})["account_number"]
         self.routing_code   = attrs.fetch("routing_info", {})["routing_code"]
         super(attrs.except("routing_type", "routing_info"))
-      end
-
-      def save
-        create
       end
 
       def as_json_routing_type
@@ -33,13 +29,9 @@ module FidorApi
 
       private
 
-      def self.resource
-        "beneficiaries"
-      end
-
       module ClientSupport
         def build_ach_beneficiary(attributes = {})
-          Beneficiary::ACH.new(attributes.merge(client: self))
+          Beneficiary::ACH.new(attributes)
         end
       end
     end

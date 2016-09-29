@@ -39,7 +39,7 @@ describe FidorApi::Transfer::Internal do
       it "raises an error" do
         subject.account_id = nil
 
-        expect { subject.save}.to raise_error FidorApi::InvalidRecordError
+        expect { subject.save }.to raise_error FidorApi::InvalidRecordError
       end
     end
 

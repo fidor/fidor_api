@@ -1,8 +1,10 @@
 module FidorApi
-  class Card < Resource
+  class Card < Connectivity::Resource
     extend ModelAttribute
     extend AmountAttributes
     include CardLimitAttribute
+
+    self.endpoint = Connectivity::Endpoint.new('/cards', :collection)
 
     attribute :id,                        :integer
     attribute :account_id,                :string
@@ -35,40 +37,24 @@ module FidorApi
 
     validates(*required_attributes, presence: true)
 
-    def self.all(access_token, options = {})
-      Collection.build(self, request(access_token: access_token, endpoint: "/cards", query_params: options).body)
-    end
-
-    def self.find(access_token, id)
-      new(request(access_token: access_token, endpoint: "/cards/#{id}").body)
-    end
-
-    def self.activate(access_token, id)
-      request(method: :put, access_token: access_token, endpoint: "/cards/#{id}/activate")
+    def activate
+      endpoint.for(self).put(action: 'activate')
       true
     end
 
-    def self.lock(access_token, id)
-      request(method: :put, access_token: access_token, endpoint: "/cards/#{id}/lock")
+    def lock
+      endpoint.for(self).put(action: 'lock')
       true
     end
 
-    def self.unlock(access_token, id)
-      request(method: :put, access_token: access_token, endpoint: "/cards/#{id}/unlock")
+    def unlock
+      endpoint.for(self).put(action: 'unlock')
       true
     end
 
-    def self.cancel(access_token, id)
-      request(method: :put, access_token: access_token, endpoint: "/cards/#{id}/cancel")
+    def cancel
+      endpoint.for(self).put(action: 'cancel')
       true
-    end
-
-    def save
-      if id.nil?
-        create
-      else
-        raise NoUpdatesAllowedError
-      end
     end
 
     def as_json
@@ -80,42 +66,5 @@ module FidorApi
       define_method("address_#{field}") { address.try :[], field }
       define_method("address_#{field}=") { |val| self.address ||= {}; address[field] = val }
     end
-
-    private
-
-    def self.resource
-      "cards"
-    end
-
-    module ClientSupport
-      def cards(options = {})
-        Card.all(token.access_token, options)
-      end
-
-      def card(id)
-        Card.find(token.access_token, id)
-      end
-
-      def activate_card(id)
-        Card.activate(token.access_token, id)
-      end
-
-      def lock_card(id)
-        Card.lock(token.access_token, id)
-      end
-
-      def unlock_card(id)
-        Card.unlock(token.access_token, id)
-      end
-
-      def cancel_card(id)
-        Card.cancel(token.access_token, id)
-      end
-
-      def build_card(attributes = {})
-        Card.new(attributes.merge(client: self))
-      end
-    end
   end
-
 end

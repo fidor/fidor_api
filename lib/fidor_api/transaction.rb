@@ -1,8 +1,9 @@
 module FidorApi
-
-  class Transaction < Resource
+  class Transaction < Connectivity::Resource
     extend ModelAttribute
     extend AmountAttributes
+
+    self.endpoint = Connectivity::Endpoint.new('/transactions', :collection)
 
     attribute :id,                       :integer
     attribute :account_id,               :string
@@ -18,25 +19,17 @@ module FidorApi
     attribute :updated_at,               :time
     amount_attribute :amount
 
-    def self.all(access_token, options = {})
-      Collection.build(self, request(access_token: access_token, endpoint: "/transactions", query_params: options).body)
-    end
-
-    def self.find(access_token, id)
-      new(request(access_token: access_token, endpoint: "/transactions/#{id}").body)
-    end
-
     def transaction_type_details
       @_transaction_type_details ||= TransactionDetails.build(@transaction_type, @transaction_type_details)
     end
 
     module ClientSupport
       def transactions(options = {})
-        Transaction.all(token.access_token, options)
+        Transaction.all(options)
       end
 
       def transaction(id)
-        Transaction.find(token.access_token, id)
+        Transaction.find(id)
       end
     end
   end

@@ -1,8 +1,9 @@
 module FidorApi
-
-  class Message < Resource
+  class Message < Connectivity::Resource
     extend ModelAttribute
     extend AmountAttributes
+
+    self.endpoint = Connectivity::Endpoint.new('/messages', :collection)
 
     attribute :id,         :integer
     attribute :subject,    :string
@@ -17,17 +18,8 @@ module FidorApi
       attr_accessor :type, :filename, :content
     end
 
-    def self.all(access_token, options = {})
-      Collection.build(self, request(access_token: access_token, endpoint: "/messages", query_params: options).body)
-    end
-
-    def self.find(access_token, id)
-      new(request(access_token: access_token, endpoint: "/messages/#{id}").body)
-    end
-
-    def self.attachment(access_token, id)
-      response = request(access_token: access_token, endpoint: "/messages/#{id}/attachment")
-
+    def attachment
+      response = endpoint.for(self).get(action: 'attachment')
       Attachment.new(
         type:     response.headers["content-type"],
         filename: response.headers["content-disposition"][/filename="([^"]+)"/, 1],
@@ -35,27 +27,26 @@ module FidorApi
       )
     end
 
-    def self.content(access_token, id)
-      request(access_token: access_token, endpoint: "/messages/#{id}/content").body
+    def content
+      endpoint.for(self).get(action: 'content').body
     end
 
     module ClientSupport
       def messages(options = {})
-        Message.all(token.access_token, options)
+        Message.all(options)
       end
 
       def message(id)
-        Message.find(token.access_token, id)
+        Message.find(id)
       end
 
       def message_attachment(id)
-        Message.attachment(token.access_token, id)
+        Message.new(id: id).attachment
       end
 
       def message_content(id)
-        Message.content(token.access_token, id)
+        Message.new(id: id).content
       end
     end
   end
-
 end

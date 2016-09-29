@@ -1,26 +1,39 @@
 module FidorApi
   module Beneficiary
-    class Base < Resource
+    class Base < Connectivity::Resource
       ROUTING_INFO_ERROR_PREFIX = "routing_info.".freeze
 
-      def self.all(access_token, options = {})
-        Collection.build(self, request(access_token: access_token, endpoint: "/#{resource}", query_params: options).body) do |hash|
-          class_for_response_hash(hash)
+      self.endpoint = Connectivity::Endpoint.new('/beneficiaries', :collection)
+
+      attr_accessor :confirmable_action
+
+      class << self
+        def new(hash={})
+          if self == Base
+            class_for_response_hash(hash).new hash
+          else
+            super
+          end
+        end
+
+        def delete(id)
+          endpoint.for(new(id: id)).delete
+          true
+        end
+
+        private
+
+        def class_for_response_hash(hash)
+          {
+            "FOS_P2P_ACCOUNT_NUMBER" => FidorApi::Beneficiary::P2pAccountNumber,
+            "FOS_P2P_PHONE"          => FidorApi::Beneficiary::P2pPhone,
+            "FOS_P2P_USERNAME"       => FidorApi::Beneficiary::P2pUsername,
+            "UAE_DOMESTIC"           => FidorApi::Beneficiary::UaeDomestic
+          }.fetch(hash["routing_type"], FidorApi::Beneficiary::Unknown)
         end
       end
 
-      def self.find(access_token, id)
-        hash  = request(access_token: access_token, endpoint: "/#{resource}/#{id}").body
-        klass = class_for_response_hash(hash)
-        klass.new(hash)
-      end
-
-      def self.delete(access_token, id)
-        request(method: :delete, access_token: access_token, endpoint: "/#{resource}/#{id}")
-        true
-      end
-
-      def initialize(attrs = {})
+      def set_attributes(attrs = {})
         self.contact_name           = attrs.fetch("contact", {})["name"]
         self.contact_address_line_1 = attrs.fetch("contact", {})["address_line_1"]
         self.contact_address_line_2 = attrs.fetch("contact", {})["address_line_2"]
@@ -34,6 +47,11 @@ module FidorApi
         self.bank_country           = attrs.fetch("bank",    {})["country"]
 
         super(attrs.except("contact", "bank", "routing_type", "routing_info"))
+      end
+
+      def save
+        fail InvalidRecordError unless valid?
+        super
       end
 
       def as_json
@@ -59,6 +77,24 @@ module FidorApi
         }.compact
       end
 
+      private
+
+      def remote_create
+        response = super
+        if path = response.headers["X-Fidor-Confirmation-Path"]
+          self.confirmable_action = ConfirmableAction.new(id: path.split("/").last)
+        end
+        response
+      end
+
+      def remote_update
+        response = super
+        if path = response.headers["X-Fidor-Confirmation-Path"]
+          self.confirmable_action = ConfirmableAction.new(id: path.split("/").last)
+        end
+        response
+      end
+
       def map_errors(fields)
         fields.each do |hash|
           if respond_to? hash["field"].to_sym
@@ -68,21 +104,6 @@ module FidorApi
             errors.add(invalid_field, hash["key"].to_sym, message: hash["message"])
           end
         end
-      end
-
-      private
-
-      def self.resource
-        "beneficiaries"
-      end
-
-      def self.class_for_response_hash(hash)
-        {
-          "ACH"                    => FidorApi::Beneficiary::ACH,
-          "FOS_P2P_ACCOUNT_NUMBER" => FidorApi::Beneficiary::P2pAccountNumber,
-          "FOS_P2P_PHONE"          => FidorApi::Beneficiary::P2pPhone,
-          "FOS_P2P_USERNAME"       => FidorApi::Beneficiary::P2pUsername
-        }.fetch(hash["routing_type"], FidorApi::Beneficiary::Unknown)
       end
     end
   end

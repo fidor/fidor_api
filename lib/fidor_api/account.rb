@@ -1,8 +1,9 @@
 module FidorApi
-
-  class Account < Resource
+  class Account < Connectivity::Resource
     extend ModelAttribute
     extend AmountAttributes
+
+    self.endpoint = Connectivity::Endpoint.new('/accounts', :collection)
 
     attribute :id,                    :integer
     attribute :account_number,        :string
@@ -22,12 +23,8 @@ module FidorApi
     amount_attribute :cash_flow_per_year
     amount_attribute :overdraft
 
-    def self.all(access_token, options = {})
-      Collection.build(self, request(access_token: access_token, endpoint: "/accounts", query_params: options).body)
-    end
-
-    def self.first(access_token)
-      all(access_token, page: 1, per_page: 1).first
+    def self.first
+      all(page: 1, per_page: 1).first
     end
 
     def customers=(array)
@@ -36,11 +33,11 @@ module FidorApi
 
     module ClientSupport
       def accounts(options = {})
-        Account.all(token.access_token, options)
+        Account.all(options)
       end
 
       def first_account
-        Account.first(token.access_token)
+        Account.first
       end
     end
   end

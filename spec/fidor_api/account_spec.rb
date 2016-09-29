@@ -5,6 +5,10 @@ describe FidorApi::Account do
   let(:client) { FidorApi::Client.new(token: token) }
   let(:token)  { FidorApi::Token.new(access_token: "f859032a6ca0a4abb2be0583b8347937") }
 
+  before do
+    FidorApi::Connectivity.access_token = 'f859032a6ca0a4abb2be0583b8347937'
+  end
+
   describe ".all" do
     it "returns all account records" do
       VCR.use_cassette("account/all", record: :once) do

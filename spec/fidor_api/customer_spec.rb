@@ -1,9 +1,12 @@
 require "spec_helper"
 
 describe FidorApi::Customer do
-
   let(:client) { FidorApi::Client.new(token: token) }
   let(:token)  { FidorApi::Token.new(access_token: "f859032a6ca0a4abb2be0583b8347937") }
+
+  before do
+    FidorApi::Connectivity.access_token = "f859032a6ca0a4abb2be0583b8347937"
+  end
 
   describe ".all" do
     it "returns all customer records" do
@@ -55,6 +58,10 @@ describe FidorApi::Customer do
   end
 
   describe "#save" do
+    before do
+      FidorApi::Connectivity.access_token = nil
+    end
+
     subject { FidorApi::Customer.new(params) }
 
     let(:params) do

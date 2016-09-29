@@ -1,18 +1,17 @@
 module FidorApi
-  class Password < Resource
+  class Password < Connectivity::Resource
     extend ModelAttribute
+
+    self.endpoint = Connectivity::Endpoint.new('/password_resets', :resource, version: '2')
 
     def self.request_new(email)
       params = {email: email, type: "reset_token"}
-
-      response = request(method: :put, version: '2', endpoint: "/password_resets/new_token", body: params, htauth: true)
-
+      response = endpoint.for(self).put(action: 'new_token', payload: params)
       response.body["success"]
     end
 
     def self.update(attributes)
-      response = request(method: :post, version: '2', endpoint: "/password_resets/", body: attributes, htauth: true)
-
+      response = endpoint.for(self).put(payload: attributes).body
       response.body["success"]
     end
 

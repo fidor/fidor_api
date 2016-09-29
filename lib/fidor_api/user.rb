@@ -1,7 +1,8 @@
 module FidorApi
-
-  class User < Resource
+  class User < Connectivity::Resource
     extend ModelAttribute
+
+    self.endpoint = Connectivity::Endpoint.new('/users', :collection)
 
     attribute :id,              :integer
     attribute :email,           :string
@@ -9,15 +10,14 @@ module FidorApi
     attribute :created_at,      :time
     attribute :updated_at,      :time
 
-    def self.current(access_token)
-      new(request(access_token: access_token, endpoint: "/users/current").body)
+    def self.current
+      new endpoint.for(self).get(action: 'current').body
     end
 
     module ClientSupport
       def current_user
-        User.current(token.access_token)
+        User.current
       end
     end
   end
-
 end

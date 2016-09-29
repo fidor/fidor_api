@@ -1,17 +1,14 @@
 module FidorApi
-
-  class SessionToken < Resource
+  class SessionToken < Connectivity::Resource
     extend ModelAttribute
     extend AmountAttributes
 
     attribute :token, :string
 
+    self.endpoint = Connectivity::Endpoint.new('/session_tokens', :collection)
+
     def self.create(access_token)
-      new request(
-        method:       :post,
-        access_token: access_token,
-        endpoint:     "/session_tokens",
-      ).body
+      new endpoint.for(self).post(payload: {access_token: access_token}).body
     end
 
     module ClientSupport
@@ -20,5 +17,4 @@ module FidorApi
       end
     end
   end
-
 end

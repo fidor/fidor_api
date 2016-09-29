@@ -4,6 +4,8 @@ module FidorApi
       extend ModelAttribute
       extend AmountAttributes
 
+      self.endpoint = Connectivity::Endpoint.new('/internal_transfers', :collection)
+
       attribute :id,             :integer
       attribute :account_id,     :string
       attribute :user_id,        :string
@@ -33,21 +35,17 @@ module FidorApi
 
       private
 
-      def self.resource
-        "internal_transfers"
-      end
-
       module ClientSupport
         def internal_transfers(options = {})
-          Transfer::Internal.all(token.access_token, options)
+          Transfer::Internal.all(options)
         end
 
         def internal_transfer(id)
-          Transfer::Internal.find(token.access_token, id)
+          Transfer::Internal.find(id)
         end
 
         def build_internal_transfer(attributes = {})
-          Transfer::Internal.new(attributes.merge(client: self))
+          Transfer::Internal.new(attributes)
         end
       end
     end
