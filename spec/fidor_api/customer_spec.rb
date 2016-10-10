@@ -120,4 +120,23 @@ describe FidorApi::Customer do
     end
   end
 
+  describe '#request_update' do
+    it "starts the update proceess" do
+      VCR.use_cassette("customer/request_update", record: :once) do
+        customer = client.first_customer
+        expect { customer.request_update({password: '12345678'}) }.to_not raise_error
+      end
+    end
+  end
+
+  describe '#confirm_update' do
+    it "asks for approval" do
+      VCR.use_cassette("customer/confirm_update", record: :once) do
+        customer = client.first_customer
+        expect {
+          customer.confirm_update({token: 'wNOXOJ5pnkJx'}.with_indifferent_access)
+        }.to raise_error(FidorApi::ApprovalRequired)
+      end
+    end
+  end
 end
