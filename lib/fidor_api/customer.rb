@@ -13,7 +13,7 @@ module FidorApi
 
       class Male    < Base; end
       class Female  < Base; end
-      class Unknonw < Base; end
+      class Unknown < Base; end
 
       MAPPING = {
         Male   => "m",
@@ -21,7 +21,7 @@ module FidorApi
       }
 
       def for_api_value(api_value)
-        MAPPING.key(api_value) || Unknonw
+        MAPPING.key(api_value) || Unknown
       end
 
       def object_to_string(object)
