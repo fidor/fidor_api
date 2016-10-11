@@ -111,7 +111,7 @@ module FidorApi
       end
 
       def update_customer(id, attributes)
-        Customer.new(id: id).remote(:post, payload: attributes)
+        Customer.endpoint.for(id).put(payload: attributes)
       end
     end
   end
