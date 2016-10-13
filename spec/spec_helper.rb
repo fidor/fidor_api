@@ -5,13 +5,15 @@ SimpleCov.start
 $LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
 
 require "fidor_api"
+require "webmock/rspec"
 require "vcr"
 require "byebug"
 require "shoulda-matchers"
 
 VCR.configure do |config|
   config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
-  config.hook_into :faraday
+  config.hook_into :webmock
+  config.configure_rspec_metadata!
   config.debug_logger = File.open('vcr.log', 'w')
 end
 

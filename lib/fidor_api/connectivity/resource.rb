@@ -44,14 +44,21 @@ module FidorApi
         false
       end
 
+      def update_attributes(attributes={})
+        set_attributes attributes
+        valid? and remote_update attributes.keys.map(&:to_s)
+      end
+
       private
 
       def remote_create
         endpoint.for(self).post(payload: self.as_json)
       end
 
-      def remote_update
-        endpoint.for(self).put(payload: self.as_json)
+      def remote_update(attributes=nil)
+        payload = self.as_json
+        payload.slice!(*attributes) if attributes
+        endpoint.for(self).put(payload: payload)
       end
 
       def map_errors(fields)
