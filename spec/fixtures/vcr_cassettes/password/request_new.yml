@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://aps.fidor.de/password_resets/new_token
+    body:
+      encoding: UTF-8
+      string: '{"email":"foo@example.com","type":"reset_token"}'
+    headers:
+      Authorization:
+      - Basic aHRhdXRoLXVzZXI6aHRhdXRoLXBhc3N3b3Jk
+      Accept:
+      - application/vnd.fidor.de; version=2,text/json
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message:
+    headers:
+      date:
+      - Thu, 13 Oct 2016 15:35:44 GMT
+      strict_transport_security:
+      - max-age=31536000; includeSubDomains
+      status:
+      - 200 OK
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      x-content-type-options:
+      - nosniff
+      content-type:
+      - application/json; charset=utf-8
+      etag:
+      - W/"c0a4229f65148628b26e451304ddac68"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 4c095eb6-6259-4a11-be5a-a85851cb83cb
+      x-runtime:
+      - '0.063523'
+      via:
+      - 1.1 aps.fidor.de
+      location:
+      - ''
+      connection:
+      - close
+      transfer-encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"success":true}'
+    http_version:
+  recorded_at: Thu, 13 Oct 2016 15:35:44 GMT
+recorded_with: VCR 2.9.3

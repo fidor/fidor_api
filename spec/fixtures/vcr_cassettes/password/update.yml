@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://aps.fidor.de/password_resets
+    body:
+      encoding: UTF-8
+      string: '{"type":"reset_token","token":"AsCsZn73D2ktsFxtJZLr","password":"12345678","confirm_password":"12345678"}'
+    headers:
+      Authorization:
+      - Basic aHRhdXRoLXVzZXI6aHRhdXRoLXBhc3N3b3Jk
+      Accept:
+      - application/vnd.fidor.de; version=2,text/json
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message:
+    headers:
+      date:
+      - Thu, 13 Oct 2016 15:43:54 GMT
+      strict_transport_security:
+      - max-age=31536000; includeSubDomains
+      status:
+      - 200 OK
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      x-content-type-options:
+      - nosniff
+      content-type:
+      - application/json; charset=utf-8
+      etag:
+      - W/"7363e85fe9edee6f053a4b319588c086"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 14ff7d65-56b3-4bd1-8045-a1e9bb0f6b28
+      x-runtime:
+      - '0.655322'
+      via:
+      - 1.1 aps.fidor.de
+      location:
+      - ''
+      connection:
+      - close
+      transfer-encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"success":true}'
+    http_version:
+  recorded_at: Thu, 13 Oct 2016 15:43:54 GMT
+recorded_with: VCR 2.9.3
