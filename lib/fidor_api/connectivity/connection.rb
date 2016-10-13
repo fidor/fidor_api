@@ -41,13 +41,21 @@ module FidorApi
         response = faraday.public_send(method, [FidorApi.configuration.api_path, path].compact.join) do |request|
           request.params = options[:query_params] if options[:query_params]
           request.headers = {}
-          request.headers["Authorization"] = "Bearer #{options[:access_token]}" if options[:access_token]
+          if options[:access_token]
+            request.headers["Authorization"] = "Bearer #{options[:access_token]}"
+          else
+            request.headers["Authorization"] = tokenless_http_basic_header
+          end
           request.headers["Accept"]        = "application/vnd.fidor.de; version=#{options[:version]},text/json"
           request.headers["Content-Type"]  = "application/json"
-          if options[:body] && options[:body].is_a?(Hash)
-            request.body = options[:body].to_json
-          elsif options[:body].present?
-            request.body = options[:body]
+          if options[:body]
+            if options[:body].is_a?(String)
+              request.body = options[:body]
+            elsif options[:body].respond_to?(:to_json)
+              request.body = options[:body].to_json
+            else
+              fail ArgumentError, "unhandled body type #{options[:body].inspect}"
+            end
           end
         end
         if response.status == 303 && URI.parse(response.headers["Location"]).path =~ /^(\/fidor_api)?\/confirmable\//
@@ -82,11 +90,15 @@ module FidorApi
         end
       end
 
+      def tokenless_http_basic_header
+        @tokenless_http_basic_header ||= begin
+          base64 = Base64.strict_encode64("#{FidorApi.configuration.htauth_user}:#{FidorApi.configuration.htauth_password}")
+          "Basic #{base64}"
+        end
+      end
+
       def faraday
         @faraday ||= Faraday.new(url: FidorApi.configuration.api_url, ssl: { verify: FidorApi.configuration.verify_ssl }) do |config|
-          if FidorApi.configuration.htauth_user.present? && FidorApi.configuration.htauth_password.present?
-            config.use Faraday::Request::BasicAuthentication, FidorApi.configuration.htauth_user, FidorApi.configuration.htauth_password
-          end
           config.request  :url_encoded
           config.response logger_type, FidorApi.configuration.logger if FidorApi.configuration.logging
           config.response :raise_error

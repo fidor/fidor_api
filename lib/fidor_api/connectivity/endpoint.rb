@@ -1,11 +1,12 @@
 module FidorApi
   module Connectivity
     class Endpoint
-      attr_reader :collection, :resource, :version
+      attr_reader :collection, :resource, :version, :tokenless
 
-      def initialize(path, mode, version: '1')
+      def initialize(path, mode, version: '1', tokenless: false)
         @path = path
         @version = version
+        @tokenless = tokenless
 
         case mode
         when :collection
@@ -24,23 +25,29 @@ module FidorApi
           @object = object
         end
 
-        def get(target: :resource, action: nil, query_params: nil)
-          Connection.get(send("#{target}_path", action), query_params: query_params, version: @endpoint.version)
+        def get(target: :resource, action: nil, query_params: nil, tokenless: nil)
+          request :get, target, action, query_params: query_params, tokenless: tokenless
         end
 
-        def post(target: :collection, action: nil, payload: nil)
-          Connection.post(send("#{target}_path", action), body: payload, version: @endpoint.version)
+        def post(target: :collection, action: nil, payload: nil, tokenless: nil)
+          request :post, target, action, body: payload, tokenless: tokenless
         end
 
-        def put(target: :resource, action: nil, payload: nil)
-          Connection.put(send("#{target}_path", action), body: payload, version: @endpoint.version)
+        def put(target: :resource, action: nil, payload: nil, tokenless: nil)
+          request :put, target, action, body: payload, tokenless: tokenless
         end
 
-        def delete(target: :resource, action: nil)
-          Connection.delete(send("#{target}_path", action), version: @endpoint.version)
+        def delete(target: :resource, action: nil, tokenless: nil)
+          request :delete, target, action, tokenless: tokenless
         end
 
         private
+
+        def request(method, target, action, options = {})
+          options.reverse_merge! version: @endpoint.version
+          options[:access_token] = nil if options[:tokenless] || @endpoint.tokenless
+          Connection.public_send(method, send("#{target}_path", action), options)
+        end
 
         def resource_path(action = nil)
           interpolate(@endpoint.resource, action)

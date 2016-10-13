@@ -59,7 +59,7 @@ describe FidorApi::Customer do
 
   describe "#save" do
     before do
-      FidorApi::Connectivity.access_token = nil
+      FidorApi::Connectivity.access_token = "i_should_not_be_sent"
     end
 
     subject { FidorApi::Customer.new(params) }

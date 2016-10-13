@@ -12,6 +12,7 @@ require "shoulda-matchers"
 VCR.configure do |config|
   config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
   config.hook_into :faraday
+  config.debug_logger = File.open('vcr.log', 'w')
 end
 
 FidorApi.configure do |config|

@@ -97,6 +97,10 @@ module FidorApi
 
     private
 
+    def remote_create
+      endpoint.for(self).post(payload: self.as_json, tokenless: true)
+    end
+
     def remote_update
       raise NoUpdatesAllowedError
     end

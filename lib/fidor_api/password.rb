@@ -2,7 +2,7 @@ module FidorApi
   class Password < Connectivity::Resource
     extend ModelAttribute
 
-    self.endpoint = Connectivity::Endpoint.new('/password_resets', :resource, version: '2')
+    self.endpoint = Connectivity::Endpoint.new('/password_resets', :resource, version: '2', tokenless: true)
 
     def self.request_new(email)
       params = {email: email, type: "reset_token"}
