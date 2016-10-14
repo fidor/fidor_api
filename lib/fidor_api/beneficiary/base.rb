@@ -97,8 +97,15 @@ module FidorApi
 
       def map_errors(fields)
         fields.each do |hash|
-          if respond_to? hash["field"].to_sym
-            errors.add(hash["field"].to_sym, hash["message"])
+          field = hash["field"].to_sym
+          key   = hash["key"].try :to_sym
+
+          if field == :base || respond_to?(field)
+            if key
+              errors.add(field, key, message: hash["message"])
+            else
+              errors.add(field, hash["message"])
+            end
           elsif hash["field"].start_with?(ROUTING_INFO_ERROR_PREFIX)
             invalid_field = hash["field"][ROUTING_INFO_ERROR_PREFIX.size..-1]
             errors.add(invalid_field, hash["key"].to_sym, message: hash["message"])
