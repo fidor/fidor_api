@@ -1,0 +1,43 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://aps.fidor.de/confirmable/actions/1f4bd7eb-0e21-44bb-8a55-6a0385861ee3
+    body:
+      encoding: UTF-8
+      string: '{"changes":{"approval":[null,"OK"],"otp":[null,"test"],"id":[null,"1f4bd7eb-0e21-44bb-8a55-6a0385861ee3"]},"id":"1f4bd7eb-0e21-44bb-8a55-6a0385861ee3","approval":"OK","otp":"test","validation_context":null,"errors":{}}'
+    headers:
+      Authorization:
+      - Basic aHRhdXRoLXVzZXI6aHRhdXRoLXBhc3N3b3Jk
+      Accept:
+      - application/vnd.fidor.de; version=1,text/json
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message:
+    headers:
+      date:
+      - Mon, 17 Oct 2016 12:09:25 GMT
+      status:
+      - 200 OK
+      content-type:
+      - application/json; charset=utf-8
+      content-length:
+      - '1564'
+      x-request-id:
+      - f38ce614-37a2-45a4-ae5f-2777a4ee71e3
+      x-runtime:
+      - '0.003164'
+      via:
+      - 1.1 aps.fidor.de
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"id":"8437c0c7-f704-4fc8-8ee0-3c18aedc8484","type":"confirmable/transfer/complete","message":"Action requires
+        confirmation","steps_left":["otp"],"steps_completed":[],"path":"/fidor_api/confirmable/actions/15","result":null,"resource":{"id":"39b268eb-e301-42c9-8333-d5e3065845b6","account_id":"29208706","external_uid":"4279762F8","amount":1000,"currency":"USD","subject":"Money
+        for you","state":"created","beneficiary":{"contact":{"name":"John Doe"},"routing_type":"ACH","routing_info":{"account_number":"1234567890","routing_code":"123456789"}},"created_at":"2016-06-28T12:32:05Z","updated_at":"2016-06-28T12:32:05Z"},"succeeded_at":null,"failed_at":null,"errored_at":null,"created_at":"2016-06-28T12:32:05Z","updated_at":"2016-06-28T12:32:05Z"}'
+  recorded_at: Mon, 17 Oct 2016 12:09:25 GMT
+recorded_with: VCR 2.9.3

@@ -31,4 +31,13 @@ describe FidorApi::ConfirmableAction do
     end
   end
 
+  describe "#update" do
+    it "updates the confirmable action" do
+      VCR.use_cassette("confirmable_action/update", record: :once) do
+        result = client.update_confirmable_action("1f4bd7eb-0e21-44bb-8a55-6a0385861ee3", approval: "OK")
+        expect(result).to be true
+      end
+    end
+  end
+
 end

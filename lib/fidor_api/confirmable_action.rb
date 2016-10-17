@@ -17,6 +17,7 @@ module FidorApi
     attribute :updated_at,      :time
 
     attribute :otp,             :string
+    attribute :approval,        :string
 
     def refresh
       endpoint.for(self).put(action: "refresh")
@@ -33,7 +34,7 @@ module FidorApi
       end
 
       def update_confirmable_action(id, attributes)
-        ConfirmableAction.new(attributes.merge(id: id)).tap(&:save)
+        ConfirmableAction.new(attributes.merge(id: id)).save
       end
 
       def refresh_confirmable_action(id)
