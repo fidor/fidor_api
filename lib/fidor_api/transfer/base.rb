@@ -24,7 +24,7 @@ module FidorApi
         response
       end
 
-      def remote_update
+      def remote_update(*attributes)
         response = super
         if path = response.headers["X-Fidor-Confirmation-Path"]
           self.confirmable_action = ConfirmableAction.new(id: path.split("/").last)

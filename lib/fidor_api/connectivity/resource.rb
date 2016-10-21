@@ -55,9 +55,9 @@ module FidorApi
         endpoint.for(self).post(payload: self.as_json)
       end
 
-      def remote_update(attributes=nil)
+      def remote_update(*attributes)
         payload = self.as_json
-        payload.slice!(*attributes) if attributes
+        payload.slice!(*attributes.flatten) if attributes.present?
         endpoint.for(self).put(payload: payload)
       end
 
