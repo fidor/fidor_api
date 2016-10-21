@@ -94,14 +94,6 @@ describe FidorApi::Customer do
       }
     end
 
-    context "on a customer object which already has an id" do
-      let(:params) { { id: 42 } }
-
-      it "raises an error" do
-        expect { subject.save }.to raise_error FidorApi::NoUpdatesAllowedError
-      end
-    end
-
     context "on a customer object which has no id" do
       context "on success" do
         it "returns true and sets the id on the object" do
