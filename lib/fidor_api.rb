@@ -23,6 +23,7 @@ module FidorApi
   autoload :ConfirmableAction,  'fidor_api/confirmable_action'
   autoload :Connectivity,       'fidor_api/connectivity'
   autoload :Customer,           'fidor_api/customer'
+  autoload :Customers,          'fidor_api/customers/confirmations'
   autoload :Message,            'fidor_api/message'
   autoload :Msisdn,             'fidor_api/msisdn'
   autoload :Password,           'fidor_api/password'
