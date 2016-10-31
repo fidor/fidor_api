@@ -6,6 +6,12 @@ module FidorApi
     autoload :Resource, 'fidor_api/connectivity/resource'
     autoload :Endpoint, 'fidor_api/connectivity/endpoint'
 
-    attr_accessor :access_token
+    def access_token=(val)
+      Thread.current[:fidor_api_access_token] = val
+    end
+
+    def access_token
+      Thread.current[:fidor_api_access_token]
+    end
   end
 end
