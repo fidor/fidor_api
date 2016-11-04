@@ -11,11 +11,12 @@ describe FidorApi::User do
         user = client.current_user
 
         expect(user).to be_instance_of FidorApi::User
-        expect(user.id).to              eq 857
-        expect(user.email).to           eq "api_tester@example.com"
-        expect(user.last_sign_in_at).to be_nil
-        expect(user.created_at).to      eq Time.new(2015, 8, 26, 15, 43, 30, "+00:00")
-        expect(user.updated_at).to      eq Time.new(2015, 8, 26, 15, 43, 30, "+00:00")
+        expect(user.id).to                  eq 857
+        expect(user.email).to               eq "api_tester@example.com"
+        expect(user.msisdn_activated_at).to eq Time.new(2015, 8, 26, 15, 43, 30, "+00:00")
+        expect(user.last_sign_in_at).to     be_nil
+        expect(user.created_at).to          eq Time.new(2015, 8, 26, 15, 43, 30, "+00:00")
+        expect(user.updated_at).to          eq Time.new(2015, 8, 26, 15, 43, 30, "+00:00")
       end
     end
   end
