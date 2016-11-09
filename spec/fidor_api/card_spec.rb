@@ -86,6 +86,14 @@ describe FidorApi::Card do
   end
 
   describe ".cancel" do
+    let(:card) { FidorApi::Card.new(id: 123) }
+
+    it "uses the stolen reason" do
+      stub = stub_request(:put, "https://aps.fidor.de/cards/123/block")
+      card.cancel(reason: 'stolen')
+      expect(stub).to have_been_requested
+    end
+
     it "asks for confirmation" do
       VCR.use_cassette("card/cancel", record: :once) do
         card = FidorApi::Card.find 8

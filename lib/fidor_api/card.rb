@@ -52,8 +52,15 @@ module FidorApi
       true
     end
 
-    def cancel
-      endpoint.for(self).put(action: 'cancel')
+    def cancel(reason: 'lost')
+      case reason
+      when 'lost'
+        endpoint.for(self).put(action: 'cancel')
+      when 'stolen'
+        endpoint.for(self).put(action: 'block')
+      else
+        fail ArgumentError, "Unknown reason: #{reason.inspect}"
+      end
       true
     end
 
