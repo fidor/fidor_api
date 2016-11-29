@@ -28,5 +28,21 @@ module FidorApi
           .once
       end
     end
+
+    describe '#save failure with a 422 status' do
+      before do
+        FidorApi::Connectivity::Resource::ROUTING_INFO_ERROR_PREFIX = "routing."
+        WebMock.stub_request(:put, "https://aps.fidor.de/resource").
+          to_return(
+            body: '{"code":422,"errors":[{"field":"type","message":"code invalid"}],"message":"Not valid","key":["code_suspended"]}',
+            status: 422
+          )
+      end
+
+      it 'includes the key in the error keys' do
+        model.save
+        expect(model.error_keys.first).to eq('code_suspended')
+      end
+    end
   end
 end

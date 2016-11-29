@@ -6,6 +6,8 @@ module FidorApi
 
       class_attribute :endpoint
 
+      attr_accessor :error_keys
+
       class << self
         def find(id)
           new endpoint.for(id).get.body.reverse_merge(id: id)
@@ -40,6 +42,7 @@ module FidorApi
           false
         end
       rescue ValidationError => e
+        self.error_keys = e.error_keys
         map_errors(e.fields)
         false
       end

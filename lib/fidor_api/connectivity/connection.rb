@@ -71,7 +71,7 @@ module FidorApi
           raise UnauthorizedTokenError
         when 422
           body = JSON.parse(e.response[:body])
-          raise ValidationError.new(body["message"], body["errors"])
+          raise ValidationError.new(body["message"], body["errors"], body["key"])
         else
           raise ClientError
         end

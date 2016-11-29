@@ -7,11 +7,12 @@ module FidorApi
   NoUpdatesAllowedError  = Class.new(Error)
 
   class ValidationError < Error
-    attr_accessor :fields
+    attr_accessor :fields, :error_keys
 
-    def initialize(message, fields)
+    def initialize(message, fields, error_keys)
       super(message)
       self.fields = fields
+      self.error_keys = error_keys
     end
   end
 
