@@ -113,10 +113,17 @@ describe FidorApi::Customer do
   end
 
   describe '#request_update' do
-    it "starts the update proceess" do
+    it "returns true if the update is successful" do
       VCR.use_cassette("customer/request_update", record: :once) do
         customer = client.first_customer
-        expect { customer.request_update({password: '12345678'}) }.to_not raise_error
+        expect(customer.request_update({password: '12345678'})).to be true
+      end
+    end
+
+    it "returns false if the update is unsuccessful" do
+      VCR.use_cassette("customer/request_update_fails", record: :once) do
+        customer = client.first_customer
+        expect(customer.request_update({password: '1234'})).to be false
       end
     end
   end

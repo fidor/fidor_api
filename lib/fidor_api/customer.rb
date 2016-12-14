@@ -82,6 +82,10 @@ module FidorApi
     def request_update(attributes)
       self.endpoint = Connectivity::Endpoint.new('/customers', :collection, version: '2')
       endpoint.for(self).put(action: 'request_update', payload: attributes.as_json)
+      true
+    rescue ValidationError => e
+      map_errors(e.fields)
+      false
     end
 
     def confirm_update(attributes)

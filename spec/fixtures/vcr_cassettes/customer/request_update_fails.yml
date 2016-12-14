@@ -1,0 +1,116 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://aps.fidor.de/customers?page=1&per_page=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer f859032a6ca0a4abb2be0583b8347937
+      Accept:
+      - application/vnd.fidor.de; version=1,text/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Ratelimit-Limit:
+      - '345234'
+      X-Ratelimit-Remaining:
+      - '345232'
+      X-Ratelimit-Reset:
+      - '533'
+      Cache-Control:
+      - no-store, must-revalidate, private, max-age=0
+      X-Request-Id:
+      - a5ffee2b-fcf4-4e8c-8607-f13dde3800b4
+      X-Runtime:
+      - '0.037866'
+      Set-Cookie:
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      X-Miniprofiler-Ids:
+      - '["3dgifzj478g8yjupt740","r30sl5juvrwmq1b4xerp","loj3dk0xpa3it1ymb5fv","dd31blnrm2itejrm0hl9","ydzzf0w33y04142b3aa3","biktq4vs6jxm5jwjdg6w","le9dfl2kjlv8ojcibbr3","bmuflyul0pmw981vvds1","5pj90p6sawon7g3w9r5d","uu4r9qahkwqqnqwvp3ns"]'
+      Connection:
+      - close
+      Server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"id":"74375399","email":"yuliansavov@gmail.com","first_name":"Yulian","last_name":"Savov","additional_first_name":"Ivanov","gender":"m","title":"Mr.","nick":"yuli2","maiden_name":null,"adr_street":null,"adr_street_number":null,"adr_post_code":null,"adr_city":"Abu
+        dabi","birthplace":null,"adr_country":"AE","adr_phone":null,"adr_mobile":"971888547955","adr_fax":null,"adr_businessphone":null,"birthday":"1998-11-07T00:00:00+00:00","is_verified":true,"nationality":null,"marital_status":null,"occupation":null,"religion":0,"country_of_birth":null,"preferred_language":"EN","id_card_registration_city":null,"id_card_number":null,"id_card_valid_until":null,"legal":{"tos":true,"privacy_policy":true,"own_interest":true,"us_citizen":null,"us_tax_payer":null},"newsletter":null,"affiliate_uid":null,"community_user_picture":"http://127.0.0.1:3001/uploads/users/photos/9/default.jpg","created_at":"2016-11-07T09:15:27Z","updated_at":"2016-11-22T12:10:38Z"}],"collection":{"current_page":1,"per_page":1,"total_entries":1,"total_pages":1}}'
+    http_version: 
+  recorded_at: Wed, 14 Dec 2016 15:06:08 GMT
+- request:
+    method: put
+    uri: https://aps.fidor.de/customers/74375399/request_update
+    body:
+      encoding: UTF-8
+      string: '{"password":"1234"}'
+    headers:
+      Authorization:
+      - Bearer f859032a6ca0a4abb2be0583b8347937
+      Accept:
+      - application/vnd.fidor.de; version=2,text/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Ratelimit-Limit:
+      - '345234'
+      X-Ratelimit-Remaining:
+      - '345231'
+      X-Ratelimit-Reset:
+      - '533'
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 14699efd-cefe-4ee3-ac75-2a00a24843b9
+      X-Runtime:
+      - '0.080014'
+      Set-Cookie:
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      Connection:
+      - close
+      Server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"code":422,"errors":[{"field":"password","message":"is too short (minimum
+        is 8 characters)","key":"too_short","count":8}],"message":"Validation failed","key":["validation_failed"]}'
+    http_version: 
+  recorded_at: Wed, 14 Dec 2016 15:06:08 GMT
+recorded_with: VCR 2.9.3
