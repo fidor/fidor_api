@@ -9,6 +9,6 @@ group :development, :test do
   gem "rspec", "~> 3.3"
   gem "shoulda-matchers", "~> 2.8"
   gem "vcr", "~> 2.9"
-  gem "simplecov", "~> 0.10"
+  gem "simplecov", github: "colszowka/simplecov"
   gem "codeclimate-test-reporter", group: :test, require: nil
 end
