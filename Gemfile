@@ -8,7 +8,7 @@ group :development, :test do
   gem "rake", "~> 10.0"
   gem "rspec", "~> 3.3"
   gem "shoulda-matchers", "~> 2.8"
-  gem "vcr", "~> 2.9"
+  gem "vcr", "~> 3.0"
   gem "simplecov", github: "colszowka/simplecov"
   gem "codeclimate-test-reporter", group: :test, require: nil
 end
