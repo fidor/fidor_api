@@ -1,4 +1,7 @@
 module AmountAttributes
+
+  INTEGER_CLASSES = %w(Integer Fixnum Bignum)
+
   def self.extended(base)
     base.instance_variable_set('@amount_attributes', [])
   end
@@ -13,7 +16,7 @@ module AmountAttributes
     define_method "#{name}=" do |value|
       if value.instance_of?(BigDecimal)
         instance_variable_set("@#{name}", (value * 100.00).to_i)
-      elsif value.instance_of?(Fixnum) || value.instance_of?(NilClass)
+      elsif value.class.name.in?(INTEGER_CLASSES) || value.instance_of?(NilClass)
         instance_variable_set("@#{name}", value)
       else
         raise ArgumentError, "Must be either Fixnum (1234) or BigDecimal (12.34)."
