@@ -69,11 +69,15 @@ module FidorApi
         case e.response[:status]
         when 401
           raise UnauthorizedTokenError
+        when 403
+          body = JSON.parse(e.response[:body])
+          raise ForbiddenError.new(body["message"], body["code"], body["key"])
         when 422
           body = JSON.parse(e.response[:body])
           raise ValidationError.new(body["message"], body["errors"], body["key"])
         else
-          raise ClientError
+          body = JSON.parse(e.response[:body])
+          raise ClientError.new(body["message"], body["code"], body["key"])
         end
       end
 
