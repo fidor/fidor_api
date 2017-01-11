@@ -1,0 +1,64 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://aps.fidor.de/beneficiaries
+    body:
+      encoding: UTF-8
+      string: '{"account_id":"91318832","unique_name":"joey_doey","contact":{},"bank":{},"routing_type":"UTILITY","routing_info":{"utility_provider":"Utility
+        Provider","utility_service":"Utility Service","utility_service_number":"12345678"}}'
+    headers:
+      Authorization:
+      - Bearer 73570bdde25a22bc7219acd1d43a1cde
+      Accept:
+      - application/vnd.fidor.de; version=1,text/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Fidor-Confirmation-Path:
+      - "/fidor_api/confirmable/actions/58ac0bdb-e788-4434-bac9-a663497ac415"
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Ratelimit-Limit:
+      - '3600'
+      X-Ratelimit-Remaining:
+      - '3599'
+      X-Ratelimit-Reset:
+      - '1044'
+      Cache-Control:
+      - no-store, must-revalidate, private, max-age=0
+      X-Request-Id:
+      - 2acbd59a-368e-4833-94d5-29b7dedc5d70
+      X-Runtime:
+      - '0.111223'
+      Set-Cookie:
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      X-Miniprofiler-Ids:
+      - '["xkt90yq045oa9x6t02ho","aozfn5zghm2rfjf4zymx","86ndjl4ki6tueirbp8a","rp6vv5eeifk0n2urrdi2","8ntjrz0l87bq1pxn253f","89561hc37ev10wh3woys","n72cp6k9tnrs1ppangps","nesy6qegdj7y8skdz8dw","fmnoidt0dsjipfyuzrof","1tpqf0lsk9ztmdb08wtm"]'
+      Connection:
+      - close
+      Server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"id":"711e1549-cbb3-4018-913b-13d90530184e","account_id":"91318832","unique_name":"joey_doey","contact":{"name":null,"address_line_1":null,"address_line_2":null,"city":null,"country":null},"bank":{"name":null,"address_line_1":null,"address_line_2":null,"city":null,"country":null},"routing_type":"UTILITY","routing_info":{"utility_provider":"Utility
+        Provider","utility_service":"Utility Service","utility_service_number":"12345678"},"verified":false,"created_at":"2017-01-13T14:12:37Z","updated_at":"2017-01-13T14:12:37Z"}'
+    http_version:
+  recorded_at: Fri, 13 Jan 2017 14:12:37 GMT
+recorded_with: VCR 2.9.3

@@ -8,6 +8,7 @@ module FidorApi
     autoload :P2pUsername,      'fidor_api/beneficiary/p2p_username'
     autoload :Swift,            'fidor_api/beneficiary/swift'
     autoload :Unknown,          'fidor_api/beneficiary/unknown'
+    autoload :Utility,          'fidor_api/beneficiary/utility'
 
     module ClientSupport
       def beneficiaries(options = {})
