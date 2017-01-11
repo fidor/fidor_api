@@ -1,0 +1,64 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://aps.fidor.de/beneficiaries
+    body:
+      encoding: UTF-8
+      string: '{"account_id":"91318832","unique_name":"jj_doey","contact":{"name":"John
+        Doe","address_line_1":"Contact Address 1","address_line_2":"Contact Address
+        2","city":"Contact City","country":"Contact Country"},"bank":{"name":"Bank
+        Name","address_line_1":"Bank Address 1","address_line_2":"Bank Address 2","city":"Bank
+        City","country":"Bank Country"},"routing_type":"SWIFT","routing_info":{"account_number":"DE08100100100666666666","swift_code":"FDDODEMMXXX","account_currency":"EUR"}}'
+    headers:
+      Authorization:
+      - Bearer 73570bdde25a22bc7219acd1d43a1cde
+      Accept:
+      - application/vnd.fidor.de; version=1,text/json
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message:
+    headers:
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      x-content-type-options:
+      - nosniff
+      x-fidor-confirmation-path:
+      - "/fidor_api/confirmable/actions/0de1b9c4-d821-41e2-a753-cf63bab56d66"
+      content-type:
+      - application/json; charset=utf-8
+      x-ratelimit-limit:
+      - '60'
+      x-ratelimit-remaining:
+      - '59'
+      x-ratelimit-reset:
+      - '119'
+      cache-control:
+      - no-store, must-revalidate, private, max-age=0
+      x-request-id:
+      - 43bbf8ef-50ee-4177-a6bd-5f79d5298266
+      x-runtime:
+      - '0.190157'
+      set-cookie:
+      - __profilin=p%3Dt; path=/, __profilin=p%3Dt; path=/, __profilin=p%3Dt; path=/
+      x-miniprofiler-ids:
+      - '["78j9poesmtgqdritpvw7","e0geagr997lhneqvy9jo","io7mgmtts1q8xexel0f1","hgs7uxullw051c6v3phk","by3rv24d7ooy4ogvoz6z","k6kopttd2oxkz6ckqylu","fengurtqi9pdwbzt2fr9","m4wodja7mafrlizeypmx","c4id4svfm3hjtnlog1v4","4e5er1y1zmalmtlo705a"]'
+      connection:
+      - close
+      server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"id":"9e6155e9-9b6f-464f-a14f-4db44e2ea1e2","account_id":"91318832","unique_name":"jj_doey","contact":{"name":"John
+        Doe","address_line_1":"Contact Address 1","address_line_2":"Contact Address
+        2","city":"Contact City","country":"Contact Country"},"bank":{"name":"Bank
+        Name","address_line_1":"Bank Address 1","address_line_2":"Bank Address 2","city":"Bank
+        City","country":"Bank Country"},"routing_type":"SWIFT","routing_info":{"account_number":"DE08100100100666666666","swift_code":"FDDODEMMXXX","account_currency":"EUR"},"verified":false,"created_at":"2016-09-08T10:13:02Z","updated_at":"2016-09-08T10:13:02Z"}'
+    http_version:
+  recorded_at: Thu, 08 Sep 2016 10:13:02 GMT
+recorded_with: VCR 2.9.3

@@ -28,7 +28,7 @@ module FidorApi
             "FOS_P2P_ACCOUNT_NUMBER" => FidorApi::Beneficiary::P2pAccountNumber,
             "FOS_P2P_PHONE"          => FidorApi::Beneficiary::P2pPhone,
             "FOS_P2P_USERNAME"       => FidorApi::Beneficiary::P2pUsername,
-            "UAE_DOMESTIC"           => FidorApi::Beneficiary::UaeDomestic
+            "SWIFT"                  => FidorApi::Beneficiary::Swift
           }.fetch(hash["routing_type"], FidorApi::Beneficiary::Unknown)
         end
       end
