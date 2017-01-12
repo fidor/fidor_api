@@ -10,6 +10,7 @@ module FidorApi
     autoload :P2pUsername,      'fidor_api/transfer/p2p_username'
     autoload :Pending,          'fidor_api/transfer/pending'
     autoload :SEPA,             'fidor_api/transfer/sepa'
+    autoload :Swift,            'fidor_api/transfer/swift'
     autoload :BankInternal,     'fidor_api/transfer/bank_internal'
   end
 end
