@@ -12,5 +12,6 @@ module FidorApi
     autoload :SEPA,             'fidor_api/transfer/sepa'
     autoload :Swift,            'fidor_api/transfer/swift'
     autoload :BankInternal,     'fidor_api/transfer/bank_internal'
+    autoload :Utility,          'fidor_api/transfer/utility'
   end
 end

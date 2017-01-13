@@ -1,0 +1,66 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://aps.fidor.de/transfers
+    body:
+      encoding: UTF-8
+      string: '{"account_id":"29208706","external_uid":"4279762F9","amount":1000,"currency":"USD","subject":"Money
+        for you","beneficiary":{"unique_name":"Johnny Doey","contact":{},"bank":{},"routing_type":"UTILITY","routing_info":{"utility_provider":"Utility
+        Provider","utility_service":"Utility Service","utility_service_number":"12345678"}}}'
+    headers:
+      Authorization:
+      - Bearer token2
+      Accept:
+      - application/vnd.fidor.de; version=1,text/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Fidor-Confirmation-Path:
+      - "/fidor_api/confirmable/actions/2359fed7-9b48-4ea5-a117-de3a82cf7e03"
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Ratelimit-Limit:
+      - '3600'
+      X-Ratelimit-Remaining:
+      - '3575'
+      X-Ratelimit-Reset:
+      - '173'
+      Cache-Control:
+      - no-store, must-revalidate, private, max-age=0
+      X-Request-Id:
+      - 09e71887-6607-4878-b3ec-9f9a25c6f6b1
+      X-Runtime:
+      - '0.152197'
+      Set-Cookie:
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      X-Miniprofiler-Ids:
+      - '["6z68tycyqsviqj4qor2k","aozfn5zghm2rfjf4zymx","86ndjl4ki6tueirbp8a","rp6vv5eeifk0n2urrdi2","8ntjrz0l87bq1pxn253f","89561hc37ev10wh3woys","n72cp6k9tnrs1ppangps","nesy6qegdj7y8skdz8dw","fmnoidt0dsjipfyuzrof","1tpqf0lsk9ztmdb08wtm"]'
+      Connection:
+      - close
+      Server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"id":"c8f2b783-14a9-4ea9-89ed-6e128f9eef78","account_id":"29208706","amount":1000,"currency":"USD","subject":"Money
+        for you","state":"created","beneficiary":{"contact":{"name":null,"address_line_1":null,"address_line_2":null,"city":null,"country":null},"bank":{"name":null,"address_line_1":null,"address_line_2":null,"city":null,"country":null},"routing_type":"UTILITY","routing_info":{"utility_provider":"Utility
+        Provider","utility_service":"Utility Service","utility_service_number":"12345678"}},"created_at":"2017-01-13T16:27:08Z","updated_at":"2017-01-13T16:27:08Z","external_uid":"4279762F9","beneficiary_id":null}'
+    http_version:
+  recorded_at: Fri, 13 Jan 2017 16:27:08 GMT
+recorded_with: VCR 2.9.3
