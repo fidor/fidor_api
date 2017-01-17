@@ -65,7 +65,7 @@ module FidorApi
         Response.new(response.status, response.headers, response.body)
       rescue Faraday::Error::ClientError => e
         log :info,  "Error (#{e.class.name}): #{e.to_s}\nStatus: #{e.response[:status]}"
-        log :debug, "Header: #{e.response[:header]}\nBody: #{e.response[:body]}"
+        log :debug, "Header: #{e.response[:header]}\nBody: #{e.response[:body]}" if e.response[:status] != 500
         case e.response[:status]
         when 401
           raise UnauthorizedTokenError
@@ -76,8 +76,7 @@ module FidorApi
           body = JSON.parse(e.response[:body])
           raise ValidationError.new(body["message"], body["errors"], body["key"])
         else
-          body = JSON.parse(e.response[:body])
-          raise ClientError.new(body["message"], body["code"], body["key"])
+          raise ClientError.new(e.response[:body])
         end
       end
 

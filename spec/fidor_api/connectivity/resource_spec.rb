@@ -44,5 +44,17 @@ module FidorApi
         expect(model.error_keys.first).to eq('code_suspended')
       end
     end
+
+    describe '#save failure with a 500 status' do
+      before do
+        WebMock.stub_request(:put, "https://aps.fidor.de/resource").to_return(body: 'Internal server error', status: 500)
+      end
+
+      it 'raises a ClientError' do
+        expect do
+          model.save
+        end.to raise_error(FidorApi::ClientError, "Internal server error")
+      end
+    end
   end
 end
