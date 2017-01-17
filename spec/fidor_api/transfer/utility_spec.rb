@@ -7,11 +7,12 @@ describe FidorApi::Transfer::Utility do
   let(:params) do
     {
       account_id:              "29208706",
-      external_uid:            "4279762F9",
+      external_uid:            "4279762D9",
       beneficiary_unique_name: "Johnny Doey",
       utility_provider:        "Utility Provider",
       utility_service:         "Utility Service",
       utility_service_number:  "12345678",
+      inquiry_ref_num:         "534Z2qoa1qig46d4",
       amount:                  BigDecimal.new("10.00"),
       currency:                "USD",
       subject:                 "Money for you"
@@ -32,6 +33,7 @@ describe FidorApi::Transfer::Utility do
     it { is_expected.to validate_presence_of :utility_provider       }
     it { is_expected.to validate_presence_of :utility_service        }
     it { is_expected.to validate_presence_of :utility_service_number }
+    it { is_expected.to validate_presence_of :inquiry_ref_num        }
     it { is_expected.to validate_presence_of :amount                 }
     it { is_expected.to validate_presence_of :subject                }
   end
@@ -48,7 +50,7 @@ describe FidorApi::Transfer::Utility do
           action = subject.confirmable_action
 
           expect(action).to be_a FidorApi::ConfirmableAction
-          expect(action.id).to eq "2359fed7-9b48-4ea5-a117-de3a82cf7e03"
+          expect(action.id).to eq "13a414ce-1560-43e7-870f-c43829b9d589"
         end
       end
     end
@@ -89,11 +91,12 @@ describe FidorApi::Transfer::Utility do
           routing_info: {
             utility_provider:       "Utility Provider",
             utility_service:        "Utility Service",
-            utility_service_number: "12345678"
+            utility_service_number: "12345678",
+            inquiry_ref_num:        "534Z2qoa1qig46d4"
           }
         },
         currency: "USD",
-        external_uid: "4279762F9",
+        external_uid: "4279762D9",
         subject: "Money for you"
       )
     end
