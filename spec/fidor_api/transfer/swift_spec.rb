@@ -5,8 +5,12 @@ describe FidorApi::Transfer::Swift do
   let(:client) { FidorApi::Client.new(token: token) }
   let(:token)  { FidorApi::Token.new(access_token: "0816d2665999fbd76a69c6f0050a49fa") }
 
+  before do
+    FidorApi::Connectivity.access_token = token.access_token
+  end
+
   subject do
-    client.build_uae_domestic_transfer(
+    FidorApi::Transfer::Swift.new(
       account_id:              "29208706",
       external_uid:            "4279762F8",
       beneficiary_unique_name: "Johnny Doe",
@@ -41,6 +45,7 @@ describe FidorApi::Transfer::Swift do
           expect(subject.save).to be true
 
           expect(subject.id).to be_nil
+          expect(subject.exchange_rate).to eq "0.9713704206"
           expect(subject.needs_confirmation?).to be true
 
           action = subject.confirmable_action

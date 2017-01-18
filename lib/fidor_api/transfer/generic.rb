@@ -15,6 +15,7 @@ module FidorApi
         base.attribute :external_uid,            :string
         base.attribute :subject,                 :string
         base.attribute :currency,                :string
+        base.attribute :exchange_rate,           :string
         base.attribute :subject,                 :string
         base.attribute :state,                   :string
         base.amount_attribute :amount
