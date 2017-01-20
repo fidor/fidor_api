@@ -1,11 +1,11 @@
 require "spec_helper"
 
-describe AmountAttributes do
+describe FidorApi::AmountAttributes do
 
   class DummyModel
     include ActiveModel::Model
     extend ModelAttribute
-    extend AmountAttributes
+    extend FidorApi::AmountAttributes
 
     attribute :attr1, :integer
     attribute :attr2, :integer

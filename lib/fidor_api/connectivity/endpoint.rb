@@ -66,7 +66,7 @@ module FidorApi
         def fetch_option(name)
           if @object.kind_of? Hash
             @object[name]
-          elsif @object.kind_of?(Fixnum) || @object.kind_of?(String)
+          elsif @object.class.name.in?(INTEGER_CLASSES) || @object.kind_of?(String)
             @object
           elsif @object.respond_to? name
             @object.public_send name
