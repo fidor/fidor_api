@@ -69,13 +69,12 @@ end
 ### 2. Fetching data
 
 ```ruby
-token = FidorApi::Token.new(access_token: "f859032a6ca0a4abb2be0583b8347937")
+FidorApi::Connectivity.access_token = "f859032a6ca0a4abb2be0583b8347937"
 
-client = FidorApi::Client.new(token: token)
-user = client.current_user
+user = FidorApi::User.current
 # => FidorApi::User
 
-transactions = client.transactions
+transactions = FidorApi::Transaction.all
 # => FidorApi::Collection
 
 transaction = transactions.first
@@ -85,11 +84,9 @@ transaction = transactions.first
 ### 3. Creating transfers
 
 ```ruby
-token = FidorApi::Token.new(access_token: "f859032a6ca0a4abb2be0583b8347937")
+FidorApi::Connectivity.access_token = "f859032a6ca0a4abb2be0583b8347937"
 
-client = FidorApi::Client.new(token: token)
-
-transfer = client.build_internal_transfer(
+transfer = FidorApi::Transfer::Internal.new(
   account_id:   875,
   receiver:     "kycfull@fidor.de",
   external_uid: "4279762F5",
@@ -115,10 +112,6 @@ To install this gem onto your local machine, run `bundle exec rake install`.
 Bug reports and pull requests are welcome on GitHub at https://github.com/klausmeyer/fidor_api.
 
 ## Changelog
-
-Note that for now I won't do semantic versioning.
-
-This means things might and will change even in patch-level bumps of the version number (like they did between `v0.0.1` and `v0.0.2` already). My current plan is to switch to semantic version with a release of `v0.1.0`.
 
 Have a look at the [CHANGELOG](CHANGELOG.md) for details.
 
