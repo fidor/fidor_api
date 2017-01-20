@@ -1,6 +1,6 @@
 # Changelog
 
-## v0.1.0 (not yet released)
+## v0.1.0
 
 With this release this gem will start following the semantic versioning approach.
 
