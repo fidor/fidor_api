@@ -3,14 +3,14 @@ module FidorApi
   module Auth
     extend self
 
-    def authorize_url
-      fidor_authorize_url
+    def authorize_url(callback_url: nil)
+      fidor_authorize_url(callback_url: callback_url)
     end
 
-    def fetch_token(code)
+    def fetch_token(code, callback_url: nil)
       response = connection.post "/oauth/token", {
         client_id:    FidorApi.configuration.client_id,
-        redirect_uri: FidorApi.configuration.callback_url,
+        redirect_uri: callback_url || FidorApi.configuration.callback_url,
         code:         code,
         grant_type:   "authorization_code"
       }
@@ -37,8 +37,8 @@ module FidorApi
       end
     end
 
-    def fidor_authorize_url(state = "empty")
-      "#{FidorApi.configuration.oauth_url}/oauth/authorize?client_id=#{FidorApi.configuration.client_id}&redirect_uri=#{CGI::escape FidorApi.configuration.callback_url}&state=#{state}&response_type=code"
+    def fidor_authorize_url(state: "empty", callback_url:)
+      "#{FidorApi.configuration.oauth_url}/oauth/authorize?client_id=#{FidorApi.configuration.client_id}&redirect_uri=#{CGI::escape(callback_url || FidorApi.configuration.callback_url)}&state=#{state}&response_type=code"
     end
   end
 

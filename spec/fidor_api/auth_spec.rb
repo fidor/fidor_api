@@ -6,6 +6,10 @@ describe FidorApi::Auth do
     it "returns the url to initialize the oAuth process" do
       expect(FidorApi::Auth.authorize_url).to eq "https://aps.fidor.de/oauth/authorize?client_id=client-id&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fauth%2Fcallback&state=empty&response_type=code"
     end
+
+    it "allows to use a different callback_url" do
+      expect(FidorApi::Auth.authorize_url(callback_url: "https://example.com/callback")).to eq "https://aps.fidor.de/oauth/authorize?client_id=client-id&redirect_uri=https%3A%2F%2Fexample.com%2Fcallback&state=empty&response_type=code"
+    end
   end
 
   describe ".fetch_token" do
@@ -20,6 +24,16 @@ describe FidorApi::Auth do
         expect(token.token_type).to    eq "bearer"
         expect(token.refresh_token).to eq "R2e56842abdff9fd0773ddf0f5703c075"
       end
+    end
+
+    it "allows to use a different callback_url" do
+      stub = stub_request(:post, "https://aps.fidor.de/oauth/token")
+        .with(body: hash_including(redirect_uri: "https://example.com/callback"))
+        .and_return(body: "{}")
+
+      FidorApi::Auth.fetch_token code, callback_url: "https://example.com/callback"
+
+      expect(stub).to have_been_requested
     end
   end
 
