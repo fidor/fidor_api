@@ -1,9 +1,9 @@
 # FidorApi
 
 [![Gem Version](https://badge.fury.io/rb/fidor_api.svg)](https://badge.fury.io/rb/fidor_api)
-[![Build Status](https://travis-ci.org/klausmeyer/fidor_api.svg?branch=master)](https://travis-ci.org/klausmeyer/fidor_api)
-[![Test Coverage](https://codeclimate.com/github/klausmeyer/fidor_api/badges/coverage.svg)](https://codeclimate.com/github/klausmeyer/fidor_api/coverage)
-[![Code Climate](https://codeclimate.com/github/klausmeyer/fidor_api/badges/gpa.svg)](https://codeclimate.com/github/klausmeyer/fidor_api)
+[![Build Status](https://travis-ci.org/fidor/fidor_api.svg?branch=master)](https://travis-ci.org/fidor/fidor_api)
+[![Test Coverage](https://codeclimate.com/github/fidor/fidor_api/badges/coverage.svg)](https://codeclimate.com/github/fidor/fidor_api/coverage)
+[![Code Climate](https://codeclimate.com/github/fidor/fidor_api/badges/gpa.svg)](https://codeclimate.com/github/fidor/fidor_api)
 
 Simple ruby client for the Fidor Bank REST-API: http://docs.fidor.de
 
@@ -109,7 +109,7 @@ To install this gem onto your local machine, run `bundle exec rake install`.
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/klausmeyer/fidor_api.
+Bug reports and pull requests are welcome on GitHub at https://github.com/fidor/fidor_api.
 
 ## Changelog
 

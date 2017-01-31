@@ -6,12 +6,12 @@ require 'fidor_api/version'
 Gem::Specification.new do |spec|
   spec.name          = "fidor_api"
   spec.version       = FidorApi::VERSION
-  spec.authors       = ["Klaus Meyer"]
-  spec.email         = ["spam@klaus-meyer.net"]
+  spec.authors       = ["Fidor"]
+  spec.email         = ["connect@fidor.com"]
 
   spec.summary       = "Simple ruby client for the Fidor Bank API"
   spec.description   = "Connect to the Fidor Bank API"
-  spec.homepage      = "https://github.com/klausmeyer/fidor_api"
+  spec.homepage      = "https://github.com/fidor/fidor_api"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
