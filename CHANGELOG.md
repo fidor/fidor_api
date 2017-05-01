@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.1.1
+
+* Allow usage in rails 5.1 projects
+* Allow to pass custom `callback_url` in oAuth flow
+
 ## v0.1.0
 
 With this release this gem will start following the semantic versioning approach.
