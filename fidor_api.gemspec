@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "faraday", "~> 0.8"
-  spec.add_dependency "activesupport", ">= 4.2", "< 5.1"
-  spec.add_dependency "activemodel", ">= 4.2", "< 5.1"
+  spec.add_dependency "activesupport", ">= 4.2", "< 5.2"
+  spec.add_dependency "activemodel", ">= 4.2", "< 5.2"
   spec.add_dependency "model_attribute", "~> 2.1"
 end
