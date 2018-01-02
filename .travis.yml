@@ -1,12 +1,20 @@
+branches:
+  only:
+    - master
+
 language: ruby
+
 rvm:
   - "2.2.7"
   - "2.3.4"
   - "2.4.1"
+
 before_install:
   - gem install bundler
+
 addons:
   code_climate:
     repo_token: 2b2b2a8c28682817f985f0afba1e5d643bcc801c6af1a1294869bc118742e95f
+
 after_success:
   - bundle exec codeclimate-test-reporter
