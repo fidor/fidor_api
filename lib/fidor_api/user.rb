@@ -2,7 +2,7 @@ module FidorApi
   class User < Connectivity::Resource
     extend ModelAttribute
 
-    self.endpoint = Connectivity::Endpoint.new('/users', :collection)
+    self.endpoint = Connectivity::Endpoint.new('/users/current', :resource)
 
     attribute :id,                  :integer
     attribute :email,               :string
@@ -12,7 +12,7 @@ module FidorApi
     attribute :updated_at,          :time
 
     def self.current
-      new endpoint.for(self).get(action: 'current').body
+      new endpoint.for(self).get.body
     end
 
     module ClientSupport
