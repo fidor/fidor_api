@@ -10,6 +10,6 @@ group :development, :test do
   gem "shoulda-matchers", "~> 2.8"
   gem "vcr", "~> 3.0"
   gem "webmock"
-  gem "simplecov", github: "colszowka/simplecov"
+  gem "simplecov"
   gem "codeclimate-test-reporter", group: :test, require: nil
 end
