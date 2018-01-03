@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.1.2
+
+* Allow usage in rails 5.2 projects
+* Small bugfix for getting current user and chaning passwords
+* Bump used Ruby Versions in Dev & CI
+
 ## v0.1.1
 
 * Allow usage in rails 5.1 projects
