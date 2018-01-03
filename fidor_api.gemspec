@@ -6,7 +6,7 @@ require 'fidor_api/version'
 Gem::Specification.new do |spec|
   spec.name          = "fidor_api"
   spec.version       = FidorApi::VERSION
-  spec.authors       = ["Fidor"]
+  spec.authors       = ["Fidor Solutions AG"]
   spec.email         = ["connect@fidor.com"]
 
   spec.summary       = "Simple ruby client for the Fidor Bank API"
