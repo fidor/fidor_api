@@ -1,0 +1,13 @@
+inherit_from: ../.rubocop.yml
+
+Layout/IndentHash:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/LineLength:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
