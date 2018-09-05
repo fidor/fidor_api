@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.0.0
+
+* Nothing besides version jump
+
 ## v0.1.2
 
 * Allow usage in rails 5.2 projects

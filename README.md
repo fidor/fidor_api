@@ -7,6 +7,8 @@
 
 Simple ruby client for the Fidor Bank REST-API: http://docs.fidor.de
 
+💡 This branch contains the 0.x.x / 1.x.x versions. For 2.x.x versions see master branch.
+
 ## Installation
 
 Add this line to your application's Gemfile:
