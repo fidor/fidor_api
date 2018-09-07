@@ -32,6 +32,11 @@ client = FidorApi::Client.new do |config|
   config.environment   = FidorApi::Environment::FidorDE::Sandbox
   config.client_id     = 'your-client-id'
   config.client_secret = 'your-client-secret'
+
+  # optional
+  config.faraday = lambda do |faraday|
+    faraday.use MyApp::CustomFaradayLogger, Rails.logger
+  end
 end
 ```
 

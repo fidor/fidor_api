@@ -10,6 +10,7 @@ module FidorApi
         logger
         log_bodies
         verify_ssl
+        faraday
       ].freeze
 
       attr_accessor(*ATTRIBUTES)
@@ -19,6 +20,7 @@ module FidorApi
         self.logger      = Logger.new(STDOUT)
         self.log_bodies  = true
         self.verify_ssl  = true
+        self.faraday     = ->(faraday) {}
       end
 
       def validate!

@@ -48,7 +48,8 @@ module FidorApi
           config.response :logger, client.config.logger, bodies: client.config.log_bodies if client.config.logger
           config.response :raise_error
           config.response :json, content_type: /json/
-          config.adapter  Faraday.default_adapter
+          client.config.faraday.call(config)
+          config.adapter Faraday.default_adapter
         end
       end
     end
