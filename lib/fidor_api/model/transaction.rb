@@ -8,12 +8,12 @@ module FidorApi
       attribute :subject,                  :string
       attribute :amount,                   :integer
       attribute :booking_code,             :string
-      attribute :booking_date,             :string
-      attribute :value_date,               :string
+      attribute :booking_date,             :time
+      attribute :value_date,               :time
       attribute :return_transaction_id,    :string
       attribute :currency,                 :string
-      attribute :created_at,               :string
-      attribute :updated_at,               :string
+      attribute :created_at,               :time
+      attribute :updated_at,               :time
 
       attribute_decimal_methods :amount
     end
