@@ -29,7 +29,7 @@ Or install it yourself as:
 
 ```ruby
 client = FidorApi::Client.new do |config|
-  config.environment   = FidorApi::Environment::FidorDE::Sandbox
+  # config.environment = FidorApi::Environment::FidorDE::Sandbox
   config.client_id     = 'your-client-id'
   config.client_secret = 'your-client-secret'
 
@@ -37,6 +37,56 @@ client = FidorApi::Client.new do |config|
   config.faraday = lambda do |faraday|
     faraday.use MyApp::CustomFaradayLogger, Rails.logger
   end
+end
+```
+
+#### Environments
+
+By default this gem ships with different supported environments:
+
+`FidorApi::Environment::FidorDE::Sandbox` (default)<br>
+Connects against the Fidor Germany Sandbox API (`*.sandbox.fidor.com`).<br>
+Supports only oauth2 authorization code flow and the classic transfer APIs.
+
+`FidorApi::Environment::FidorDE::Production`<br>
+Connects against the Fidor Germany Production API (`*.fidor.de`).<br>
+Supports only oauth2 authorization code flow and the classic transfer APIs.
+
+`FidorApi::Environment::Future`<br>
+Connects against a fictional API version which represents a future version of the Fidor Standard API (`*.example.com`).<br>
+Supports more oauth2 based authorization flows and the generic transfer API.<br>
+It is used for testing purposes only.
+
+In some cases you'll need to connect to a custom environment (e.g. when using mocked APIs or if you're working with internal test-servers).<br>
+For this you can simply implement your own environment definition (for example inside your application code):
+
+```ruby
+module FidorApi
+  module Environment
+    class Custom < Base
+      def api_host
+        'http://api.custom.example.com'
+      end
+
+      def auth_host
+        api_host
+      end
+
+      def auth_methods
+        %i[authorization_code resource_owner_password_credentials client_credentials].freeze
+      end
+
+      def transfers_api
+        :generic
+      end
+    end
+  end
+end
+
+Rails.application.config.x.tap do |config|
+  # [...]
+  config.fidor_api.environment = FidorApi::Environment::Custom.new
+  # [...]
 end
 ```
 
