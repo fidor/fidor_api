@@ -1,7 +1,7 @@
 require 'simplecov'
 
 SimpleCov.start do
-  minimum_coverage 99.47
+  minimum_coverage 99.55
 end
 
 require 'bundler/setup'

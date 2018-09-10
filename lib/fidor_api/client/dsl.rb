@@ -1,18 +1,22 @@
 module FidorApi
   class Client
     module DSL
+      autoload :Cards,              'fidor_api/client/dsl/cards'
       autoload :ConfirmableActions, 'fidor_api/client/dsl/confirmable_actions'
       autoload :CoreData,           'fidor_api/client/dsl/core_data'
       autoload :Messages,           'fidor_api/client/dsl/messages'
-      autoload :Transfers,          'fidor_api/client/dsl/transfers'
+      autoload :Preauths,           'fidor_api/client/dsl/preauths'
       autoload :Transactions,       'fidor_api/client/dsl/transactions'
+      autoload :Transfers,          'fidor_api/client/dsl/transfers'
 
       def self.included(klass)
+        klass.include Cards
         klass.include ConfirmableActions
         klass.include CoreData
         klass.include Messages
-        klass.include Transfers
+        klass.include Preauths
         klass.include Transactions
+        klass.include Transfers
       end
 
       private

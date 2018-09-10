@@ -9,6 +9,7 @@ module FidorApi
           attribute :receiver,     :string
           attribute :amount,       :integer
           attribute :subject,      :string
+          attribute :state,        :string
           attribute :created_at,   :time
           attribute :updated_at,   :time
 
