@@ -9,6 +9,10 @@ module FidorApi
         raise NotImplementedError
       end
 
+      def auth_redirect_host
+        raise NotImplementedError
+      end
+
       def auth_methods
         raise NotImplementedError
       end

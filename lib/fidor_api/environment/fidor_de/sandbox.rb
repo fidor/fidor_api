@@ -10,6 +10,10 @@ module FidorApi
           'https://apm.sandbox.fidor.com'.freeze
         end
 
+        def auth_redirect_host
+          'https://apm.sandbox.fidor.com'.freeze
+        end
+
         def auth_methods
           %i[authorization_code].freeze
         end

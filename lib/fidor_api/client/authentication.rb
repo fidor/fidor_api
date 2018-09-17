@@ -25,7 +25,7 @@ module FidorApi
       def authorize_start(redirect_uri:, state: SecureRandom.hex(8))
         check_flow_support! :authorization_code
 
-        "#{config.environment.auth_host}/oauth/authorize" \
+        "#{config.environment.auth_redirect_host}/oauth/authorize" \
           + "?client_id=#{config.client_id}" \
           + "&redirect_uri=#{CGI.escape(redirect_uri)}" \
           + "&state=#{state}" \

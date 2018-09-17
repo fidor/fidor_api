@@ -72,6 +72,10 @@ module FidorApi
         api_host
       end
 
+      def auth_redirect_host
+        'http://auth.custom.example.com'
+      end
+
       def auth_methods
         %i[authorization_code resource_owner_password_credentials client_credentials].freeze
       end
@@ -89,6 +93,16 @@ Rails.application.config.x.tap do |config|
   # [...]
 end
 ```
+
+Methods required to be implemented:
+
+| Method Name          | Expected to Return  | Usage                                                             |
+| -                    | -                   | -                                                                 |
+| `api_host`           | `String`            | Used as endpoint for the normal API calls                         |
+| `auth_host`          | `String`            | Used for the oAuth2 calls                                         |
+| `auth_redirect_host` | `String`            | Used for the web-based redirect flow URLs                         |
+| `auth_methods`       | `Array` of `Symbol` | Defines the supported oAuth2 authentication methods               |
+| `transfers_api`      | `Symbol`            | Defines which transfer API is supported. `:generic` or `:classic` |
 
 ### 1. oAuth (Rails)
 

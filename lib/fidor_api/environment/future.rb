@@ -6,7 +6,11 @@ module FidorApi
       end
 
       def auth_host
-        api_host
+        'https://api.example.com'.freeze
+      end
+
+      def auth_redirect_host
+        'https://auth.example.com'.freeze
       end
 
       def auth_methods
