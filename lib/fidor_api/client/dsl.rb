@@ -49,6 +49,7 @@ module FidorApi
         end
       rescue Faraday::ClientError => e
         raise if e.response[:status] != 422
+
         model.tap { |m| m.parse_errors(e.response[:body]) }
       end
 
@@ -56,6 +57,7 @@ module FidorApi
 
       def extract_confirmable_id(headers)
         return if (tuple = headers.detect { |key, _| POSSIBLE_CONFIRMABLE_HEADERS.include? key }).nil?
+
         tuple.last.split('/').last
       end
     end

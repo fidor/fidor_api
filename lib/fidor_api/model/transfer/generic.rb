@@ -37,6 +37,7 @@ module FidorApi
 
         def routing_type=(type)
           raise Errors::NotSupported unless SUPPORTED_ROUTING_TYPES.key?(type)
+
           @beneficiary ||= {}
           @beneficiary['routing_type'] = type
           define_methods_for(type)
