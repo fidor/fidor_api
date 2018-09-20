@@ -7,6 +7,7 @@ module FidorApi
           define_method name do
             value = read_attribute(name)
             return if value.nil?
+
             BigDecimal((value / 100.0).to_s)
           end
 
