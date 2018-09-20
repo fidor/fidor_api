@@ -56,7 +56,7 @@ module FidorApi
       POSSIBLE_CONFIRMABLE_HEADERS = %w[x-fidor-confirmation-path location].freeze
 
       def extract_confirmable_id(headers)
-        return if (tuple = headers.detect { |key, _| POSSIBLE_CONFIRMABLE_HEADERS.include? key }).nil?
+        return if (tuple = headers.detect { |key, value| POSSIBLE_CONFIRMABLE_HEADERS.include?(key) && value.present? }).nil?
 
         tuple.last.split('/').last
       end

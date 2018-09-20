@@ -64,7 +64,7 @@ RSpec.describe 'DSL - Transfers - Generic' do
         stub_create_request(
           endpoint:         %r{/transfers},
           response_body:    { id: '92bf870d-d914-4757-8691-7f8092a77e0e' },
-          response_headers: { 'X-Fidor-Confirmation-Path' => confirmable_url }
+          response_headers: { 'Location' => '', 'X-Fidor-Confirmation-Path' => confirmable_url }
         )
       end
 
