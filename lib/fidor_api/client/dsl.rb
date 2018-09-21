@@ -36,14 +36,14 @@ module FidorApi
         request(klass, endpoint, :post, attributes)
       end
 
-      def update(klass, endpoint, id, attributes)
-        request(klass, endpoint, :put, attributes.merge(id: id))
+      def update(klass, endpoint, id, attributes, headers = {})
+        request(klass, endpoint, :put, attributes.merge(id: id), headers)
       end
 
-      def request(klass, endpoint, method, attributes) # rubocop:disable Metrics/AbcSize
+      def request(klass, endpoint, method, attributes, headers = {}) # rubocop:disable Metrics/AbcSize
         model = klass.new(attributes)
         model.tap do |m|
-          response = connection.public_send(method, endpoint, body: m.as_json)
+          response = connection.public_send(method, endpoint, body: m.as_json, headers: headers)
           m.set_attributes(response.body) if response.body.is_a?(Hash)
           m.confirmable_action_id = extract_confirmable_id(response.headers)
         end
