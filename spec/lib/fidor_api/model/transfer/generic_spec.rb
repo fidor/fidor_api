@@ -4,8 +4,9 @@ module FidorApi
   module Model
     module Transfer
       RSpec.describe Generic do
+        let(:transfer) { described_class.new }
+
         describe 'dynamic attributes based on routing_type' do
-          let(:transfer)     { described_class.new }
           let(:routing_type) { 'FOS_P2P_EMAIL' }
           let(:email)        { 'some.one@example.com' }
 
@@ -38,6 +39,71 @@ module FidorApi
             }
             expect(transfer.routing_type).to eq routing_type
             expect(transfer.email).to eq email
+          end
+        end
+
+        describe 'virtual attributes for contact and bank details' do
+          it 'sets the attributes in the beneficiary hash' do
+            transfer.bank_name           = 'Any Bank'
+            transfer.bank_address_line_1 = 'Any Address 1'
+            transfer.bank_address_line_2 = 'Any Address 2'
+            transfer.bank_city           = 'Any City'
+            transfer.bank_country        = 'Any Country'
+
+            transfer.contact_name           = 'Some One'
+            transfer.contact_address_line_1 = 'Some Address 1'
+            transfer.contact_address_line_2 = 'Some Address 2'
+            transfer.contact_city           = 'Some City'
+            transfer.contact_country        = 'Some Country'
+
+            expect(transfer.beneficiary).to eq(
+              'bank' => {
+                'name'           => 'Any Bank',
+                'address_line_1' => 'Any Address 1',
+                'address_line_2' => 'Any Address 2',
+                'city'           => 'Any City',
+                'country'        => 'Any Country'
+              },
+              'contact' => {
+                'name'           => 'Some One',
+                'address_line_1' => 'Some Address 1',
+                'address_line_2' => 'Some Address 2',
+                'city'           => 'Some City',
+                'country'        => 'Some Country'
+              }
+            )
+          end
+
+          it 'reads the attributes from the beneficiary hash' do
+            transfer.beneficiary = {
+              'bank' => {
+                'name'           => 'Any Bank',
+                'address_line_1' => 'Any Address 1',
+                'address_line_2' => 'Any Address 2',
+                'city'           => 'Any City',
+                'country'        => 'Any Country'
+              },
+              'contact' => {
+                'name'           => 'Some One',
+                'address_line_1' => 'Some Address 1',
+                'address_line_2' => 'Some Address 2',
+                'city'           => 'Some City',
+                'country'        => 'Some Country'
+              },
+              'routing_type' => 'SEPA'
+            }
+
+            expect(transfer.bank_name).to           eq 'Any Bank'
+            expect(transfer.bank_address_line_1).to eq 'Any Address 1'
+            expect(transfer.bank_address_line_2).to eq 'Any Address 2'
+            expect(transfer.bank_city).to           eq 'Any City'
+            expect(transfer.bank_country).to        eq 'Any Country'
+
+            expect(transfer.contact_name).to           eq 'Some One'
+            expect(transfer.contact_address_line_1).to eq 'Some Address 1'
+            expect(transfer.contact_address_line_2).to eq 'Some Address 2'
+            expect(transfer.contact_city).to           eq 'Some City'
+            expect(transfer.contact_country).to        eq 'Some Country'
           end
         end
 

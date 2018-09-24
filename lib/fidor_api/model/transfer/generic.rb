@@ -2,13 +2,12 @@ module FidorApi
   module Model
     module Transfer
       class Generic < Model::Base
-        # TODO: Not all params are part of routing_info :(
         SUPPORTED_ROUTING_TYPES = {
-          'SEPA'             => %w[contact_name remote_iban remote_bic bank_name],
+          'SEPA'             => %w[remote_iban remote_bic],
           'FOS_P2P_EMAIL'    => %w[email],
           'FOS_P2P_PHONE'    => %w[mobile_phone_number],
           'FOS_P2P_USERNAME' => %w[username],
-          'FPS'              => %w[contact_name remote_account_number remote_sort_code]
+          'FPS'              => %w[remote_account_number remote_sort_code]
         }.freeze
 
         attribute :id,           :string
@@ -56,6 +55,21 @@ module FidorApi
               @beneficiary ||= {}
               @beneficiary['routing_info'] ||= {}
               @beneficiary['routing_info'][name] = value
+            end
+          end
+        end
+
+        %w[bank contact].each do |category|
+          %w[name address_line_1 address_line_2 city country].each do |attribute|
+            define_method "#{category}_#{attribute}" do
+              @beneficiary ||= {}
+              @beneficiary.dig(category, attribute)
+            end
+
+            define_method "#{category}_#{attribute}=" do |value|
+              @beneficiary ||= {}
+              @beneficiary[category] ||= {}
+              @beneficiary[category][attribute] = value
             end
           end
         end

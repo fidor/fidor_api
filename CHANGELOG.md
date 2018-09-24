@@ -1,5 +1,9 @@
 # Changelog
 
+## Next
+
+* Add support for `bank_*` and `contact_*` attributes in generic-transfer model
+
 ## v2.0.2
 
 * Allow passing custom `headers` to internal `update` DSL method
