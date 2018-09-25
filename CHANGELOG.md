@@ -2,6 +2,10 @@
 
 ## Next
 
+...
+
+## v2.0.3
+
 * Add support for `bank_*` and `contact_*` attributes in generic-transfer model
 * Add `state` attribute to generic-transfer model
 
