@@ -2,6 +2,9 @@ module FidorApi
   module Model
     class Base
       class << self
+        # This makes define_method public to support Ruby lower than 2.5
+        public :define_method # rubocop:disable Style/AccessModifierDeclarations
+
         def inherited(klass)
           klass.include ActiveModel::Model
           klass.include Helpers::ActionViewSupport
@@ -22,7 +25,7 @@ module FidorApi
       attr_accessor :confirmable_action_id
 
       def as_json
-        attributes.compact
+        attributes
       end
 
       def parse_errors(body) # rubocop:disable Metrics/AbcSize
