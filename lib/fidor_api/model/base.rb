@@ -25,7 +25,7 @@ module FidorApi
       attr_accessor :confirmable_action_id
 
       def as_json
-        attributes
+        attributes.delete_if { |_, v| v.nil? }
       end
 
       def parse_errors(body) # rubocop:disable Metrics/AbcSize
