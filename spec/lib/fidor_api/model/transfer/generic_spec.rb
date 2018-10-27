@@ -57,7 +57,7 @@ module FidorApi
             transfer.contact_country        = 'Some Country'
 
             expect(transfer.beneficiary).to eq(
-              'bank' => {
+              'bank'    => {
                 'name'           => 'Any Bank',
                 'address_line_1' => 'Any Address 1',
                 'address_line_2' => 'Any Address 2',
@@ -76,14 +76,14 @@ module FidorApi
 
           it 'reads the attributes from the beneficiary hash' do
             transfer.beneficiary = {
-              'bank' => {
+              'bank'         => {
                 'name'           => 'Any Bank',
                 'address_line_1' => 'Any Address 1',
                 'address_line_2' => 'Any Address 2',
                 'city'           => 'Any City',
                 'country'        => 'Any Country'
               },
-              'contact' => {
+              'contact'      => {
                 'name'           => 'Some One',
                 'address_line_1' => 'Some Address 1',
                 'address_line_2' => 'Some Address 2',

@@ -11,7 +11,7 @@ module ClientHelper
   def stub_fetch_request(endpoint:, response_body:, response_headers: {})
     if response_body.is_a? Array
       response_body = {
-        data: response_body,
+        data:       response_body,
         collection: {
           current_page:  1,
           per_page:      10,
@@ -30,18 +30,18 @@ module ClientHelper
   def stub_create_request(endpoint:, response_body:, response_headers: {}, status: 201)
     stub_request(:post, endpoint)
       .to_return(
-        status: status,
+        status:  status,
         headers: json_response_header.merge(response_headers),
-        body: response_body.to_json
+        body:    response_body.to_json
       )
   end
 
   def stub_update_request(endpoint:, response_body:, response_headers: {}, status: 200)
     stub_request(:put, endpoint)
       .to_return(
-        status: status,
+        status:  status,
         headers: json_response_header.merge(response_headers),
-        body: response_body.to_json
+        body:    response_body.to_json
       )
   end
 

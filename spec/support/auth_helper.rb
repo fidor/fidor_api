@@ -28,7 +28,7 @@ module AuthHelper
     {
       status:  200,
       headers: { 'Content-Type' => 'application/json' },
-      body: {
+      body:    {
         access_token:  'access-token',
         expires_in:    900,
         token_type:    'Bearer',

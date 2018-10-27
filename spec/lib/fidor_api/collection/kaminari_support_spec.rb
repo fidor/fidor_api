@@ -3,7 +3,7 @@ module FidorApi
     RSpec.describe KaminariSupport do
       let(:collection) do
         Collection.new(klass: FidorApi::Model::User, raw: {
-          'data' => [],
+          'data'       => [],
           'collection' => {
             'current_page'  => current_page,
             'per_page'      => per_page,
