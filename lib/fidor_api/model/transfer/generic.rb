@@ -3,11 +3,12 @@ module FidorApi
     module Transfer
       class Generic < Model::Base
         SUPPORTED_ROUTING_TYPES = {
-          'SEPA'             => %w[remote_iban remote_bic],
-          'FOS_P2P_EMAIL'    => %w[email],
-          'FOS_P2P_PHONE'    => %w[mobile_phone_number],
-          'FOS_P2P_USERNAME' => %w[username],
-          'FPS'              => %w[remote_account_number remote_sort_code]
+          'SEPA'                   => %w[remote_iban remote_bic],
+          'FOS_P2P_EMAIL'          => %w[email],
+          'FOS_P2P_PHONE'          => %w[mobile_phone_number],
+          'FOS_P2P_ACCOUNT_NUMBER' => %w[account_number],
+          'FOS_P2P_USERNAME'       => %w[username],
+          'FPS'                    => %w[remote_account_number remote_sort_code]
         }.freeze
 
         attribute :id,           :string
