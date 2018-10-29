@@ -1,6 +1,7 @@
 module FidorApi
   class Client
     module DSL
+      autoload :Accounts,           'fidor_api/client/dsl/accounts'
       autoload :Cards,              'fidor_api/client/dsl/cards'
       autoload :ConfirmableActions, 'fidor_api/client/dsl/confirmable_actions'
       autoload :CoreData,           'fidor_api/client/dsl/core_data'
@@ -10,6 +11,7 @@ module FidorApi
       autoload :Transfers,          'fidor_api/client/dsl/transfers'
 
       def self.included(klass)
+        klass.include Accounts
         klass.include Cards
         klass.include ConfirmableActions
         klass.include CoreData
