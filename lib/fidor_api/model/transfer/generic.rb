@@ -3,7 +3,7 @@ module FidorApi
     module Transfer
       class Generic < Model::Base
         SUPPORTED_ROUTING_TYPES = {
-          'SEPA'                   => %w[remote_iban remote_bic],
+          'SEPA'                   => %w[remote_iban remote_bic instant],
           'FOS_P2P_EMAIL'          => %w[email],
           'FOS_P2P_PHONE'          => %w[mobile_phone_number],
           'FOS_P2P_ACCOUNT_NUMBER' => %w[account_number],
