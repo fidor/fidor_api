@@ -4,6 +4,12 @@
 
 ...
 
+## v2.0.4
+
+* Add `FOS_P2P_ACCOUNT_NUMBER` routing-type to generic-transfer model
+* Add DSL to fetch transactions for specific account
+* Add `instant` flag to `SEPA` routing-type in generic-transfer model
+
 ## v2.0.3
 
 * Add support for `bank_*` and `contact_*` attributes in generic-transfer model
