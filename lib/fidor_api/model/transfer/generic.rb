@@ -8,7 +8,7 @@ module FidorApi
           'FOS_P2P_PHONE'          => %w[mobile_phone_number],
           'FOS_P2P_ACCOUNT_NUMBER' => %w[account_number],
           'FOS_P2P_USERNAME'       => %w[username],
-          'FPS'                    => %w[remote_account_number remote_sort_code]
+          'FPS'                    => %w[remote_account_number remote_sort_code instant]
         }.freeze
 
         attribute :id,           :string
