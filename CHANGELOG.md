@@ -4,6 +4,10 @@
 
 ...
 
+## v2.0.5
+
+* Add `instant` flag to `FPS` routing-type in generic-transfer model
+
 ## v2.0.4
 
 * Add `FOS_P2P_ACCOUNT_NUMBER` routing-type to generic-transfer model
