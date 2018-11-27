@@ -1,15 +1,10 @@
+require 'fidor_api/model/beneficiary_helper'
+
 module FidorApi
   module Model
     module Transfer
       class Generic < Model::Base
-        SUPPORTED_ROUTING_TYPES = {
-          'SEPA'                   => %w[remote_iban remote_bic instant],
-          'FOS_P2P_EMAIL'          => %w[email],
-          'FOS_P2P_PHONE'          => %w[mobile_phone_number],
-          'FOS_P2P_ACCOUNT_NUMBER' => %w[account_number],
-          'FOS_P2P_USERNAME'       => %w[username],
-          'FPS'                    => %w[remote_account_number remote_sort_code instant]
-        }.freeze
+        include BeneficiaryHelper
 
         attribute :id,           :string
         attribute :account_id,   :string
@@ -28,7 +23,7 @@ module FidorApi
 
         def beneficiary=(value)
           write_attribute(:beneficiary, value)
-          define_methods_for(beneficiary['routing_type'])
+          define_methods_for(SUPPORTED_ROUTING_TYPES[beneficiary['routing_type']])
         end
 
         def routing_type
@@ -41,24 +36,7 @@ module FidorApi
 
           @beneficiary ||= {}
           @beneficiary['routing_type'] = type
-          define_methods_for(type)
-        end
-
-        def define_methods_for(type) # rubocop:disable Metrics/MethodLength
-          SUPPORTED_ROUTING_TYPES[type].each do |name|
-            next if respond_to?(name)
-
-            self.class.define_method name do
-              @beneficiary ||= {}
-              @beneficiary.dig('routing_info', name)
-            end
-
-            self.class.define_method "#{name}=" do |value|
-              @beneficiary ||= {}
-              @beneficiary['routing_info'] ||= {}
-              @beneficiary['routing_info'][name] = value
-            end
-          end
+          define_methods_for(SUPPORTED_ROUTING_TYPES[type])
         end
 
         %w[bank contact].each do |category|
@@ -74,13 +52,6 @@ module FidorApi
               @beneficiary[category][attribute] = value
             end
           end
-        end
-
-        def parse_errors(body)
-          body['errors'].each do |hash|
-            hash['field'].sub!('beneficiary.routing_info.', '')
-          end
-          super(body)
         end
       end
     end
