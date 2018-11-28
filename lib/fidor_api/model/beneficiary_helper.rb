@@ -2,12 +2,12 @@ module FidorApi
   module Model
     module BeneficiaryHelper
       SUPPORTED_ROUTING_TYPES = {
-        'SEPA'                   => %w[remote_iban remote_bic],
+        'SEPA'                   => %w[remote_iban remote_bic instant],
         'FOS_P2P_EMAIL'          => %w[email],
         'FOS_P2P_PHONE'          => %w[mobile_phone_number],
         'FOS_P2P_ACCOUNT_NUMBER' => %w[account_number],
         'FOS_P2P_USERNAME'       => %w[username],
-        'FPS'                    => %w[remote_account_number remote_sort_code]
+        'FPS'                    => %w[remote_account_number remote_sort_code instant]
       }.freeze
 
       def define_methods_for(properties) # rubocop:disable Metrics/MethodLength
