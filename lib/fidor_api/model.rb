@@ -8,6 +8,7 @@ module FidorApi
     autoload :Helpers,           'fidor_api/model/helpers'
     autoload :Message,           'fidor_api/model/message'
     autoload :Preauth,           'fidor_api/model/preauth'
+    autoload :StandingOrder,     'fidor_api/model/standing_order'
     autoload :Transaction,       'fidor_api/model/transaction'
     autoload :Transfer,          'fidor_api/model/transfer'
     autoload :User,              'fidor_api/model/user'
