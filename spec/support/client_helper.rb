@@ -8,7 +8,7 @@ module ClientHelper
     end
   end
 
-  def stub_fetch_request(endpoint:, response_body:, response_headers: {})
+  def stub_fetch_request(endpoint:, response_body:, response_headers: {}, request_params: nil)
     if response_body.is_a? Array
       response_body = {
         data:       response_body,
@@ -23,8 +23,14 @@ module ClientHelper
 
     response_body = response_body.to_json if response_body.is_a? Hash
 
-    stub_request(:get, endpoint)
-      .to_return(status: 200, headers: json_response_header.merge(response_headers), body: response_body)
+    stubbed_request =
+      if request_params
+        stub_request(:get, endpoint).with(request_params)
+      else
+        stub_request(:get, endpoint)
+      end
+
+    stubbed_request.to_return(status: 200, headers: json_response_header.merge(response_headers), body: response_body)
   end
 
   def stub_create_request(endpoint:, response_body:, response_headers: {}, status: 201)
