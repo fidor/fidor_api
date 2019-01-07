@@ -49,8 +49,7 @@ RSpec.describe 'DSL - Core Data' do
 
   it 'supports query params' do
     stub_fetch_request(endpoint: %r{/users/current},
-      request_params: {query: {fields: 'id,email'}},
-      response_body: {id: 42, email: 'example@email.org'})
+      request_params: { query: { fields: 'id,email' } }, response_body:  { id: 42, email: 'example@email.org' })
 
     user = client.user fields: 'id,email'
 
@@ -60,9 +59,9 @@ RSpec.describe 'DSL - Core Data' do
 
   it 'supports per-instance headers' do
     stub_fetch_request(endpoint: %r{/accounts},
-      request_params: {headers: {'Any-Header' => 'Basic stuff'}}, response_body: [id: 42])
+      request_params: { headers: { 'Any-Header' => 'Basic stuff' } }, response_body: [id: 42])
 
-    account = client.accounts(headers: {'Any-Header' => 'Basic stuff'}).first
+    account = client.accounts(headers: { 'Any-Header' => 'Basic stuff' }).first
 
     expect(account.id).to eq 42
   end
