@@ -3,7 +3,7 @@ module FidorApi
     module DSL
       module Accounts
         def account_transactions(id, options = {})
-          fetch(:collection, Model::Transaction, "/accounts/#{id}/transactions", options)
+          fetch(:collection, Model::Transaction, "accounts/#{id}/transactions", options)
         end
       end
     end
