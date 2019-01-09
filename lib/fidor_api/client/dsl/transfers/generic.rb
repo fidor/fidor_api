@@ -18,14 +18,14 @@ module FidorApi
             Model::Transfer::Generic.new(attributes)
           end
 
-          def create_transfer(attributes = {})
+          def create_transfer(attributes = {}, options = {})
             check_transfer_support! :generic
-            create(FidorApi::Model::Transfer::Generic, 'transfers', attributes)
+            create(FidorApi::Model::Transfer::Generic, 'transfers', attributes, options)
           end
 
-          def update_transfer(id, attributes = {})
+          def update_transfer(id, attributes = {}, options = {})
             check_transfer_support! :generic
-            update(FidorApi::Model::Transfer::Generic, "transfers/#{id}", id, attributes)
+            update(FidorApi::Model::Transfer::Generic, "transfers/#{id}", id, attributes, options)
           end
         end
       end

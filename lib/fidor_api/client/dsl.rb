@@ -38,11 +38,15 @@ module FidorApi
         end
       end
 
-      def create(klass, endpoint, attributes)
-        request(klass, endpoint, :post, attributes)
+      def create(klass, endpoint, attributes, options = {})
+        headers = options.delete(:headers) || {}
+
+        request(klass, endpoint, :post, attributes, headers)
       end
 
-      def update(klass, endpoint, id, attributes, headers = {})
+      def update(klass, endpoint, id, attributes, options = {})
+        headers = options.delete(:headers) || {}
+
         request(klass, endpoint, :put, attributes.merge(id: id), headers)
       end
 
