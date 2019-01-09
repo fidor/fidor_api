@@ -5,12 +5,12 @@ module FidorApi
         module Generic
           def transfers(options = {})
             check_transfer_support! :generic
-            fetch(:collection, FidorApi::Model::Transfer::Generic, '/transfers', options)
+            fetch(:collection, FidorApi::Model::Transfer::Generic, 'transfers', options)
           end
 
           def transfer(id, options = {})
             check_transfer_support! :generic
-            fetch(:single, FidorApi::Model::Transfer::Generic, "/transfers/#{id}", options)
+            fetch(:single, FidorApi::Model::Transfer::Generic, "transfers/#{id}", options)
           end
 
           def new_transfer(attributes = {})
@@ -20,12 +20,12 @@ module FidorApi
 
           def create_transfer(attributes = {})
             check_transfer_support! :generic
-            create(FidorApi::Model::Transfer::Generic, '/transfers', attributes)
+            create(FidorApi::Model::Transfer::Generic, 'transfers', attributes)
           end
 
           def update_transfer(id, attributes = {})
             check_transfer_support! :generic
-            update(FidorApi::Model::Transfer::Generic, "/transfers/#{id}", id, attributes)
+            update(FidorApi::Model::Transfer::Generic, "transfers/#{id}", id, attributes)
           end
         end
       end

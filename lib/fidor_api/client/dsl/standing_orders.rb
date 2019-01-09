@@ -3,7 +3,7 @@ module FidorApi
     module DSL
       module StandingOrders
         def standing_order(id, options = {})
-          fetch(:single, FidorApi::Model::StandingOrder, "/standing_orders/#{id}", options)
+          fetch(:single, FidorApi::Model::StandingOrder, "standing_orders/#{id}", options)
         end
 
         def new_standing_order(attributes = {})
@@ -11,7 +11,7 @@ module FidorApi
         end
 
         def create_standing_order(attributes = {})
-          create(FidorApi::Model::StandingOrder, '/standing_orders', attributes)
+          create(FidorApi::Model::StandingOrder, 'standing_orders', attributes)
         end
       end
     end
