@@ -26,11 +26,13 @@ module FidorApi
       private
 
       def fetch(type, klass, endpoint, options)
+        headers = options.delete(:headers) || {}
+
         case type
         when :single
-          klass.new(connection.get(endpoint, query: options).body)
+          klass.new(connection.get(endpoint, query: options, headers: headers).body)
         when :collection
-          Collection.new(klass: klass, raw: connection.get(endpoint, query: options).body)
+          Collection.new(klass: klass, raw: connection.get(endpoint, query: options, headers: headers).body)
         else
           raise ArgumentError
         end
