@@ -47,6 +47,7 @@ module FidorApi
             'rhythm'               => 'weekly',
             'runtime_day_of_month' => '1',
             'runtime_day_of_week'  => 'Mon',
+            'start_date'           => '2019-06-24',
             'ultimate_run'         => '2019-07-24'
           }
         end
@@ -55,6 +56,7 @@ module FidorApi
           standing_order.rhythm               = schedule_params['rhythm']
           standing_order.runtime_day_of_month = schedule_params['runtime_day_of_month']
           standing_order.runtime_day_of_week  = schedule_params['runtime_day_of_week']
+          standing_order.start_date           = schedule_params['start_date']
           standing_order.ultimate_run         = schedule_params['ultimate_run']
 
           expect(standing_order.schedule).to eq schedule_params
@@ -66,6 +68,7 @@ module FidorApi
           expect(standing_order.rhythm).to eq schedule_params['rhythm']
           expect(standing_order.runtime_day_of_month).to eq schedule_params['runtime_day_of_month']
           expect(standing_order.runtime_day_of_week).to eq schedule_params['runtime_day_of_week']
+          expect(standing_order.start_date).to eq schedule_params['start_date']
           expect(standing_order.ultimate_run).to eq schedule_params['ultimate_run']
         end
       end

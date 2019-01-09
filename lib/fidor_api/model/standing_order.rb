@@ -34,7 +34,7 @@ module FidorApi
         define_methods_for(SUPPORTED_ROUTING_TYPES[type])
       end
 
-      %w[rhythm runtime_day_of_month runtime_day_of_week ultimate_run].each do |attribute|
+      %w[rhythm runtime_day_of_month runtime_day_of_week start_date ultimate_run].each do |attribute|
         define_method attribute do
           @schedule ||= {}
           @schedule[attribute]
