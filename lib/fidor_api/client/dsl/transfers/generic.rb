@@ -27,6 +27,12 @@ module FidorApi
             check_transfer_support! :generic
             update(FidorApi::Model::Transfer::Generic, "transfers/#{id}", id, attributes, options)
           end
+
+          def confirm_transfer(id, options = {})
+            check_transfer_support! :generic
+            response = request(:put, "/transfers/#{id}/confirm", {}, options.delete(:headers))
+            response.headers['Location']
+          end
         end
       end
     end

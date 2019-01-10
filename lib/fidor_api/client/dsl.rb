@@ -41,19 +41,19 @@ module FidorApi
       def create(klass, endpoint, attributes, options = {})
         headers = options.delete(:headers) || {}
 
-        request(klass, endpoint, :post, attributes, headers)
+        request_model(klass, endpoint, :post, attributes, headers)
       end
 
       def update(klass, endpoint, id, attributes, options = {})
         headers = options.delete(:headers) || {}
 
-        request(klass, endpoint, :put, attributes.merge(id: id), headers)
+        request_model(klass, endpoint, :put, attributes.merge(id: id), headers)
       end
 
-      def request(klass, endpoint, method, attributes, headers = {}) # rubocop:disable Metrics/AbcSize
+      def request_model(klass, endpoint, method, attributes, headers = {}) # rubocop:disable Metrics/AbcSize
         model = klass.new(attributes)
         model.tap do |m|
-          response = connection.public_send(method, endpoint, body: m.as_json, headers: headers)
+          response = request(method, endpoint, m.as_json, headers)
           m.set_attributes(response.body) if response.body.is_a?(Hash)
           m.confirmable_action_id = extract_confirmable_id(response.headers)
         end
@@ -61,6 +61,10 @@ module FidorApi
         raise if e.response[:status] != 422
 
         model.tap { |m| m.parse_errors(e.response[:body]) }
+      end
+
+      def request(method, endpoint, attributes, headers = {})
+        connection.public_send(method, endpoint, body: attributes, headers: headers)
       end
 
       POSSIBLE_CONFIRMABLE_HEADERS = %w[x-fidor-confirmation-path location].freeze
