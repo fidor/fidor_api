@@ -1,8 +1,11 @@
 # Changelog
 
-## Next
+## v2.0.6
 
-...
+* Support for Standing Orders
+* Allow injection of custom headers for Generic Transfers
+* Support endpoints with path prefix
+* Support for Confirmable v2 on Generic Transfers
 
 ## v2.0.5
 
