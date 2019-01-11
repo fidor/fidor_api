@@ -30,8 +30,7 @@ module FidorApi
 
           def confirm_transfer(id, options = {})
             check_transfer_support! :generic
-            response = request(:put, "/transfers/#{id}/confirm", {}, options.delete(:headers))
-            response.headers['Location']
+            request(:put, "/transfers/#{id}/confirm", {}, options.delete(:headers)).headers['Location']
           end
         end
       end

@@ -130,4 +130,22 @@ RSpec.describe 'DSL - Transfers - Generic' do
       end
     end
   end
+
+  describe '#confirm_transfer' do
+    before do
+      stub_update_request(
+        endpoint:         %r{/transfers/92bf870d-d914-4757-8691-7f8092a77e0e/confirm},
+        request_headers:  request_headers,
+        response_headers: { 'Location' => location },
+        status:           303
+      )
+    end
+
+    let(:location) { 'https://auth.example.com/confirmable/eb5e8e0d-4611-4124-a1c5-f0b1afad250b' }
+
+    it 'returns the value from the location header' do
+      return_value = client.confirm_transfer('92bf870d-d914-4757-8691-7f8092a77e0e', headers: request_headers)
+      expect(return_value).to eq location
+    end
+  end
 end

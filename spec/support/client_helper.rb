@@ -33,7 +33,7 @@ module ClientHelper
     stubbed_request.to_return(status: 200, headers: json_response_header.merge(response_headers), body: response_body)
   end
 
-  def stub_create_request(endpoint:, request_headers: {}, response_body:, response_headers: {}, status: 201)
+  def stub_create_request(endpoint:, request_headers: {}, response_body: {}, response_headers: {}, status: 201)
     stub_request(:post, endpoint)
       .with { |request| (request_headers.to_a - request.headers.to_a).empty? }
       .to_return(
@@ -43,7 +43,7 @@ module ClientHelper
       )
   end
 
-  def stub_update_request(endpoint:, request_headers: {}, response_body:, response_headers: {}, status: 200)
+  def stub_update_request(endpoint:, request_headers: {}, response_body: {}, response_headers: {}, status: 200)
     stub_request(:put, endpoint)
       .with { |request| (request_headers.to_a - request.headers.to_a).empty? }
       .to_return(
