@@ -1,6 +1,6 @@
 inherit_from: ../.rubocop.yml
 
-Layout/IndentHash:
+Layout/IndentFirstHashElement:
   Enabled: false
 
 Metrics/BlockLength:
