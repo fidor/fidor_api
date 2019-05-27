@@ -6,14 +6,15 @@ module FidorApi
       class Generic < Model::Base
         include BeneficiaryHelper
 
-        attribute :id,           :string
-        attribute :account_id,   :string
-        attribute :external_uid, :string
-        attribute :amount,       :integer
-        attribute :currency,     :string
-        attribute :subject,      :string
-        attribute :beneficiary,  :json
-        attribute :state,        :string
+        attribute :id,             :string
+        attribute :account_id,     :string
+        attribute :external_uid,   :string
+        attribute :amount,         :integer
+        attribute :currency,       :string
+        attribute :subject,        :string
+        attribute :beneficiary,    :json
+        attribute :state,          :string
+        attribute :scheduled_date, :string
 
         attribute_decimal_methods :amount
 

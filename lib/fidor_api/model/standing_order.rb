@@ -12,6 +12,7 @@ module FidorApi
       attribute :currency,     :string
       attribute :subject,      :string
       attribute :beneficiary,  :json
+      attribute :state,        :string
       attribute :schedule,     :json
 
       attribute_decimal_methods :amount
@@ -43,6 +44,21 @@ module FidorApi
         define_method "#{attribute}=" do |value|
           @schedule ||= {}
           @schedule[attribute] = value
+        end
+      end
+
+      %w[bank contact].each do |category|
+        %w[name address_line_1 address_line_2 city country].each do |attribute|
+          define_method "#{category}_#{attribute}" do
+            @beneficiary ||= {}
+            @beneficiary.dig(category, attribute)
+          end
+
+          define_method "#{category}_#{attribute}=" do |value|
+            @beneficiary ||= {}
+            @beneficiary[category] ||= {}
+            @beneficiary[category][attribute] = value
+          end
         end
       end
     end
