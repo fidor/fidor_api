@@ -73,6 +73,71 @@ module FidorApi
         end
       end
 
+      describe 'virtual attributes for contact and bank details' do
+        it 'sets the attributes in the beneficiary hash' do
+          standing_order.bank_name           = 'Any Bank'
+          standing_order.bank_address_line_1 = 'Any Address 1'
+          standing_order.bank_address_line_2 = 'Any Address 2'
+          standing_order.bank_city           = 'Any City'
+          standing_order.bank_country        = 'Any Country'
+
+          standing_order.contact_name           = 'Some One'
+          standing_order.contact_address_line_1 = 'Some Address 1'
+          standing_order.contact_address_line_2 = 'Some Address 2'
+          standing_order.contact_city           = 'Some City'
+          standing_order.contact_country        = 'Some Country'
+
+          expect(standing_order.beneficiary).to eq(
+            'bank'    => {
+              'name'           => 'Any Bank',
+              'address_line_1' => 'Any Address 1',
+              'address_line_2' => 'Any Address 2',
+              'city'           => 'Any City',
+              'country'        => 'Any Country'
+            },
+            'contact' => {
+              'name'           => 'Some One',
+              'address_line_1' => 'Some Address 1',
+              'address_line_2' => 'Some Address 2',
+              'city'           => 'Some City',
+              'country'        => 'Some Country'
+            }
+          )
+        end
+
+        it 'reads the attributes from the beneficiary hash' do
+          standing_order.beneficiary = {
+            'bank'         => {
+              'name'           => 'Any Bank',
+              'address_line_1' => 'Any Address 1',
+              'address_line_2' => 'Any Address 2',
+              'city'           => 'Any City',
+              'country'        => 'Any Country'
+            },
+            'contact'      => {
+              'name'           => 'Some One',
+              'address_line_1' => 'Some Address 1',
+              'address_line_2' => 'Some Address 2',
+              'city'           => 'Some City',
+              'country'        => 'Some Country'
+            },
+            'routing_type' => 'SEPA'
+          }
+
+          expect(standing_order.bank_name).to           eq 'Any Bank'
+          expect(standing_order.bank_address_line_1).to eq 'Any Address 1'
+          expect(standing_order.bank_address_line_2).to eq 'Any Address 2'
+          expect(standing_order.bank_city).to           eq 'Any City'
+          expect(standing_order.bank_country).to        eq 'Any Country'
+
+          expect(standing_order.contact_name).to           eq 'Some One'
+          expect(standing_order.contact_address_line_1).to eq 'Some Address 1'
+          expect(standing_order.contact_address_line_2).to eq 'Some Address 2'
+          expect(standing_order.contact_city).to           eq 'Some City'
+          expect(standing_order.contact_country).to        eq 'Some Country'
+        end
+      end
+
       describe '#parse_errors' do
         let(:transfer) { described_class.new }
 
