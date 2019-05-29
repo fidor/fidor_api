@@ -11,8 +11,8 @@ module FidorApi
       attribute :currency, :string
       attribute :subject, :string
       attribute :status, :string
-      attribute :beneficiary,  :json
-      attribute :amount, :float
+      attribute :beneficiary, :json
+      attribute :amount, :integer
       attribute :scheduled_date, :string
 
       attribute_decimal_methods :amount
