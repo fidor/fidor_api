@@ -5,14 +5,14 @@ module FidorApi
     class ScheduledTransfer < Model::Base
       include FidorApi::Model::BeneficiaryHelper
 
-      attribute :id,   :string
-      attribute :account_id, :integer
-      attribute :external_uid, :string
-      attribute :currency, :string
-      attribute :subject, :string
-      attribute :status, :string
-      attribute :beneficiary, :json
-      attribute :amount, :integer
+      attribute :id,             :string
+      attribute :account_id,     :integer
+      attribute :external_uid,   :string
+      attribute :currency,       :string
+      attribute :subject,        :string
+      attribute :status,         :string
+      attribute :beneficiary,    :json
+      attribute :amount,         :integer
       attribute :scheduled_date, :string
 
       attribute_decimal_methods :amount
