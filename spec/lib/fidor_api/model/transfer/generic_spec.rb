@@ -21,6 +21,8 @@ module FidorApi
           it 'defines the attributes when routing_type is set' do
             transfer.routing_type = routing_type
             transfer.email = email
+            transfer.scheduled_date = '10-12-2022'
+            expect(transfer.scheduled_date).to eq('10-12-2022')
           end
 
           it 'persists the routing_type and attributes in the beneficiary field' do

@@ -6,6 +6,9 @@ RSpec.describe 'DSL - Standing orders' do
   let(:client_secret)         { 'client-secret' }
   let(:standing_order_id)     { '92bf870d-d914-4757-8691-7f8092a77e0e' }
   let(:confirmable_action_id) { '15fcc0cb-b741-4e96-b4bf-bb5b2ce79609' }
+  let(:request_headers) do
+    { 'X-Something' => '42' }
+  end
 
   before do
     client.config.environment = FidorApi::Environment::Future.new
@@ -83,6 +86,44 @@ RSpec.describe 'DSL - Standing orders' do
           'Something went wrong',
           'Amount is invalid'
         ]
+      end
+    end
+  end
+
+  describe '#confirm_standing_order' do
+    before do
+      stub_update_request(
+        endpoint:         %r{/standing_orders/#{standing_order_id}/confirm},
+        request_headers:  request_headers,
+        response_headers: { 'Location' => location },
+        status:           303
+      )
+    end
+
+    let(:location) { 'https://auth.example.com/confirmable/eb5e8e0d-4611-4124-a1c5-f0b1afad250b' }
+
+    it 'returns the value from the location header' do
+      return_value = client.confirm_standing_order(standing_order_id, headers: request_headers)
+      expect(return_value).to eq location
+    end
+  end
+
+  describe '#update_standing_order' do
+    let(:subject) { 'Hello World' }
+
+    context 'when the api accepts the Standing Order' do
+      before do
+        stub_update_request(
+          endpoint:        %r{/standing_orders/#{standing_order_id}},
+          request_headers: request_headers,
+          response_body:   { id: standing_order_id }
+        )
+      end
+
+      it 'returns the updated object' do
+        transfer = client.update_standing_order(standing_order_id, { subject: subject }, headers: request_headers)
+        expect(transfer).to be_instance_of FidorApi::Model::StandingOrder
+        expect(transfer.subject).to eq subject
       end
     end
   end
