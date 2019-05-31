@@ -10,6 +10,18 @@ RSpec.describe 'DSL - Scheduled Transfer' do
   end
 
   describe '#scheduled_transfers' do
+    let(:beneficiary) do
+      {
+        'unique_name':  'string',
+        'contact':      {
+          'name': 'Shreyas Agarwal'
+        },
+        'bank':         {},
+        'routing_type': 'SEPA',
+        'routing_info': {}
+      }
+    end
+
     before do
       stub_fetch_request(
         endpoint:      %r{/scheduled_transfers},
@@ -23,15 +35,7 @@ RSpec.describe 'DSL - Scheduled Transfer' do
             'subject':               'Money for you',
             'status':                'created',
             'additional_attributes': {},
-            'beneficiary':           {
-                                      'unique_name':  'string',
-                                      'contact':      {
-                                        'name': 'Shreyas Agarwal'
-                                      },
-                                      'bank':         {},
-                                      'routing_type': 'SEPA',
-                                      'routing_info': {}
-                                      },
+            'beneficiary':           beneficiary,
             'scheduled_date':        '2118-05-23'
           }
         ]
