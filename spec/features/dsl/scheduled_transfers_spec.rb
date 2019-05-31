@@ -37,11 +37,13 @@ RSpec.describe 'DSL - Scheduled Transfer' do
         ]
       )
     end
+
     it 'returns all the requested scheduled transfers objects' do
-      scheduled_transfers = client.scheduled_transfers
-      expect(scheduled_transfers.first).to be_instance_of FidorApi::Model::ScheduledTransfer
-      expect(scheduled_transfers.first.id).to eq 'c51038a3-8ace-4e56-9009-72a5d319b66b'
-      expect(scheduled_transfers.first.contact_name).to eq 'Shreyas Agarwal'
+      scheduled_transfer = client.scheduled_transfers.first
+      expect(scheduled_transfer).to be_instance_of FidorApi::Model::ScheduledTransfer
+      expect(scheduled_transfer.id).to eq 'c51038a3-8ace-4e56-9009-72a5d319b66b'
+      expect(scheduled_transfer.contact_name).to eq 'Shreyas Agarwal'
+      expect(scheduled_transfer.routing_type).to eq 'SEPA'
     end
   end
 end

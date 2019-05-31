@@ -33,12 +33,6 @@ module FidorApi
             @beneficiary ||= {}
             @beneficiary.dig(category, attribute)
           end
-
-          define_method "#{category}_#{attribute}=" do |value|
-            @beneficiary ||= {}
-            @beneficiary[category] ||= {}
-            @beneficiary[category][attribute] = value
-          end
         end
       end
     end
