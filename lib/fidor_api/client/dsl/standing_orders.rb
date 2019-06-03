@@ -6,6 +6,10 @@ module FidorApi
           fetch(:single, FidorApi::Model::StandingOrder, "standing_orders/#{id}", options)
         end
 
+        def standing_orders(options = {})
+          fetch(:collection, FidorApi::Model::StandingOrder, 'standing_orders', options)
+        end
+
         def new_standing_order(attributes = {})
           FidorApi::Model::StandingOrder.new(attributes)
         end
