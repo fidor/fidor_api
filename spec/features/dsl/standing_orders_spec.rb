@@ -29,6 +29,63 @@ RSpec.describe 'DSL - Standing orders' do
     end
   end
 
+  describe '#standing_orders' do
+    let(:beneficiary) do
+      {
+        'unique_name':  'string',
+        'contact':      {
+          'name': 'Shreyas Agarwal'
+        },
+        'bank':         {
+          'name':           'Maze Bank',
+          'address_line_1': 'Main Street 1',
+          'address_line_2': 'House 2',
+          'city':           'New York',
+          'country':        'USA'
+        },
+        'routing_type': 'SEPA',
+        'routing_info': {}
+      }
+    end
+    let(:schedule) do
+      {
+        'rhythm':               'weekly',
+        'runtime_day_of_month': 1,
+        'runtime_day_of_week':  'Mon',
+        'start_date':           '2019-06-03',
+        'ultimate_run':         '2019-06-03'
+      }
+    end
+
+    before do
+      stub_fetch_request(
+        endpoint:      %r{/standing_orders},
+        response_body: [
+          {
+            'id':                    'c51038a3-8ace-4e56-9009-72a5d319b66b',
+            'account_id':            '12345678',
+            'external_uid':          '4279762F8',
+            'amount':                4223,
+            'currency':              'EUR',
+            'subject':               'Money for you',
+            'status':                'created',
+            'additional_attributes': {},
+            'beneficiary':           beneficiary,
+            'schedule':              schedule
+          }
+        ]
+      )
+    end
+
+    it 'returns all the requested standing orders objects' do
+      standing_order = client.standing_orders.first
+      expect(standing_order).to be_instance_of FidorApi::Model::StandingOrder
+      expect(standing_order.id).to eq 'c51038a3-8ace-4e56-9009-72a5d319b66b'
+      expect(standing_order.contact_name).to eq 'Shreyas Agarwal'
+      expect(standing_order.routing_type).to eq 'SEPA'
+    end
+  end
+
   describe '#new_standing_order' do
     let(:subject) { 'Hello World' }
 

@@ -7,6 +7,7 @@ module FidorApi
       autoload :CoreData,           'fidor_api/client/dsl/core_data'
       autoload :Messages,           'fidor_api/client/dsl/messages'
       autoload :Preauths,           'fidor_api/client/dsl/preauths'
+      autoload :ScheduledTransfers, 'fidor_api/client/dsl/scheduled_transfers'
       autoload :StandingOrders,     'fidor_api/client/dsl/standing_orders'
       autoload :Transactions,       'fidor_api/client/dsl/transactions'
       autoload :Transfers,          'fidor_api/client/dsl/transfers'
@@ -18,6 +19,7 @@ module FidorApi
         klass.include CoreData
         klass.include Messages
         klass.include Preauths
+        klass.include ScheduledTransfers
         klass.include StandingOrders
         klass.include Transactions
         klass.include Transfers
