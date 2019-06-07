@@ -14,7 +14,6 @@ module FidorApi
         attribute :subject,        :string
         attribute :beneficiary,    :json
         attribute :state,          :string
-        attribute :scheduled_date, :string
 
         attribute_decimal_methods :amount
 
