@@ -14,16 +14,16 @@ module FidorApi
           FidorApi::Model::StandingOrder.new(attributes)
         end
 
-        def create_standing_order(attributes = {})
-          create(FidorApi::Model::StandingOrder, 'standing_orders', attributes)
-        end
-
-        def confirm_standing_order(id, options = {})
-          request(:put, "standing_orders/#{id}/confirm", {}, options.delete(:headers)).headers['Location']
+        def create_standing_order(attributes = {}, options = {})
+          create(FidorApi::Model::StandingOrder, 'standing_orders', attributes, options)
         end
 
         def update_standing_order(id, attributes = {}, options = {})
           update(FidorApi::Model::StandingOrder, "standing_orders/#{id}", id, attributes, options)
+        end
+
+        def confirm_standing_order(id, options = {})
+          request(:put, "standing_orders/#{id}/confirm", {}, options.delete(:headers)).headers['Location']
         end
       end
     end
