@@ -1,5 +1,12 @@
 # Changelog
 
+## v2.0.7
+
+* New and improved DSLs for:
+  * Standing Orders
+  * Scheduled Transfers
+* Allow usage in Rails 6.0.x projects
+
 ## v2.0.6
 
 * Support for Standing Orders
