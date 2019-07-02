@@ -148,7 +148,7 @@ RSpec.describe 'DSL - Transfers - Generic' do
     let(:location) { 'https://api.example.com/confirm/eb5e8e0d-4611-4124-a1c5-f0b1afad250b' }
     let(:redirect_link) { 'https://auth.example.com/confirmable/eb5e8e0d-4611-4124-a1c5-f0b1afad250b' }
 
-    it 'returns the value from the location header' do
+    it 'returns the confirmation response' do
       return_value = client.confirm_transfer('92bf870d-d914-4757-8691-7f8092a77e0e', headers: request_headers)
       expect(return_value.headers['Location']).to eq location
       expect(return_value.body['links']['redirect']).to eq redirect_link

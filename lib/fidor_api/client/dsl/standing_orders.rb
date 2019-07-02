@@ -23,7 +23,7 @@ module FidorApi
         end
 
         def confirm_standing_order(id, options = {})
-          request(:put, "standing_orders/#{id}/confirm", {}, options.delete(:headers)).headers['Location']
+          request(:put, "standing_orders/#{id}/confirm", {}, options[:headers])
         end
       end
     end
