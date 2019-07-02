@@ -1,5 +1,10 @@
 # Changelog
 
+## v2.1.0
+
+* Change behaviour of `confirm_transfer`, `confirm_scheduled_transfer` and `confirm_standing_order` DSL:
+  * The complete API response is now returned instead of just the link to confirmable actions.
+
 ## v2.0.7
 
 * New and improved DSLs for:
