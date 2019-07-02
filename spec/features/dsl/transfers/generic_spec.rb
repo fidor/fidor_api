@@ -137,7 +137,7 @@ RSpec.describe 'DSL - Transfers - Generic' do
         endpoint:         %r{/transfers/92bf870d-d914-4757-8691-7f8092a77e0e/confirm},
         request_headers:  request_headers,
         response_body:    {
-          id: 'eb5e8e0d-4611-4124-a1c5-f0b1afad250b',
+          id:    'eb5e8e0d-4611-4124-a1c5-f0b1afad250b',
           links: { redirect: redirect_link }
         },
         response_headers: { 'Location' => location },
