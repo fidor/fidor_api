@@ -29,10 +29,6 @@ module FidorApi
           end
 
           def confirm_transfer(id, options = {})
-            create_transfer_confirmation(id, options).body.dig('links', 'redirect')
-          end
-
-          def create_transfer_confirmation(id, options = {})
             check_transfer_support! :generic
             request(:put, "/transfers/#{id}/confirm", {}, options[:headers])
           end
