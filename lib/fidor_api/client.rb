@@ -8,6 +8,9 @@ module FidorApi
     include Authentication
     include DSL
 
+    deprecator = ActiveSupport::Deprecation.new('2.2', 'fidor_api')
+    ActiveSupport::Deprecation.deprecate_methods(self, confirm_transfer: 'Migrate to create_transfer_confirmation', deprecator: deprecator)
+
     attr_accessor :config
 
     def initialize
