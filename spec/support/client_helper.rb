@@ -25,12 +25,9 @@ module ClientHelper
 
     stubbed_request =
       if request_params
-        stub_request(:get, endpoint)
-          .with(request_params)
-          .with { |request| (request_headers.to_a - request.headers.to_a).empty? }
+        stub_request(:get, endpoint).with(request_params)
       else
         stub_request(:get, endpoint)
-          .with { |request| (request_headers.to_a - request.headers.to_a).empty? }
       end
 
     stubbed_request.to_return(status: 200, headers: json_response_header.merge(response_headers), body: response_body)

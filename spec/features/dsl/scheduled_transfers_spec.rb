@@ -44,8 +44,9 @@ RSpec.describe 'DSL - Scheduled Transfer' do
 
     before do
       stub_fetch_request(
-        endpoint:      %r{/scheduled_transfers},
-        response_body: [
+        endpoint:       %r{/scheduled_transfers},
+        request_params: { 'headers' => { 'Location' => '' } },
+        response_body:  [
           {
             'id':                    'c51038a3-8ace-4e56-9009-72a5d319b66b',
             'account_id':            '12345678',
