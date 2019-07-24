@@ -2,12 +2,12 @@ module FidorApi
   class Client
     module DSL
       module StandingOrders
-        def standing_order(id, options = {})
-          fetch(:single, FidorApi::Model::StandingOrder, "standing_orders/#{id}", options)
+        def standing_orders(options = {})
+          fetch(:collection, FidorApi::Model::StandingOrder, 'standing_orders', options[:headers])
         end
 
-        def standing_orders(options = {})
-          fetch(:collection, FidorApi::Model::StandingOrder, 'standing_orders', options)
+        def standing_order(id, options = {})
+          fetch(:single, FidorApi::Model::StandingOrder, "standing_orders/#{id}", options)
         end
 
         def new_standing_order(attributes = {})

@@ -3,7 +3,7 @@ module FidorApi
     module DSL
       module ScheduledTransfers
         def scheduled_transfers(options = {})
-          fetch(:collection, FidorApi::Model::ScheduledTransfer, 'scheduled_transfers', options)
+          fetch(:collection, FidorApi::Model::ScheduledTransfer, 'scheduled_transfers', options[:headers])
         end
 
         def scheduled_transfer(id, options = {})
