@@ -19,4 +19,16 @@ RSpec.describe 'DSL - Accounts' do
       expect(transaction.id).to eq 42
     end
   end
+
+  describe '#account_transaction' do
+    before do
+      stub_fetch_request(endpoint: %r{/accounts/123/transactions/456}, response_body: { id: 42 })
+    end
+
+    it 'returns single transaction' do
+      transaction = client.account_transaction('123', '456')
+      expect(transaction).to be_instance_of FidorApi::Model::Transaction
+      expect(transaction.id).to eq 42
+    end
+  end
 end
