@@ -1,5 +1,10 @@
 # Changelog
 
+## v2.1.1
+
+* Add `created_at` to `ScheduledTransfer` model.
+* Add `.account_transaction(account_id, transaction_id, options)` DSL
+
 ## v2.1.0
 
 * Change behaviour of `confirm_transfer`, `confirm_scheduled_transfer` and `confirm_standing_order` DSL:
