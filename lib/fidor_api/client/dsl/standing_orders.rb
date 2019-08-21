@@ -25,6 +25,10 @@ module FidorApi
         def confirm_standing_order(id, options = {})
           request(:put, "standing_orders/#{id}/confirm", {}, options[:headers])
         end
+
+        def delete_standing_order(id, options = {})
+          request(:delete, "standing_orders/#{id}/", id, options)
+        end
       end
     end
   end
