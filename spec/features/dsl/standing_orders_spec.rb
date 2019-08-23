@@ -190,4 +190,28 @@ RSpec.describe 'DSL - Standing orders' do
       end
     end
   end
+
+  describe '#delete_standing_order' do
+    before do
+      stub_delete_request(
+        endpoint:         %r{/standing_orders/#{standing_order_id}},
+        request_headers:  request_headers,
+        response_body:    {
+          id:    'eb5e8e0d-4611-4124-a1c5-f0b1afad250b',
+          links: { redirect: redirect_link }
+        },
+        response_headers: { 'Location' => location },
+        status:           303
+      )
+    end
+
+    let(:location) { 'https://api.example.com/confirm/actions/cc5f8b43-f28f-4aa6-8717-2c9a77557a91' }
+    let(:redirect_link) { 'https://api.example.com/confirm/actions/cc5f8b43-f28f-4aa6-8717-2c9a77557a91' }
+
+    it 'returns the confirmation response' do
+      return_value = client.delete_standing_order('92bf870d-d914-4757-8691-7f8092a77e0e', headers: request_headers)
+      expect(return_value.headers['Location']).to eq location
+      expect(return_value.body['links']['redirect']).to eq redirect_link
+    end
+  end
 end
