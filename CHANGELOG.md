@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.1.2
+
+* Add `delete_standing_order` method
+
 ## v2.1.1
 
 * Add `created_at` to `ScheduledTransfer` model.
