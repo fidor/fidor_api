@@ -53,6 +53,16 @@ module ClientHelper
       )
   end
 
+  def stub_delete_request(endpoint:, request_headers: {}, response_body: {}, response_headers: {}, status: 303)
+    stub_request(:delete, endpoint)
+      .with { |request| (request_headers.to_a - request.headers.to_a).empty? }
+      .to_return(
+        status:  status,
+        headers: json_response_header.merge(response_headers),
+        body:    response_body.to_json
+      )
+  end
+
   def json_response_header
     { 'Content-Type' => 'application/json' }
   end
