@@ -115,7 +115,7 @@ RSpec.describe 'DSL - Standing orders' do
         expect(standing_order.id).to eq standing_order_id
       end
 
-      it 'assigns the confirmable_action_attribute' do
+      it 'assigns the confirmable_action attribute' do
         standing_order = client.create_standing_order(subject: subject)
         expect(standing_order.confirmable_action_id).to eq confirmable_action_id
       end
@@ -174,7 +174,7 @@ RSpec.describe 'DSL - Standing orders' do
   describe '#update_standing_order' do
     let(:subject) { 'Hello World' }
 
-    context 'when the api accepts the Standing Order' do
+    context 'when the api accepts the standing order' do
       before do
         stub_update_request(
           endpoint:        %r{/standing_orders/#{standing_order_id}},

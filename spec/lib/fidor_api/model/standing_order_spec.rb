@@ -31,7 +31,7 @@ module FidorApi
           )
         end
 
-        it 'also does the parsing when setting the beneficiary hash' do
+        it 'sets routing attributes when assigning a beneficiary' do
           standing_order.beneficiary = {
             'routing_type' => routing_type,
             'routing_info' => { 'account_number' => account_number }

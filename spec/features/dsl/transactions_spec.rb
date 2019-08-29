@@ -10,7 +10,7 @@ RSpec.describe 'DSL - Transactions' do
       stub_fetch_request(endpoint: %r{/transactions}, response_body: [{ id: 42 }, { id: 43 }])
     end
 
-    it 'returns the current user object' do
+    it 'returns a collection of transactions' do
       transactions = client.transactions
       expect(transactions).to be_instance_of FidorApi::Collection
 
@@ -25,7 +25,7 @@ RSpec.describe 'DSL - Transactions' do
       stub_fetch_request(endpoint: %r{/transactions/42}, response_body: { id: 42 })
     end
 
-    it 'returns the current user object' do
+    it 'returns the transaction object' do
       transaction = client.transaction 42
       expect(transaction).to be_instance_of FidorApi::Model::Transaction
       expect(transaction.id).to eq 42

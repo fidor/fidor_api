@@ -27,7 +27,7 @@ module FidorApi
             )
           end
 
-          it 'also does the parsing when setting the beneficiary hash' do
+          it 'sets routing attributes when assigning a beneficiary' do
             transfer.beneficiary = {
               'routing_type' => routing_type,
               'routing_info' => { 'email' => email }

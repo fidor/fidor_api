@@ -13,7 +13,7 @@ RSpec.describe 'DSL - Confirmable Actions' do
       )
     end
 
-    it 'returns the current user object' do
+    it 'returns the confirmable action object' do
       confirmable_action = client.confirmable_action '1e1f2345-863e-486e-a2f3-377a8a12a79d'
       expect(confirmable_action).to be_instance_of FidorApi::Model::ConfirmableAction
       expect(confirmable_action.id).to eq '1e1f2345-863e-486e-a2f3-377a8a12a79d'
@@ -28,7 +28,7 @@ RSpec.describe 'DSL - Confirmable Actions' do
       )
     end
 
-    it 'returns the current user object' do
+    it 'returns the confirmable action object' do
       confirmable_action = client.refresh_confirmable_action '1e1f2345-863e-486e-a2f3-377a8a12a79d'
       expect(confirmable_action).to be_instance_of FidorApi::Model::ConfirmableAction
       expect(confirmable_action.id).to eq '1e1f2345-863e-486e-a2f3-377a8a12a79d'
@@ -43,7 +43,7 @@ RSpec.describe 'DSL - Confirmable Actions' do
       )
     end
 
-    it 'returns the current user object' do
+    it 'confirms the confirmable action' do
       confirmable_action = client.update_confirmable_action '1e1f2345-863e-486e-a2f3-377a8a12a79d', otp: '123456'
       expect(confirmable_action).to be_instance_of FidorApi::Model::ConfirmableAction
       expect(confirmable_action.id).to eq '1e1f2345-863e-486e-a2f3-377a8a12a79d'
