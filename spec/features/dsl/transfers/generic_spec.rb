@@ -24,7 +24,7 @@ RSpec.describe 'DSL - Transfers - Generic' do
       )
     end
 
-    it 'returns an array of internal-transfer objects' do
+    it 'returns an array of generic transfer objects' do
       transfers = client.transfers
       expect(transfers).to be_instance_of FidorApi::Collection
 
@@ -42,7 +42,7 @@ RSpec.describe 'DSL - Transfers - Generic' do
       )
     end
 
-    it 'returns an array of internal-transfer objects' do
+    it 'returns a generic transfer object' do
       transfer = client.transfer '92bf870d-d914-4757-8691-7f8092a77e0e'
       expect(transfer).to be_instance_of FidorApi::Model::Transfer::Generic
       expect(transfer.id).to eq '92bf870d-d914-4757-8691-7f8092a77e0e'
@@ -52,7 +52,7 @@ RSpec.describe 'DSL - Transfers - Generic' do
   describe '#new_transfer' do
     let(:subject) { 'Hello World' }
 
-    it 'returns a new instance of the internal-transfer model' do
+    it 'returns a new instance of the generic transfer model' do
       transfer = client.new_transfer(subject: subject)
       expect(transfer).to be_instance_of FidorApi::Model::Transfer::Generic
       expect(transfer.subject).to eq subject
@@ -79,7 +79,7 @@ RSpec.describe 'DSL - Transfers - Generic' do
         expect(transfer.id).to eq '92bf870d-d914-4757-8691-7f8092a77e0e'
       end
 
-      it 'assigns the confirmable_action_attribute' do
+      it 'assigns the confirmable_action attribute' do
         transfer = client.create_transfer({ subject: subject }, headers: request_headers)
         expect(transfer.confirmable_action_id).to eq '15fcc0cb-b741-4e96-b4bf-bb5b2ce79609'
       end

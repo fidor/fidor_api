@@ -31,7 +31,7 @@ module FidorApi
       end
 
       describe '.model_name' do
-        it 'returns the models name without namespaces' do
+        it "returns the model's name without namespaces" do
           expect(Anything.model_name.to_s).to eq 'Anything'
         end
       end
@@ -49,7 +49,7 @@ module FidorApi
       end
 
       describe '#model_name' do
-        it 'returns the models name without namespaces' do
+        it "returns the model's name without namespaces" do
           model = Anything.new
           expect(model.model_name.to_s).to eq 'Anything'
         end

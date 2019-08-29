@@ -10,7 +10,7 @@ RSpec.describe 'DSL - Messages' do
       stub_fetch_request(endpoint: %r{/messages}, response_body: [{ id: 42 }, { id: 43 }])
     end
 
-    it 'returns the current user object' do
+    it 'returns a collection of messages' do
       messages = client.messages
       expect(messages).to be_instance_of FidorApi::Collection
 
@@ -25,7 +25,7 @@ RSpec.describe 'DSL - Messages' do
       stub_fetch_request(endpoint: %r{/messages/42}, response_body: { id: 42 })
     end
 
-    it 'returns the current user object' do
+    it 'returns the message object' do
       message = client.message 42
       expect(message).to be_instance_of FidorApi::Model::Message
       expect(message.id).to eq 42
@@ -44,7 +44,7 @@ RSpec.describe 'DSL - Messages' do
       )
     end
 
-    it 'returns the current user object' do
+    it 'downloads the attached file' do
       attachment = client.message_attachment 42
       expect(attachment).to be_instance_of FidorApi::Model::Message::Attachment
       expect(attachment.type).to     eq 'application/pdf'
@@ -64,10 +64,10 @@ RSpec.describe 'DSL - Messages' do
       )
     end
 
-    it 'returns the current user object' do
-      attachment = client.message_content 42
-      expect(attachment).to be_instance_of FidorApi::Model::Message::Content
-      expect(attachment.raw).to eq 'binary-data'
+    it "returns message's binary content" do
+      content = client.message_content 42
+      expect(content).to be_instance_of FidorApi::Model::Message::Content
+      expect(content.raw).to eq 'binary-data'
     end
   end
 end

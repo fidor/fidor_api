@@ -10,7 +10,7 @@ RSpec.describe 'DSL - Cards' do
       stub_fetch_request(endpoint: %r{/cards}, response_body: [{ id: 42 }, { id: 43 }])
     end
 
-    it 'returns the current user object' do
+    it 'returns a collection of cards' do
       cards = client.cards
       expect(cards).to be_instance_of FidorApi::Collection
 
@@ -25,7 +25,7 @@ RSpec.describe 'DSL - Cards' do
       stub_fetch_request(endpoint: %r{/cards/42}, response_body: { id: 42 })
     end
 
-    it 'returns the current user object' do
+    it 'returns the card object' do
       card = client.card 42
       expect(card).to be_instance_of FidorApi::Model::Card
       expect(card.id).to eq 42

@@ -31,7 +31,7 @@ module FidorApi
           )
         end
 
-        it 'also does the parsing when setting the beneficiary hash' do
+        it 'sets routing attributes when assigning a beneficiary' do
           scheduled_transfer.beneficiary = {
             'routing_type' => routing_type,
             'routing_info' => { 'account_number' => account_number }

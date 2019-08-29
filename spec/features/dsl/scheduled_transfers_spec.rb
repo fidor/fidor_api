@@ -22,7 +22,7 @@ RSpec.describe 'DSL - Scheduled Transfer' do
       )
     end
 
-    it 'returns a standing order object' do
+    it 'returns a scheduled transfer object' do
       scheduled_transfer = client.scheduled_transfer scheduled_transfer_id
       expect(scheduled_transfer).to be_instance_of FidorApi::Model::ScheduledTransfer
       expect(scheduled_transfer.id).to eq scheduled_transfer_id
@@ -74,7 +74,7 @@ RSpec.describe 'DSL - Scheduled Transfer' do
   describe '#new_scheduled_transfer' do
     let(:subject) { 'Hello World' }
 
-    it 'returns a new instance of the standing order model' do
+    it 'returns a new instance of the scheduled transfer model' do
       scheduled_transfer = client.new_scheduled_transfer(subject: subject)
       expect(scheduled_transfer).to be_instance_of FidorApi::Model::ScheduledTransfer
       expect(scheduled_transfer.subject).to eq subject
@@ -85,7 +85,7 @@ RSpec.describe 'DSL - Scheduled Transfer' do
     let(:subject)         { 'Hello World' }
     let(:confirmable_url) { "https://api.example.com/confirmable/actions/#{confirmable_action_id}" }
 
-    context 'when the api accepts the standing order' do
+    context 'when the api accepts the scheduled transfer' do
       before do
         stub_create_request(
           endpoint:         %r{/scheduled_transfers},
@@ -100,7 +100,7 @@ RSpec.describe 'DSL - Scheduled Transfer' do
         expect(scheduled_transfer.id).to eq scheduled_transfer_id
       end
 
-      it 'assigns the confirmable_action_attribute' do
+      it 'assigns the confirmable_action attribute' do
         scheduled_transfer = client.create_scheduled_transfer(subject: subject)
         expect(scheduled_transfer.confirmable_action_id).to eq confirmable_action_id
       end
@@ -159,7 +159,7 @@ RSpec.describe 'DSL - Scheduled Transfer' do
   describe '#update_scheduled_transfer' do
     let(:subject) { 'Hello World' }
 
-    context 'when the api accepts the Standing Order' do
+    context 'when the api accepts the scheduled transfer' do
       before do
         stub_update_request(
           endpoint:        %r{/scheduled_transfers/#{scheduled_transfer_id}},
