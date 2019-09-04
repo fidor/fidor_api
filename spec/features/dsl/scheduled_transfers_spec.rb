@@ -138,7 +138,7 @@ RSpec.describe 'DSL - Scheduled Transfer' do
         endpoint:         %r{/scheduled_transfers/92bf870d-d914-4757-8691-7f8092a77e0e/confirm},
         request_headers:  request_headers,
         response_body:    {
-          id:    'eb5e8e0d-4611-4124-a1c5-f0b1afad250b',
+          id:    confirmable_action_id,
           links: { redirect: redirect_link }
         },
         response_headers: { 'Location' => location },
@@ -146,8 +146,8 @@ RSpec.describe 'DSL - Scheduled Transfer' do
       )
     end
 
-    let(:location) { 'https://api.example.com/confirm/eb5e8e0d-4611-4124-a1c5-f0b1afad250b' }
-    let(:redirect_link) { 'https://auth.example.com/confirmable/eb5e8e0d-4611-4124-a1c5-f0b1afad250b' }
+    let(:location) { "https://api.example.com/confirm/#{confirmable_action_id}" }
+    let(:redirect_link) { "https://auth.example.com/confirmable/#{confirmable_action_id}" }
 
     it 'returns the confirmation response' do
       return_value = client.confirm_scheduled_transfer('92bf870d-d914-4757-8691-7f8092a77e0e', headers: request_headers)
@@ -173,6 +173,29 @@ RSpec.describe 'DSL - Scheduled Transfer' do
         expect(transfer).to be_instance_of FidorApi::Model::ScheduledTransfer
         expect(transfer.subject).to eq subject
       end
+    end
+  end
+
+  describe '#delete_scheduled_transfer' do
+    let(:redirect_link) { "https://api.example.com/confirm/#{confirmable_action_id}" }
+
+    before do
+      stub_delete_request(
+        endpoint:         %r{/scheduled_transfers/#{scheduled_transfer_id}},
+        request_headers:  request_headers,
+        response_body:    {
+          id:    confirmable_action_id,
+          links: { redirect: redirect_link }
+        },
+        response_headers: { 'Location' => redirect_link }
+      )
+    end
+
+    it 'returns a confirmation response' do
+      delete_response = client.delete_scheduled_transfer(scheduled_transfer_id, headers: request_headers)
+
+      expect(delete_response.headers['Location']).to eq redirect_link
+      expect(delete_response.body.dig('links', 'redirect')).to eq redirect_link
     end
   end
 end
