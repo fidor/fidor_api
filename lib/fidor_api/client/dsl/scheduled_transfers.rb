@@ -25,6 +25,10 @@ module FidorApi
         def confirm_scheduled_transfer(id, options = {})
           request(:put, "scheduled_transfers/#{id}/confirm", {}, options[:headers])
         end
+
+        def delete_scheduled_transfer(id, options = {})
+          request(:delete, "scheduled_transfers/#{id}", nil, options[:headers])
+        end
       end
     end
   end
