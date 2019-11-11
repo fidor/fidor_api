@@ -37,7 +37,7 @@ module FidorApi
 
         response
       rescue Faraday::ClientError => e
-        client.config.logger.error e.inspect
+        client.config.logger.error e.inspect if client.config.logger # rubocop:disable Style/SafeNavigation
         raise
       end
 
