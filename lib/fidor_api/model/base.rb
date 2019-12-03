@@ -37,8 +37,7 @@ module FidorApi
 
           if key
             # https://github.com/rails/rails/issues/28903
-            hash.delete('message')
-            errors.add(field, key.to_sym, hash.symbolize_keys)
+            errors.add(field, key.to_sym, hash.symbolize_keys.except(:message))
           else
             errors.add(field, hash.delete('message'), hash.symbolize_keys)
           end
