@@ -36,7 +36,8 @@ module FidorApi
           next unless respond_to?(field) || field == :base
 
           if key
-            errors.add(field, key.to_sym, hash.symbolize_keys)
+            # https://github.com/rails/rails/issues/28903
+            errors.add(field, key.to_sym, hash.symbolize_keys.except(:message))
           else
             errors.add(field, hash.delete('message'), hash.symbolize_keys)
           end

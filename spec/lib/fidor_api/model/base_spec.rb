@@ -63,7 +63,7 @@ module FidorApi
             'code'   => 422,
             'errors' => [
               { 'field' => 'base', 'message' => 'Something is wrong in general' },
-              { 'field' => 'amount', 'key' => 'invalid' },
+              { 'field' => 'amount', 'key' => 'greater_than', 'count' => 0 },
               { 'field' => 'amount', 'key' => 'invalid', 'message' => 'is not valid' }
             ]
           }
@@ -72,7 +72,7 @@ module FidorApi
         it 'assigns the errors and supports i18n keys' do
           instance.parse_errors(errors)
           expect(instance.errors[:base]).to eq ['Something is wrong in general']
-          expect(instance.errors[:amount]).to eq ['is invalid', 'is not valid']
+          expect(instance.errors[:amount]).to eq ['must be greater than 0', 'is invalid']
         end
       end
 
