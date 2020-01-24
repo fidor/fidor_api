@@ -5,6 +5,7 @@ module FidorApi
     autoload :Card,              'fidor_api/model/card'
     autoload :ConfirmableAction, 'fidor_api/model/confirmable_action'
     autoload :Customer,          'fidor_api/model/customer'
+    autoload :DebitReturn,       'fidor_api/model/debit_return'
     autoload :Helpers,           'fidor_api/model/helpers'
     autoload :Message,           'fidor_api/model/message'
     autoload :Preauth,           'fidor_api/model/preauth'
