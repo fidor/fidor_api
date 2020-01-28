@@ -5,6 +5,7 @@ module FidorApi
       autoload :Cards,              'fidor_api/client/dsl/cards'
       autoload :ConfirmableActions, 'fidor_api/client/dsl/confirmable_actions'
       autoload :CoreData,           'fidor_api/client/dsl/core_data'
+      autoload :DebitReturns,       'fidor_api/client/dsl/debit_returns'
       autoload :Messages,           'fidor_api/client/dsl/messages'
       autoload :Preauths,           'fidor_api/client/dsl/preauths'
       autoload :ScheduledTransfers, 'fidor_api/client/dsl/scheduled_transfers'
@@ -12,11 +13,12 @@ module FidorApi
       autoload :Transactions,       'fidor_api/client/dsl/transactions'
       autoload :Transfers,          'fidor_api/client/dsl/transfers'
 
-      def self.included(klass)
+      def self.included(klass) # rubocop:disable Metrics/MethodLength
         klass.include Accounts
         klass.include Cards
         klass.include ConfirmableActions
         klass.include CoreData
+        klass.include DebitReturns
         klass.include Messages
         klass.include Preauths
         klass.include ScheduledTransfers
