@@ -29,8 +29,8 @@ RSpec.describe 'DSL - Debit Returns' do
     context 'when the api accepts the standing order' do
       before do
         stub_create_request(
-          endpoint:         %r{/transactions/#{transaction_id}/debit_return},
-          response_body:    { state: 'created' }
+          endpoint:      %r{/transactions/#{transaction_id}/debit_return},
+          response_body: { state: 'created' }
         )
       end
 

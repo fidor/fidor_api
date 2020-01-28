@@ -13,7 +13,7 @@ module FidorApi
       autoload :Transactions,       'fidor_api/client/dsl/transactions'
       autoload :Transfers,          'fidor_api/client/dsl/transfers'
 
-      def self.included(klass)
+      def self.included(klass) # rubocop:disable Metrics/MethodLength
         klass.include Accounts
         klass.include Cards
         klass.include ConfirmableActions
