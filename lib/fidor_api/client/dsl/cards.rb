@@ -9,6 +9,10 @@ module FidorApi
         def card(id, options = {})
           fetch(:single, Model::Card, "cards/#{id}", options)
         end
+
+        def create_card(attributes = {}, options = {})
+          create(FidorApi::Model::Card, 'cards', attributes, options)
+        end
       end
     end
   end
