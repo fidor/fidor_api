@@ -2,6 +2,7 @@ module FidorApi
   module Model
     class Card < Base
       attribute :id,                       :integer
+      attribute :identifier,               :string
       attribute :account_id,               :string
       attribute :type,                     :string
       attribute :physical,                 :boolean
