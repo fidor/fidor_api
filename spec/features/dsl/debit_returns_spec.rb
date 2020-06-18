@@ -16,7 +16,7 @@ RSpec.describe 'DSL - Debit Returns' do
       )
     end
 
-    it 'returns a standing order object' do
+    it 'returns a debit return object' do
       debit_return = client.debit_return transaction_id
       expect(debit_return).to be_instance_of FidorApi::Model::DebitReturn
       expect(debit_return.state).to eq 'created'
@@ -26,7 +26,7 @@ RSpec.describe 'DSL - Debit Returns' do
   describe '#create_debit_return' do
     let(:confirmable_url) { "https://api.example.com/confirmable/actions/#{confirmable_action_id}" }
 
-    context 'when the api accepts the standing order' do
+    context 'when the api accepts the debit return' do
       before do
         stub_create_request(
           endpoint:      %r{/transactions/#{transaction_id}/debit_return},
