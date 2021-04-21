@@ -1,5 +1,9 @@
 # Changelog
 
+# v2.1.3
+
+* Allow usage in Rails 6.1.x projects
+
 ## v2.1.2
 
 * Add `delete_standing_order` method
