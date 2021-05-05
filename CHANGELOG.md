@@ -1,5 +1,9 @@
 # Changelog
 
+# v2.1.4
+
+* Ignore non existing attributes in creating token object
+
 # v2.1.3
 
 * Allow usage in Rails 6.1.x projects
