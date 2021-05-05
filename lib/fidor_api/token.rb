@@ -11,6 +11,8 @@ module FidorApi
 
     def initialize(args = {})
       args.each do |key, value|
+        next unless ATTRIBUTES.include?(key.to_sym)
+
         instance_variable_set("@#{key}", value)
       end
     end
